@@ -8,14 +8,26 @@ const Sidebar = () => {
   const location = useLocation();
 
   const buttons = [
-    { label: "Receptek", route: "/recipies", icon: <Home size={20} /> },
-    { label: "Kedvencek", route: "/favorites", icon: <Heart size={20} /> },
+    {
+      label: "Receptek",
+      route: "/recipies",
+      icon: <Home size={20} />,
+    },
+    {
+      label: "Kedvencek",
+      route: "/favorites",
+      icon: <Heart size={20} />,
+    },
     {
       label: "Hozzávalóim",
       route: "/ingredients",
       icon: <ShoppingBag size={20} />,
     },
-    { label: "Kijelentkezés", route: "/", icon: <LogOut size={20} /> },
+    {
+      label: "Kijelentkezés",
+      route: "/",
+      icon: <LogOut size={20} />,
+    },
   ];
 
   useEffect(() => {

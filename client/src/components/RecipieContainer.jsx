@@ -36,7 +36,7 @@ const RecipieContainer = () => {
             key={index}
             name={recipe.name}
             cookingTime={recipe.cookingTime}
-            image={`data:image/jpeg;base64,${recipe.image}`} // Base64 képek megjelenítése
+            image={`data:image/jpeg;base64,${recipe.image}`}
           />
         ))}
       </div>

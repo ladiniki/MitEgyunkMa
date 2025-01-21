@@ -17,7 +17,7 @@ const AuthenticatedLayout = () => {
         <div className="p-4">
           <Routes>
             <Route
-              path="/dashboard"
+              path="/recipies"
               element={
                 <ProtectedRoute>
                   <RecipieContainer />
