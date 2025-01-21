@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div className="flex justify-between h-screen font-primary">
+    <div className="flex justify-between h-screen font-primary bg-light-background">
       <div className="basis-[15%]">
         <Sidebar />
       </div>

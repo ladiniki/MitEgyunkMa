@@ -38,7 +38,7 @@ const Navbar = () => {
           {buttons.map((button, index) => (
             <button
               key={index}
-              className="flex flex-col items-center mb-4 w-full text-left text-light-accent hover:text-light-tertiary transition-colors duration-200 ease-in-out p-4 rounded-3xl"
+              className="flex flex-col items-center mb-4 w-full text-left text-light-accent hover:text-light-tertiary hover:scale-105 transition-colors duration-200 ease-in-out p-4 rounded-3xl"
               onClick={() => console.log(`Navigating to ${button.label}`)}
             >
               <span>{button.icon}</span>
@@ -48,8 +48,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="pl-2 ml-auto flex justify-between">
-        <div className="flex items-center rounded-3xl border-2 p-2 bg-light-tertiary border-light-accent mr-2">
-          <span className="mr-28">Kereső</span> <Search size={20} />
+        <div className="flex items-center rounded-3xl border-2 p-2 bg-light-tertiary border-light-accent mr-2 hover:scale-x-105 transition-transform duration-150 ease-in-out">
+          <span className="mr-28">Keresés</span>
+          <Search size={20} />
         </div>
       </div>
     </div>

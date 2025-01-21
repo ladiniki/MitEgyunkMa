@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import { Home, Heart, ShoppingBag, LogOut } from "lucide-react";
 
 const Sidebar = () => {
@@ -24,17 +25,21 @@ const Sidebar = () => {
     },
   ];
 
+  const navigate = useNavigate();
+  const location = useLocation();
   const username = "Niki";
 
   return (
-    <div className="flex flex-col items-center bg-light-primary h-full pt-5">
+    <div className="flex flex-col items-center bg-light-primary h-full pt-8">
       <span className="text-light-accent">Mit együnk ma?</span>
-      <div className="flex flex-col items-start pt-10">
+      <div className="flex flex-col items-start pt-20">
         {buttons.map((button, index) => (
           <button
             key={index}
-            className="mb-4 w-full text-left text-light-accent hover:text-light-tertiary transition-colors duration-200 ease-in-out flex items-center"
-            onClick={() => console.log(`Navigating to ${button.route}`)}
+            className={`mb-4 w-full text-left text-light-accent hover:text-light-tertiary hover:scale-105 transition-colors duration-200 ease-in-out flex items-center ${
+              location.pathname === button.route ? "text-light-tertiary" : ""
+            }`}
+            onClick={() => navigate(button.route)}
           >
             <span className="mr-2">{button.icon}</span>
             {button.label}
