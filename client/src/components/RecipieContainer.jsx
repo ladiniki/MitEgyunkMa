@@ -1,26 +1,32 @@
-// TODO: refactor this in the future
+import { useState, useEffect } from "react";
 import RecipieCard from "./RecipieCard";
-import TükörtojásImg from "../assets/tükörtojás.jpg";
-import GofriImg from "../assets/gofri.jpg";
-import KrumpliImg from "../assets/krumpli.jpg";
-import KukoricaImg from "../assets/kukorica.jpg";
-import CsokitortaImg from "../assets/csokitorta.jpeg";
 
 const RecipieContainer = () => {
-  const recipies = [
-    { name: "Tükörtojás", cookingTime: 10, image: TükörtojásImg },
-    { name: "Gofri", cookingTime: 20, image: GofriImg },
-    { name: "Krumpli", cookingTime: 30, image: KrumpliImg },
-    { name: "Kukorica", cookingTime: 15, image: KukoricaImg },
-    { name: "Csokitorta", cookingTime: 45, image: CsokitortaImg },
-    { name: "Kukorica", cookingTime: 15, image: KukoricaImg },
-    { name: "Csokitorta", cookingTime: 45, image: CsokitortaImg },
-    { name: "Kukorica", cookingTime: 15, image: KukoricaImg },
-    { name: "Csokitorta", cookingTime: 45, image: CsokitortaImg },
-    { name: "Kukorica", cookingTime: 15, image: KukoricaImg },
-    { name: "Csokitorta", cookingTime: 45, image: CsokitortaImg },
-    { name: "Kukorica", cookingTime: 15, image: KukoricaImg },
-  ];
+  const [recipies, setRecipies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRecipies = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/recipies");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setRecipies(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching recipies:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchRecipies();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="m-4">
@@ -30,7 +36,7 @@ const RecipieContainer = () => {
             key={index}
             name={recipe.name}
             cookingTime={recipe.cookingTime}
-            image={recipe.image}
+            image={`data:image/jpeg;base64,${recipe.image}`} // Base64 képek megjelenítése
           />
         ))}
       </div>
