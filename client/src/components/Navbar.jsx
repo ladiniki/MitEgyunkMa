@@ -1,59 +1,76 @@
 import {
-  NotebookText,
-  EggFried,
-  CookingPot,
-  CakeSlice,
-  Soup,
   Search,
+  Receipt,
+  Coffee,
+  UtensilsCrossed,
+  Cake,
+  ChefHat,
 } from "lucide-react";
 
 const Navbar = () => {
-  const buttons = [
-    {
-      label: "Receptek",
-      icon: <NotebookText size={20} />,
-    },
-    {
-      label: "Reggeli",
-      icon: <EggFried size={20} />,
-    },
-    {
-      label: "Ebéd",
-      icon: <CookingPot size={20} />,
-    },
-    {
-      label: "Desszert",
-      icon: <CakeSlice size={20} />,
-    },
-    {
-      label: "Vacsora",
-      icon: <Soup size={20} />,
-    },
-  ];
-
   return (
-    <div className="flex items-center bg-light-background w-full h-[10vh]">
-      <div className="mt-2">
-        <div className="flex items-start pt-4 w-full">
-          {buttons.map((button, index) => (
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
+      <div className="w-full px-4 py-3">
+        <div className="flex justify-between items-center">
+          {/* Bal oldali szűrők */}
+          <div className="flex items-center space-x-2">
             <button
-              key={index}
-              className="flex flex-col items-center mb-4 w-full text-left text-light-accent hover:text-light-tertiary hover:scale-105 transition-colors duration-200 ease-in-out p-4 rounded-3xl"
-              onClick={() => console.log(`Navigating to ${button.label}`)}
+              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
+                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
             >
-              <span>{button.icon}</span>
-              <span>{button.label}</span>
+              <Receipt className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
+              Receptek
             </button>
-          ))}
+            <button
+              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
+                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+            >
+              <Coffee className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
+              Reggeli
+            </button>
+            <button
+              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
+                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+            >
+              <UtensilsCrossed className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
+              Ebéd
+            </button>
+            <button
+              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
+                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+            >
+              <Cake className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
+              Desszert
+            </button>
+            <button
+              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
+                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+            >
+              <ChefHat className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
+              Vacsora
+            </button>
+          </div>
+
+          {/* Jobb oldali kereső */}
+          <div className="relative ml-auto group">
+            <input
+              type="text"
+              placeholder="Keresés..."
+              className="w-[300px] px-4 py-2 pl-10 rounded-full 
+                       bg-white border-2 border-orange-500/30
+                       focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20
+                       hover:border-orange-500 hover:shadow-[0_0_0_4px_rgba(249,115,22,0.1)]
+                       transition-all duration-200"
+            />
+            <Search
+              className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 
+                            text-orange-500/70 group-hover:text-orange-500
+                            transition-colors duration-200"
+            />
+          </div>
         </div>
       </div>
-      <div className="pl-2 ml-auto flex justify-between">
-        <div className="flex items-center rounded-3xl border-2 p-2 bg-light-tertiary border-light-accent mr-2 hover:scale-x-105 transition-transform duration-150 ease-in-out">
-          <span className="mr-28">Keresés</span>
-          <Search size={20} />
-        </div>
-      </div>
-    </div>
+    </nav>
   );
 };
 

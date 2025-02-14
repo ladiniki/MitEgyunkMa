@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Login = () => {
 
   const handleFormSubmit = async (data) => {
     try {
+      /*Fetch --> Az API hívást kezeli a POST metódussal*/
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
@@ -19,10 +21,12 @@ const Login = () => {
         body: JSON.stringify(data),
       });
 
+      /*Hibaellenőrzés*/
       if (!response.ok) {
         throw new Error("Login failed");
       }
 
+      /*Ha a hibaellenőrzés sikeres --> kiolvassuk a token értékét*/
       const { access_token } = await response.json();
       localStorage.setItem("jwt", access_token);
       navigate("/recipies");
@@ -33,42 +37,83 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-light-secondary h-[100vh] font-primary">
-      <div className="flex flex-col border-2 bg-light-primary p-8 border-light-accent rounded-3xl w-[33vw] h-[33vh]">
-        <span className="text-2xl text-light-accent">Bejelentkezés</span>
-        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-5">
-          <input
-            {...register("username", { required: "Felhasználónév szükséges" })}
-            placeholder="Felhasználónév"
-            className="border-2 focus:border-[3px] focus:outline-none bg-light-secondary mt-4 p-4 border-light-accent focus:border-light-accent rounded-2xl w-full text-light-accent placeholder-light-accent"
-          />
-          {errors.username && (
-            <span className="text-red-500 text-sm">
-              {errors.username.message}
-            </span>
-          )}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 via-orange-50 to-orange-100">
+      <div className="max-w-md w-full bg-white/90 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(249,115,22,0.1)] p-8 space-y-6 border border-orange-200">
+        <div className="text-center">
+          <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="mx-auto w-64" />
+        </div>
 
-          <input
-            {...register("password", { required: "Jelszó szükséges" })}
-            type="password"
-            placeholder="Jelszó"
-            className="border-2 focus:border-[3px] focus:outline-none bg-light-secondary mt-4 p-4 border-light-accent focus:border-light-accent rounded-2xl w-full text-light-accent placeholder-light-accent"
-          />
-          {errors.password && (
-            <span className="text-red-500 text-sm">
-              {errors.password.message}
-            </span>
-          )}
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
+          <div>
+            <label htmlFor="username" className="block text-sm font-primary text-gray-700 mb-1">
+              Felhasználónév
+            </label>
+            <input
+              type="text"
+              id="username"
+              {...register("username", { required: "Felhasználónév szükséges" })}
+              className="w-full px-4 py-2 rounded-xl border-2 border-orange-300
+                       focus:border-orange-500 focus:ring-4 focus:ring-orange-200
+                       bg-white/80 font-primary
+                       transition duration-200"
+              placeholder="Felhasználónév"
+            />
+            {errors.username && (
+              <span className="text-red-500 text-sm">
+                {errors.username.message}
+              </span>
+            )}
+          </div>
 
-          <div className="flex justify-center mt-4 w-full">
-            <button
-              type="submit"
-              className="border-2 bg-light-accent p-4 border-light-accent rounded-2xl w-[66%] text-light-primary text-xl transition-transform duration-200 ease-in-out hover:scale-110"
+          <div>
+            <label htmlFor="password" className="block text-sm font-primary text-gray-700 mb-1">
+              Jelszó
+            </label>
+            <input
+              type="password"
+              id="password"
+              {...register("password", { required: "Jelszó szükséges" })}
+              className="w-full px-4 py-2 rounded-xl border-2 border-orange-300
+                       focus:border-orange-500 focus:ring-4 focus:ring-orange-200
+                       bg-white/80 font-primary
+                       transition duration-200"
+              placeholder="Jelszó"
+            />
+            {errors.password && (
+              <span className="text-red-500 text-sm">
+                {errors.password.message}
+              </span>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 to-orange-600
+                     hover:from-orange-600 hover:to-orange-700
+                     text-white font-primary rounded-xl
+                     shadow-[0_4px_20px_rgb(249,115,22,0.3)]
+                     transform transition duration-200 hover:scale-[1.02]
+                     active:scale-[0.98]"
+          >
+            Bejelentkezés
+          </button>
+
+          <div className="text-center">
+            <Link
+              to="/register"
+              className="text-orange-600 hover:text-orange-700 font-primary transition duration-200
+                       hover:underline underline-offset-4"
             >
-              <span>Bejelentkezés</span>
-            </button>
+              Még nem regisztráltál?
+            </Link>
           </div>
         </form>
+
+        {errors.root && (
+          <div className="p-4 text-red-600 bg-red-50 rounded-xl text-center text-sm font-primary border border-red-100">
+            {errors.root.message}
+          </div>
+        )}
       </div>
     </div>
   );

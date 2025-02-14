@@ -17,7 +17,8 @@ collection = db["RecipiesCollection"]
 app.config["JWT_SECRET_KEY"] = "7a61647cb6417a6f191d46a4c674279fe48981a0e40b6601581099135f1d1d6555e5fd61d4a4bb29aeec06e688a77971cbf979754996161667b34e9b2db8026f9214e9349176a5f646d5053a5974499b806c7a35c7f6c253deb5a487236a61a40b710139d48e40f2d222f7780e91a90dc7e7e025db76a79f9a99685ec1302bd67b727b50083eac8f849ebd66ba1fa7440175878d9ac690c0c859d1e2ea6e7fcd33e45f723d023778883765102d617f796353783d0a092d300f7b00c389eb1abf7d3a90ee06edf8148219ed856876651a191d56768f2b7f6daf71f5f8f1415b64ae37660bb318d650b18e20f7d6ac193afb4042efbd5ac2965a0ec799a96eff33" 
 jwt = JWTManager(app)
 
-
+# A végpont egy receptlistát ad vissza JSON formátumban (recept név, elkészítési idő, kép)
+# TODO: jwt required!!!
 @app.route('/recipies', methods=['GET'])
 def get_recipies():
     recipies = collection.find()
@@ -35,7 +36,7 @@ def get_recipies():
 
     return jsonify(result)
 
-
+# Csekkolja a regisztrációt
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -53,7 +54,7 @@ def register():
 
     return jsonify({'message': 'Successful registration'}), 201
 
-
+# Ellenőriz, majd odaadja a tokent (JWT authentikáció)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -70,7 +71,7 @@ def login():
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token), 200
 
-
+# Kikérjük a felhasználó nevét (Admin)
 @app.route('/user', methods=['GET'])
 @jwt_required()
 def get_user():

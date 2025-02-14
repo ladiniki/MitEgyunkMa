@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RecipieCard from "./RecipieCard";
 
+/*Betölti a recepteket egy API-ból*/
 const RecipieContainer = () => {
   const [recipies, setRecipies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,13 +25,16 @@ const RecipieContainer = () => {
     fetchRecipies();
   }, []);
 
+  /*Loading állapot, hogy a felhasználó bejelentkezésig ne lásson semmit*/
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  /*a recipies.map()-al minden receptet a RecipieCard komponensbe jelenítjük meg
+  Grid --> kártya elrendezése, görgető*/
   return (
     <div className="m-4">
-      <div className="gap-4 grid grid-cols-4 mt-4 mb-4 h-[85vh] overflow-y-auto">
+      <div className="gap-4 grid grid-cols-4 mt-4 mb-4">
         {recipies.map((recipe, index) => (
           <RecipieCard
             key={index}
