@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, ChefHat, Utensils, Trophy, Home } from "lucide-react";
+import { ArrowLeft, Clock, ChefHat, Utensils, Trophy, Home, Check } from "lucide-react";
 
 const RecipeDetail = () => {
   const { recipeName } = useParams();
@@ -8,6 +8,7 @@ const RecipeDetail = () => {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [completedSteps, setCompletedSteps] = useState([]);
 
   // Görgetés letiltása az oldal betöltésekor
   useEffect(() => {
@@ -45,6 +46,35 @@ const RecipeDetail = () => {
 
     fetchRecipeDetails();
   }, [recipeName]);
+
+  // Lépés befejezettként megjelölése
+  const toggleStepCompletion = (index) => {
+    setCompletedSteps(prev => {
+      // Ha már be van pipálva, akkor mindig ki lehet venni a pipát
+      if (prev.includes(index)) {
+        // Eltávolítjuk a jelenlegi lépést
+        const newCompletedSteps = prev.filter(stepIndex => stepIndex !== index);
+        
+        // Ha ez a lépés nem az utolsó befejezett lépés, akkor az utána következő befejezett lépéseket is el kell távolítani
+        return newCompletedSteps.filter(stepIndex => stepIndex < index);
+      } else {
+        // Csak akkor lehet bejelölni, ha az előző lépés már kész, vagy ez az első lépés
+        const isPreviousStepCompleted = index === 0 || prev.includes(index - 1);
+        
+        if (isPreviousStepCompleted) {
+          return [...prev, index];
+        }
+        
+        // Ha nem teljesül a feltétel, visszaadjuk az eredeti állapotot
+        return prev;
+      }
+    });
+  };
+
+  // Ellenőrzi, hogy egy lépés bejelölhető-e
+  const isStepCheckable = (index) => {
+    return index === 0 || completedSteps.includes(index - 1);
+  };
 
   // Nehézségi szint megjelenítése
   const renderDifficulty = (difficulty) => {
@@ -210,11 +240,31 @@ const RecipeDetail = () => {
               <ol className="space-y-1.5">
                 {displayedSteps.map((step, index) => (
                   <li key={index} className="flex text-sm">
-                    <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center bg-orange-500 text-white rounded-full mr-2 text-xs font-medium">
-                      {index + 1}
-                    </span>
-                    <div className="bg-gray-50 p-2 rounded-lg flex-grow">
-                      <p className="text-gray-700 line-clamp-2">{step}</p>
+                    <button 
+                      onClick={() => toggleStepCompletion(index)}
+                      className={`flex-shrink-0 w-5 h-5 flex items-center justify-center ${
+                        completedSteps.includes(index) 
+                          ? 'bg-green-500' 
+                          : isStepCheckable(index)
+                            ? 'bg-orange-500'
+                            : 'bg-gray-400'
+                      } text-white rounded-full mr-2 text-xs font-medium transition-colors`}
+                      disabled={!isStepCheckable(index) && !completedSteps.includes(index)}
+                      aria-label={`${completedSteps.includes(index) ? 'Lépés visszaállítása' : 'Lépés befejezése'}`}
+                      title={!isStepCheckable(index) && !completedSteps.includes(index) ? 'Előbb az előző lépést fejezd be' : ''}
+                    >
+                      {completedSteps.includes(index) ? <Check size={12} /> : index + 1}
+                    </button>
+                    <div 
+                      className={`bg-gray-50 p-2 rounded-lg flex-grow ${
+                        completedSteps.includes(index) ? 'bg-green-50' : ''
+                      }`}
+                    >
+                      <p className={`text-gray-700 line-clamp-2 ${
+                        completedSteps.includes(index) ? 'line-through text-gray-500' : ''
+                      }`}>
+                        {step}
+                      </p>
                     </div>
                   </li>
                 ))}
