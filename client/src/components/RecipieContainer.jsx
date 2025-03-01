@@ -137,24 +137,53 @@ const RecipieContainer = () => {
             ))}
           </div>
           
-          {/* Modernebb lapozó navigáció középen alul */}
+          {/* Finomított, modern lapozó */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center mt-2 mb-2">
-              <div className="bg-white shadow-md rounded-full px-4 py-2 text-sm text-gray-600 flex items-center space-x-2">
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handlePageClick(i + 1)}
-                    disabled={pageTransition === 'fade-out'}
-                    className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 
-                      ${currentPage === i + 1
-                        ? 'bg-orange-500 text-white scale-110'
-                        : 'text-gray-600 hover:bg-orange-100'
-                      }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
+            <div className="flex justify-center mt-6 mb-4">
+              <div className="inline-flex items-center bg-white shadow-md rounded-full px-1 py-1">
+                {/* Előző gomb */}
+                <button
+                  onClick={handlePrevPage}
+                  disabled={currentPage === 1 || pageTransition === 'fade-out'}
+                  className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
+                    ${currentPage === 1 
+                      ? 'text-gray-300 cursor-not-allowed' 
+                      : 'text-gray-600 hover:bg-gray-100'}`}
+                  aria-label="Előző oldal"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                
+                {/* Oldalszámok */}
+                <div className="flex items-center px-2">
+                  {/* Aktuális oldal - kiemelt */}
+                  <div className="w-8 h-8 flex items-center justify-center rounded-full bg-orange-500 text-white font-medium">
+                    {currentPage}
+                  </div>
+                  
+                  {/* Elválasztó és utolsó oldal */}
+                  <div className="flex items-center ml-2 text-gray-500">
+                    <span className="text-xs text-gray-400 mx-1">/</span>
+                    <span>{totalPages}</span>
+                  </div>
+                </div>
+                
+                {/* Következő gomb */}
+                <button
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages || pageTransition === 'fade-out'}
+                  className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
+                    ${currentPage === totalPages 
+                      ? 'text-gray-300 cursor-not-allowed' 
+                      : 'text-gray-600 hover:bg-gray-100'}`}
+                  aria-label="Következő oldal"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </button>
               </div>
             </div>
           )}

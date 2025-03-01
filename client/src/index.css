@@ -7,6 +7,16 @@
   --shadow-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
+/* Kurzor elrejtése az egész oldalon */
+* {
+  caret-color: transparent;
+}
+
+/* Input mezőkben visszaállítjuk a kurzort */
+input, textarea, [contenteditable="true"] {
+  caret-color: auto;
+}
+
 /* ... existing scrollbar styles ... */
 
 /* Modern layout styles */
