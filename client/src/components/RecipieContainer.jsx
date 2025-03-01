@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import RecipieCard from "./RecipieCard";
 
 /*Betölti a recepteket egy API-ból*/
 const RecipieContainer = () => {
   const [recipies, setRecipies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { selectedMealType } = useOutletContext();
 
   useEffect(() => {
     const fetchRecipies = async () => {
       try {
-        const response = await fetch("http://localhost:5000/recipies");
+        const url = selectedMealType 
+          ? `http://localhost:5000/recipies?mealType=${selectedMealType}`
+          : "http://localhost:5000/recipies";
+          
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -23,7 +29,7 @@ const RecipieContainer = () => {
     };
 
     fetchRecipies();
-  }, []);
+  }, [selectedMealType]);
 
   /*Loading állapot, hogy a felhasználó bejelentkezésig ne lásson semmit*/
   if (loading) {
@@ -41,6 +47,7 @@ const RecipieContainer = () => {
             name={recipe.name}
             cookingTime={recipe.cookingTime}
             image={`data:image/jpeg;base64,${recipe.image}`}
+            mealType={recipe.mealType}
           />
         ))}
       </div>

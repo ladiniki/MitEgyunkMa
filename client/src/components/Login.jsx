@@ -101,10 +101,15 @@ const Login = () => {
           <div className="text-center">
             <Link
               to="/register"
-              className="text-orange-600 hover:text-orange-700 font-primary transition duration-200
-                       hover:underline underline-offset-4"
+              className="mt-4 text-orange-500 hover:text-orange-600 text-sm font-primary"
             >
-              Még nem regisztráltál?
+              <span
+                className="relative after:absolute after:bottom-0 after:left-0 
+                           after:h-[1px] after:w-full after:bg-orange-500 after:scale-x-0 
+                           hover:after:scale-x-100 after:transition-transform after:duration-300"
+              >
+                Még nem regisztráltál?
+              </span>
             </Link>
           </div>
         </form>

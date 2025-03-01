@@ -21,7 +21,15 @@ jwt = JWTManager(app)
 # TODO: jwt required!!!
 @app.route('/recipies', methods=['GET'])
 def get_recipies():
-    recipies = collection.find()
+    # Get the meal type from query parameters
+    meal_type = request.args.get('mealType')
+    
+    # Create the query
+    query = {}
+    if meal_type:
+        query['mealType'] = meal_type
+    
+    recipies = collection.find(query)
     result = []
 
     for recipe in recipies:
@@ -31,7 +39,8 @@ def get_recipies():
         result.append({
             "name": recipe.get("name"),
             "cookingTime": recipe.get("cookingTime"),
-            "image": image_data
+            "image": image_data,
+            "mealType": recipe.get("mealType")
         })
 
     return jsonify(result)

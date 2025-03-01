@@ -6,8 +6,13 @@ import {
   Cake,
   ChefHat,
 } from "lucide-react";
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({ selectedMealType, onMealTypeChange }) => {
+  const handleMealTypeClick = (mealType) => {
+    onMealTypeChange(mealType === selectedMealType ? null : mealType);
+  };
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
       <div className="w-full px-4 py-3">
@@ -15,36 +20,56 @@ const Navbar = () => {
           {/* Bal oldali szűrők */}
           <div className="flex items-center space-x-2">
             <button
-              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
-                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
+                       flex items-center gap-2 group
+                       ${selectedMealType === null 
+                         ? 'bg-orange-100 text-orange-600' 
+                         : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'}`}
+              onClick={() => handleMealTypeClick(null)}
             >
               <Receipt className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
               Receptek
             </button>
             <button
-              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
-                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
+                       flex items-center gap-2 group
+                       ${selectedMealType === 'reggeli' 
+                         ? 'bg-orange-100 text-orange-600' 
+                         : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'}`}
+              onClick={() => handleMealTypeClick('reggeli')}
             >
               <Coffee className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
               Reggeli
             </button>
             <button
-              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
-                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
+                       flex items-center gap-2 group
+                       ${selectedMealType === 'ebéd' 
+                         ? 'bg-orange-100 text-orange-600' 
+                         : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'}`}
+              onClick={() => handleMealTypeClick('ebéd')}
             >
               <UtensilsCrossed className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
               Ebéd
             </button>
             <button
-              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
-                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
+                       flex items-center gap-2 group
+                       ${selectedMealType === 'desszert' 
+                         ? 'bg-orange-100 text-orange-600' 
+                         : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'}`}
+              onClick={() => handleMealTypeClick('desszert')}
             >
               <Cake className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
               Desszert
             </button>
             <button
-              className="px-4 py-2 rounded-lg font-medium text-gray-700 transition-all duration-200 
-                             hover:bg-orange-100 hover:text-orange-600 flex items-center gap-2 group"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
+                       flex items-center gap-2 group
+                       ${selectedMealType === 'vacsora' 
+                         ? 'bg-orange-100 text-orange-600' 
+                         : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'}`}
+              onClick={() => handleMealTypeClick('vacsora')}
             >
               <ChefHat className="w-5 h-5 transition-colors duration-200 group-hover:text-orange-600" />
               Vacsora
@@ -72,6 +97,11 @@ const Navbar = () => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  selectedMealType: PropTypes.string,
+  onMealTypeChange: PropTypes.func.isRequired
 };
 
 export default Navbar;

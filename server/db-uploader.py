@@ -6,15 +6,18 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["MitEszunkMaDB"]  
 collection = db["RecipiesCollection"]  
 
-assets_dir = "../client/src/assets"
+assets_dir = "client/src/assets"
 
 recipies = [
-    { "name": "Tükörtojás", "cookingTime": 10, "image": "tükörtojás.jpg" },
-    { "name": "Gofri", "cookingTime": 20, "image": "gofri.jpg" },
-    { "name": "Krumpli", "cookingTime": 30, "image": "krumpli.jpg" },
-    { "name": "Kukorica", "cookingTime": 15, "image": "kukorica.jpg" },
-    { "name": "Csokitorta", "cookingTime": 45, "image": "csokitorta.jpeg" },
+    { "name": "Tükörtojás", "cookingTime": 10, "image": "tükörtojás.jpg", "mealType": "reggeli" },
+    { "name": "Gofri", "cookingTime": 20, "image": "gofri.jpg", "mealType": "reggeli" },
+    { "name": "Krumpli", "cookingTime": 30, "image": "krumpli.jpg", "mealType": "ebéd" },
+    { "name": "Kukorica", "cookingTime": 15, "image": "kukorica.jpg", "mealType": "ebéd" },
+    { "name": "Csokitorta", "cookingTime": 45, "image": "csokitorta.jpeg", "mealType": "desszert" },
 ]
+
+# Töröljük a korábbi recepteket
+collection.delete_many({})
 
 for recipe in recipies:
     image_path = os.path.join(assets_dir, recipe["image"])
