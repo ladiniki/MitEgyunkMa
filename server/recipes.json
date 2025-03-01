@@ -85,83 +85,99 @@
             "difficulty": "közepes"
         },
         {
-            "name": "Sült krumpli",
-            "cookingTime": 30,
-            "image": "sült krumpli.jpg",
-            "mealType": "köret",
-            "description": "Ropogós, fűszeres sült krumpli, ami tökéletes köret bármilyen húsételhez.",
+            "name": "Spenótos tészta fokhagymával",
+            "cookingTime": 20,
+            "image": "spenotos_teszta.jpg",
+            "mealType": "vacsora",
+            "description": "Egészséges tésztaétel friss spenóttal és fokhagymával.",
             "ingredients": [
-                {
-                    "name": "burgonya",
-                    "amount": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "olaj",
-                    "amount": 30,
-                    "unit": "ml"
-                },
-                {
-                    "name": "só",
-                    "amount": 1,
-                    "unit": "tk"
-                },
-                {
-                    "name": "bors",
-                    "amount": 1,
-                    "unit": "tk"
-                },
-                {
-                    "name": "rozmaring",
-                    "amount": 1,
-                    "unit": "ág"
-                }
+                { "name": "spagetti", "amount": 250, "unit": "g" },
+                { "name": "friss spenót", "amount": 150, "unit": "g" },
+                { "name": "fokhagyma", "amount": 3, "unit": "gerezd" },
+                { "name": "olívaolaj", "amount": 2, "unit": "evőkanál" },
+                { "name": "parmezán", "amount": 50, "unit": "g" },
+                { "name": "só", "amount": 1, "unit": "teáskanál" },
+                { "name": "bors", "amount": 0.5, "unit": "teáskanál" }
             ],
             "steps": [
-                "Mosd meg és vágd hasábokra a krumplit",
-                "Forrósítsd fel az olajat egy tepsiben",
-                "Fűszerezd a krumplit",
-                "Süsd 200 fokon 25-30 percig",
-                "Félúton forgasd meg a hasábokat"
+                "Főzd meg a spagettit sós vízben.",
+                "Közben pirítsd meg a fokhagymát olívaolajon, majd add hozzá a spenótot.",
+                "Keverd össze a főtt tésztával, majd szórd meg parmezánnal."
             ],
             "difficulty": "könnyű"
         },
         {
-            "name": "Főtt kukorica",
-            "cookingTime": 15,
-            "image": "kukorica.jpg",
-            "mealType": "köret",
-            "description": "Zamatos, édes főtt kukorica, ami önmagában vagy köretként is megállja a helyét.",
+            "name": "Csokoládés brownie",
+            "cookingTime": 40,
+            "image": "brownie.jpg",
+            "mealType": "desszert",
+            "description": "Lágy és csokoládés brownie ropogós kéreggel.",
             "ingredients": [
-                {
-                    "name": "csemegekukorica",
-                    "amount": 2,
-                    "unit": "db"
-                },
-                {
-                    "name": "só",
-                    "amount": 1,
-                    "unit": "tk"
-                },
-                {
-                    "name": "vaj",
-                    "amount": 20,
-                    "unit": "g"
-                }
+                {"name": "vaj", "amount": 150, "unit": "g"},
+                {"name": "étcsokoládé", "amount": 200, "unit": "g"},
+                {"name": "cukor", "amount": 150, "unit": "g"},
+                {"name": "tojás", "amount": 3, "unit": "db"},
+                {"name": "liszt", "amount": 100, "unit": "g"},
+                {"name": "kakaópor", "amount": 2, "unit": "ek"}
             ],
             "steps": [
-                "Tisztítsd meg a kukoricát",
-                "Tedd fel főni sós vízben",
-                "Főzd 10-12 percig",
-                "Csepegtesd le",
-                "Kend meg vajjal tálalás előtt"
+                "Olvaszd fel a vajat és az étcsokoládét.",
+                "Keverd össze a cukorral, tojásokkal, liszttel és kakaóporral.",
+                "Öntsd egy sütőformába és süsd 180°C-on 25 percig.",
+                "Hagyd kihűlni, majd szeleteld."
+            ],
+            "difficulty": "közepes"
+        },
+        {
+            "name": "Mexikói babos wrap",
+            "cookingTime": 20,
+            "image": "mexikoi_wrap.jpg",
+            "mealType": "vacsora",
+            "description": "Ízletes és laktató mexikói stílusú babos wrap.",
+            "ingredients": [
+                { "name": "tortilla", "amount": 4, "unit": "db" },
+                { "name": "vörösbab", "amount": 200, "unit": "g" },
+                { "name": "kukorica", "amount": 150, "unit": "g" },
+                { "name": "paradicsom", "amount": 2, "unit": "db" },
+                { "name": "cheddar sajt", "amount": 100, "unit": "g" },
+                { "name": "tejföl", "amount": 100, "unit": "g" },
+                { "name": "chili por", "amount": 0.5, "unit": "teáskanál" },
+                { "name": "só", "amount": 1, "unit": "teáskanál" }
+            ],
+            "steps": [
+                "Pirítsd meg a babot és a kukoricát egy serpenyőben.",
+                "Add hozzá a felaprított paradicsomot és fűszerezd chilivel és sóval.",
+                "Töltsd meg a tortillákat a keverékkel, szórd meg sajttal, majd tekerd fel.",
+                "Tálald tejföllel és friss salátával."
             ],
             "difficulty": "könnyű"
+        },
+        {
+            "name": "Házi sajtos-brokkolis pizza",
+            "cookingTime": 40,
+            "image": "sajtos_brokkolis_pizza.jpg",
+            "mealType": "vacsora",
+            "description": "Egészséges házi pizza brokkolival és sajttal.",
+            "ingredients": [
+                { "name": "pizzatészta", "amount": 1, "unit": "db" },
+                { "name": "paradicsomszósz", "amount": 100, "unit": "g" },
+                { "name": "brokkoli", "amount": 150, "unit": "g" },
+                { "name": "mozzarella sajt", "amount": 150, "unit": "g" },
+                { "name": "olívaolaj", "amount": 1, "unit": "evőkanál" },
+                { "name": "oregánó", "amount": 1, "unit": "teáskanál" }
+            ],
+            "steps": [
+                "Melegítsd elő a sütőt 200°C-ra.",
+                "Nyújtsd ki a pizzatésztát, majd kend meg paradicsomszósszal.",
+                "Szórd rá a brokkolit és a mozzarella sajtot.",
+                "Süsd 15-20 percig, majd tálald friss olívaolajjal megkenve."
+            ],
+            "difficulty": "közepes"
         },
         {
             "name": "Csokitorta",
             "cookingTime": 45,
-            "image": "csokitorta.jpeg",
+            "image": "csokitorta.jpg",
             "mealType": "desszert",
             "description": "Gazdag, krémes csokitorta, ami minden csokiimádó álma.",
             "ingredients": [
@@ -298,6 +314,48 @@
             "difficulty": "közepes"
         },
         {
+            "name": "Sült krumpli",
+            "cookingTime": 30,
+            "image": "sült krumpli.jpg",
+            "mealType": "köret",
+            "description": "Ropogós, fűszeres sült krumpli, ami tökéletes köret bármilyen húsételhez.",
+            "ingredients": [
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "olaj",
+                    "amount": 30,
+                    "unit": "ml"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "rozmaring",
+                    "amount": 1,
+                    "unit": "ág"
+                }
+            ],
+            "steps": [
+                "Mosd meg és vágd hasábokra a krumplit",
+                "Forrósítsd fel az olajat egy tepsiben",
+                "Fűszerezd a krumplit",
+                "Süsd 200 fokon 25-30 percig",
+                "Félúton forgasd meg a hasábokat"
+            ],
+            "difficulty": "könnyű"
+        },
+        {
             "name": "Tiramisu",
             "cookingTime": 30,
             "image": "tiramisu.jpg",
@@ -396,6 +454,30 @@
                 "Tálalás előtt szórd meg friss petrezselyemmel"
             ],
             "difficulty": "haladó"
+        },
+        {
+            "name": "Fokhagymás garnélarák citromos bulgurral",
+            "cookingTime": 30,
+            "image": "fokhagymas_garnelarak.jpg",
+            "mealType": "vacsora",
+            "description": "Egészséges és ízletes tengeri finomság bulgurral.",
+            "ingredients": [
+                { "name": "garnélarák", "amount": 250, "unit": "g" },
+                { "name": "bulgur", "amount": 200, "unit": "g" },
+                { "name": "fokhagyma", "amount": 3, "unit": "gerezd" },
+                { "name": "citromlé", "amount": 2, "unit": "evőkanál" },
+                { "name": "olívaolaj", "amount": 2, "unit": "evőkanál" },
+                { "name": "petrezselyem", "amount": 1, "unit": "csokor" },
+                { "name": "só", "amount": 1, "unit": "teáskanál" },
+                { "name": "bors", "amount": 0.5, "unit": "teáskanál" }
+            ],
+            "steps": [
+                "Főzd meg a bulgurt sós vízben, majd locsold meg citromlével.",
+                "Pirítsd meg a fokhagymát olívaolajon, majd add hozzá a garnélát.",
+                "Süsd 3-4 percig, majd szórd meg petrezselyemmel.",
+                "Tálald a bulgurral és friss citromkarikákkal."
+            ],
+            "difficulty": "közepes"
         },
         {
             "name": "Francia pirítós",
@@ -609,6 +691,28 @@
             "difficulty": "könnyű"
         },
         {
+            "name": "Sajttorta",
+            "cookingTime": 60,
+            "image": "sajttorta.jpg",
+            "mealType": "desszert",
+            "description": "Krémes sajttorta ropogós kekszalapon.",
+            "ingredients": [
+                {"name": "darált keksz", "amount": 200, "unit": "g"},
+                {"name": "vaj", "amount": 100, "unit": "g"},
+                {"name": "krémsajt", "amount": 500, "unit": "g"},
+                {"name": "cukor", "amount": 100, "unit": "g"},
+                {"name": "tojás", "amount": 3, "unit": "db"},
+                {"name": "citromlé", "amount": 2, "unit": "ek"}
+            ],
+            "steps": [
+                "Keverd össze a darált kekszet az olvasztott vajjal és nyomkodd egy tortaformába.",
+                "Keverd össze a krémsajtot, cukrot, tojásokat és citromlevet.",
+                "Öntsd a kekszalapra és süsd 160°C-on 50 percig.",
+                "Hűtsd ki és tálald."
+            ],
+            "difficulty": "közepes"
+        },
+        {
             "name": "Rakott krumpli",
             "cookingTime": 75,
             "image": "rakott krumpli.jpg",
@@ -740,6 +844,51 @@
             "difficulty": "nehéz"
         },
         {
+            "name": "Mézeskalács",
+            "cookingTime": 30,
+            "image": "mezeskalacs.jpg",
+            "mealType": "desszert",
+            "description": "Fűszeres és illatos mézeskalács, tökéletes ünnepi sütemény.",
+            "ingredients": [
+                {"name": "liszt", "amount": 400, "unit": "g"},
+                {"name": "méz", "amount": 200, "unit": "g"},
+                {"name": "vaj", "amount": 100, "unit": "g"},
+                {"name": "tojás", "amount": 1, "unit": "db"},
+                {"name": "fahéj", "amount": 1, "unit": "tk"},
+                {"name": "szegfűszeg", "amount": 1, "unit": "tk"}
+            ],
+            "steps": [
+                "Melegítsd fel a mézet és a vajat, majd hagyd kihűlni.",
+                "Keverd hozzá a többi hozzávalót és gyúrd tésztává.",
+                "Nyújtsd ki és szaggass formákat.",
+                "Süsd 180°C-on 10-12 percig."
+            ],
+            "difficulty": "közepes"
+        },
+        {
+            "name": "Cukkinis fasírt joghurtos mártogatóssal",
+            "cookingTime": 35,
+            "image": "cukkinis_fasirt.jpg",
+            "mealType": "vacsora",
+            "description": "Vegetáriánus fasírt cukkini és sajt keverékével, friss joghurtos öntettel.",
+            "ingredients": [
+                { "name": "cukkini", "amount": 1, "unit": "db" },
+                { "name": "tojás", "amount": 1, "unit": "db" },
+                { "name": "zsemlemorzsa", "amount": 100, "unit": "g" },
+                { "name": "sajt", "amount": 50, "unit": "g" },
+                { "name": "fokhagyma", "amount": 1, "unit": "gerezd" },
+                { "name": "natúr joghurt", "amount": 100, "unit": "g" },
+                { "name": "kapor", "amount": 1, "unit": "evőkanál" }
+            ],
+            "steps": [
+                "Reszeld le a cukkinit, majd nyomkodd ki a levét.",
+                "Keverd össze tojással, sajttal, fokhagymával és zsemlemorzsával.",
+                "Formázz belőle kis pogácsákat, majd süsd ki olajban.",
+                "Tálald friss joghurttal és kaporral megszórva."
+            ],
+            "difficulty": "közepes"
+        },
+        {
             "name": "Müzli joghurttal",
             "cookingTime": 5,
             "image": "muzlijoghurttal.jpg",
@@ -758,6 +907,28 @@
                 "Tálald frissen."
             ],
             "difficulty": "könnyű"
+        },
+        {
+            "name": "Cukkinis tócsni",
+            "cookingTime": 20,
+            "image": "cukkinis_tocsni.jpg",
+            "mealType": "reggeli",
+            "description": "Egyszerű és egészséges reggeli reszelt cukkini tócsnival.",
+            "ingredients": [
+                {"name": "cukkini", "amount": 1, "unit": "db"},
+                {"name": "tojás", "amount": 1, "unit": "db"},
+                {"name": "liszt", "amount": 3, "unit": "ek"},
+                {"name": "fokhagyma", "amount": 1, "unit": "gerezd"},
+                {"name": "só", "amount": 1, "unit": "csipet"},
+                {"name": "olaj", "amount": 2, "unit": "ek"}
+            ],
+            "steps": [
+                "Reszeld le a cukkinit és nyomkodd ki a levét.",
+                "Keverd össze tojással, liszttel és fűszerekkel.",
+                "Süsd forró olajban aranybarnára.",
+                "Tálald tejföllel vagy fokhagymás joghurttal."
+            ],
+            "difficulty": "közepes"
         },
         {
             "name": "Grillezett sajt toast",
@@ -821,6 +992,29 @@
             "difficulty": "könnyű"
         },
         {
+            "name": "Caprese csirkemell",
+            "cookingTime": 30,
+            "image": "caprese_csirke.jpg",
+            "mealType": "vacsora",
+            "description": "Szaftos csirkemell paradicsommal, mozzarellával és bazsalikommal sütve.",
+            "ingredients": [
+                {"name": "csirkemell", "amount": 2, "unit": "db"},
+                {"name": "mozzarella", "amount": 100, "unit": "g"},
+                {"name": "paradicsom", "amount": 2, "unit": "db"},
+                {"name": "bazsalikom", "amount": 5, "unit": "levél"},
+                {"name": "olívaolaj", "amount": 1, "unit": "ek"},
+                {"name": "só", "amount": 1, "unit": "csipet"},
+                {"name": "bors", "amount": 1, "unit": "csipet"}
+            ],
+            "steps": [
+                "Vágd be a csirkemelleket és töltsd meg mozzarellával, paradicsommal és bazsalikommal.",
+                "Locsold meg olívaolajjal és fűszerezd.",
+                "Süsd 180°C-on 25 percig.",
+                "Tálald friss salátával."
+            ],
+            "difficulty": "közepes"
+        },
+        {
             "name": "Bableves",
             "cookingTime": 120,
             "image": "bableves.jpg",
@@ -860,6 +1054,59 @@
                 "Hevítsd fel a vajat, és öntsd rá a tojásokat.",
                 "Adj hozzá apróra vágott sonkát.",
                 "Süsd készre és tálald friss kenyérrel."
+            ],
+            "difficulty": "könnyű"
+        },
+        {
+            "name": "Főtt kukorica",
+            "cookingTime": 15,
+            "image": "kukorica.jpg",
+            "mealType": "köret",
+            "description": "Zamatos, édes főtt kukorica, ami önmagában vagy köretként is megállja a helyét.",
+            "ingredients": [
+                {
+                    "name": "csemegekukorica",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 20,
+                    "unit": "g"
+                }
+            ],
+            "steps": [
+                "Tisztítsd meg a kukoricát",
+                "Tedd fel főni sós vízben",
+                "Főzd 10-12 percig",
+                "Csepegtesd le",
+                "Kend meg vajjal tálalás előtt"
+            ],
+            "difficulty": "könnyű"
+        },
+        {
+            "name": "Tonhalsaláta tojással",
+            "cookingTime": 15,
+            "image": "tonhalsalata.jpg",
+            "mealType": "vacsora",
+            "description": "Friss és könnyű tonhalsaláta főtt tojással és ropogós zöldségekkel.",
+            "ingredients": [
+                {"name": "tonhalkonzerv", "amount": 1, "unit": "db"},
+                {"name": "tojás", "amount": 2, "unit": "db"},
+                {"name": "uborka", "amount": 1, "unit": "db"},
+                {"name": "paradicsom", "amount": 1, "unit": "db"},
+                {"name": "salátalevél", "amount": 100, "unit": "g"},
+                {"name": "citromlé", "amount": 1, "unit": "ek"}
+            ],
+            "steps": [
+                "Főzd meg a tojásokat és vágd félbe.",
+                "Keverd össze a tonhalat, zöldségeket és citromlevet.",
+                "Tálald salátaleveleken."
             ],
             "difficulty": "könnyű"
         },
@@ -906,6 +1153,29 @@
             "difficulty": "közepes"
         },
         {
+            "name": "Padlizsános bulgurrizottó",
+            "cookingTime": 25,
+            "image": "padlizsanos_bulgur.jpg",
+            "mealType": "vacsora",
+            "description": "Krémes és egészséges padlizsános bulgur egytálétel.",
+            "ingredients": [
+                {"name": "bulgur", "amount": 150, "unit": "g"},
+                {"name": "padlizsán", "amount": 1, "unit": "db"},
+                {"name": "hagyma", "amount": 1, "unit": "db"},
+                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
+                {"name": "parmezán", "amount": 30, "unit": "g"},
+                {"name": "só", "amount": 1, "unit": "csipet"},
+                {"name": "bors", "amount": 1, "unit": "csipet"}
+            ],
+            "steps": [
+                "Pirítsd meg a hagymát és a padlizsánt olajon.",
+                "Add hozzá a bulgurt és önts hozzá vizet.",
+                "Főzd 15 percig, majd keverd bele a parmezánt.",
+                "Tálald forrón."
+            ],
+            "difficulty": "közepes"
+        },
+        {
             "name": "Zabkása almával",
             "cookingTime": 10,
             "image": "almaszabkasa.jpg",
@@ -924,7 +1194,28 @@
                 "Tálald melegen."
             ],
             "difficulty": "könnyű"
+        },
+        {
+            "name": "Pulykás tortilla wrap",
+            "cookingTime": 15,
+            "image": "pulykas_wrap.jpg",
+            "mealType": "vacsora",
+            "description": "Egyszerű, de ízletes pulykahúsos wrap zöldségekkel.",
+            "ingredients": [
+                {"name": "tortilla", "amount": 2, "unit": "db"},
+                {"name": "pulykamell", "amount": 150, "unit": "g"},
+                {"name": "saláta", "amount": 50, "unit": "g"},
+                {"name": "paradicsom", "amount": 1, "unit": "db"},
+                {"name": "joghurt", "amount": 2, "unit": "ek"},
+                {"name": "mustár", "amount": 1, "unit": "tk"}
+            ],
+            "steps": [
+                "Süsd meg a pulykamell szeleteket fűszerezve.",
+                "Kend meg a tortillát joghurttal és mustárral.",
+                "Töltsd meg a húst és a zöldségeket.",
+                "Tekerd fel és szeleteld."
+            ],
+            "difficulty": "könnyű"
         }
-        
     ]
 }

@@ -8,6 +8,7 @@ import Register from "./components/pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RecipieContainer from "./components/RecipieContainer";
 import Ingredients from "./components/pages/Ingredients";
+import RecipeDetail from "./components/pages/RecipeDetail";
 
 const AuthenticatedLayout = () => {
   const [selectedMealType, setSelectedMealType] = useState(null);
@@ -44,6 +45,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route element={<AuthenticatedLayout />}>
         <Route path="/recipies" element={<ProtectedRoute><RecipieContainer /></ProtectedRoute>} />
+        <Route path="/recipe/:recipeName" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
         <Route path="/ingredients" element={<ProtectedRoute><Ingredients /></ProtectedRoute>} />
       </Route>
     </Routes>

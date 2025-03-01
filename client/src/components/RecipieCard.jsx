@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import { Heart, ChefHat, Flame, Utensils, Trophy } from "lucide-react"; //A BELÉPETT FELHASZNÁLÓ KEDVENCEIT MENTSE EL
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setIsFavorite(savedFavorites.some((recipe) => recipe.name === name));
   }, [name]);
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e) => {
+    // Megállítjuk az esemény buborékolását, hogy ne navigáljon a kártyára kattintáskor
+    e.stopPropagation();
+    
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let updatedFavorites;
 
@@ -24,6 +29,11 @@ const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setIsFavorite(!isFavorite);
+  };
+
+  // Recept részletes oldalára navigálás
+  const handleCardClick = () => {
+    navigate(`/recipe/${encodeURIComponent(name)}`);
   };
 
   // Nehézségi szint megjelenítése
@@ -62,23 +72,29 @@ const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
 
   return (
     <div className="h-full">
-      <div className="bg-white rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+      <div 
+        className="bg-white rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl h-full flex flex-col cursor-pointer"
+        onClick={handleCardClick}
+      >
         <img 
           src={image} 
           alt={name} 
-          className="w-full h-44 sm:h-48 md:h-52 object-cover"
+          className="w-full h-24 xs:h-28 sm:h-32 md:h-36 object-cover"
         />
-        <div className="p-3 sm:p-4 flex-grow flex flex-col justify-between">
+        <div className="p-1 xs:p-1.5 flex-grow flex flex-col justify-between">
           <div>
-            <h3 className="font-semibold text-gray-800 text-base sm:text-lg">{name}</h3>
+            <h3 className="font-semibold text-gray-800 text-xs xs:text-sm sm:text-base line-clamp-1">{name}</h3>
           </div>
-          <div className="flex justify-between items-center mt-2">
-            <span className="text-orange-600 text-sm">{cookingTime} perc</span>
+          <div className="flex justify-between items-center mt-0.5">
+            <span className="text-orange-600 text-xs">{cookingTime} perc</span>
             {renderDifficulty()}
           </div>
         </div>
-        <button className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-md transition-all duration-200" onClick={toggleFavorite}>
-          <Heart className={`${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'} w-5 h-5`} />
+        <button 
+          className="absolute top-1.5 right-1.5 p-1 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-md transition-all duration-200" 
+          onClick={toggleFavorite}
+        >
+          <Heart className={`${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'} w-3.5 h-3.5`} />
         </button>
       </div>
     </div>

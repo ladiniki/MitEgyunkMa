@@ -1,0 +1,235 @@
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft, Clock, ChefHat, Utensils, Trophy, Home } from "lucide-react";
+
+const RecipeDetail = () => {
+  const { recipeName } = useParams();
+  const navigate = useNavigate();
+  const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Görgetés letiltása az oldal betöltésekor
+  useEffect(() => {
+    // Mentjük az eredeti overflow értéket
+    const originalStyle = document.body.style.overflow;
+    // Letiltjuk a görgetést
+    document.body.style.overflow = 'hidden';
+    
+    // Cleanup: visszaállítjuk az eredeti állapotot, amikor a komponens unmountol
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchRecipeDetails = async () => {
+      try {
+        // URL-kódolt receptnév használata a lekérdezésben
+        const encodedName = encodeURIComponent(recipeName);
+        const response = await fetch(`http://localhost:5000/recipe/${encodedName}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP hiba! Státusz: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setRecipe(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Hiba a recept lekérdezésekor:", error);
+        setError("Nem sikerült betölteni a receptet. Kérjük, próbáld újra később.");
+        setLoading(false);
+      }
+    };
+
+    fetchRecipeDetails();
+  }, [recipeName]);
+
+  // Nehézségi szint megjelenítése
+  const renderDifficulty = (difficulty) => {
+    if (!difficulty) return null;
+
+    let color, icon, label;
+    
+    switch(difficulty) {
+      case "könnyű":
+        color = "bg-green-100 text-green-700";
+        icon = <ChefHat size={16} className="mr-1" />;
+        label = "Könnyű";
+        break;
+      case "közepes":
+        color = "bg-yellow-100 text-yellow-700";
+        icon = <Utensils size={16} className="mr-1" />;
+        label = "Közepes";
+        break;
+      case "haladó":
+        color = "bg-red-100 text-red-700";
+        icon = <Trophy size={16} className="mr-1" />;
+        label = "Haladó";
+        break;
+      default:
+        return null;
+    }
+    
+    return (
+      <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${color}`}>
+        {icon}
+        {label}
+      </div>
+    );
+  };
+
+  if (loading) {
+    return (
+      <div className="px-4 sm:px-6 py-4 h-full flex justify-center items-center overflow-hidden">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="px-4 sm:px-6 py-4 h-full flex flex-col items-center justify-center overflow-hidden">
+        <p className="text-red-500 text-lg mb-4">{error}</p>
+        <button 
+          onClick={() => navigate("/recipies")} 
+          className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+        >
+          <ArrowLeft size={18} className="mr-2" />
+          Vissza a receptekhez
+        </button>
+      </div>
+    );
+  }
+
+  if (!recipe) {
+    return (
+      <div className="px-4 sm:px-6 py-4 h-full flex flex-col items-center justify-center overflow-hidden">
+        <p className="text-gray-500 text-lg mb-4">A recept nem található.</p>
+        <button 
+          onClick={() => navigate("/recipies")} 
+          className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+        >
+          <ArrowLeft size={18} className="mr-2" />
+          Vissza a receptekhez
+        </button>
+      </div>
+    );
+  }
+
+  // Korlátozzuk a megjelenített elemek számát
+  const maxIngredients = 8;
+  const maxSteps = 6;
+  const displayedIngredients = recipe.ingredients.slice(0, maxIngredients);
+  const displayedSteps = recipe.steps.slice(0, maxSteps);
+
+  return (
+    <div style={{ overflow: 'hidden' }} className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col">
+      {/* Navigációs "breadcrumb" stílusú visszalépés */}
+      <nav className="mb-4">
+        <div className="flex items-center text-sm">
+          <button 
+            onClick={() => navigate("/recipies")} 
+            className="flex items-center text-orange-500 hover:text-orange-600 transition-colors"
+            aria-label="Vissza a receptekhez"
+          >
+            <Home size={16} className="mr-1" />
+            <span>Receptek</span>
+          </button>
+          <span className="mx-2 text-gray-400">/</span>
+          <span className="text-gray-600 truncate max-w-[250px]">{recipe.name}</span>
+        </div>
+      </nav>
+
+      {/* Fő tartalom konténer - fix magasság, nincs görgetés */}
+      <div style={{ overflow: 'hidden' }} className="flex-1 flex flex-col lg:flex-row gap-4 h-[calc(100%-3rem)]">
+        {/* Bal oldal: Kép és alapadatok */}
+        <div style={{ overflow: 'hidden' }} className="lg:w-1/3 flex flex-col h-full">
+          {/* Kép konténer - fix magasság */}
+          <div className="relative rounded-xl overflow-hidden shadow-md h-40 sm:h-48 md:h-56 lg:h-64 flex-shrink-0">
+            <img 
+              src={recipe.image} 
+              alt={recipe.name} 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+              <div className="p-3 text-white">
+                <h1 className="text-xl sm:text-2xl font-bold line-clamp-2">{recipe.name}</h1>
+                <div className="flex flex-wrap items-center gap-2 mt-1">
+                  <div className="flex items-center bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full text-xs">
+                    <Clock size={12} className="mr-1" />
+                    <span>{recipe.cookingTime} perc</span>
+                  </div>
+                  {renderDifficulty(recipe.difficulty)}
+                  <div className="bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full text-xs">
+                    {recipe.mealType}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Leírás - fix magasság */}
+          <div style={{ overflow: 'hidden' }} className="mt-3 bg-white p-3 rounded-xl shadow-md flex-1">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800">Leírás</h2>
+            <p className="text-gray-600 text-sm line-clamp-6">{recipe.description}</p>
+          </div>
+        </div>
+
+        {/* Jobb oldal: Hozzávalók és elkészítés lépései */}
+        <div style={{ overflow: 'hidden' }} className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3 h-full">
+          {/* Hozzávalók - fix magasság */}
+          <div style={{ overflow: 'hidden' }} className="bg-white p-3 rounded-xl shadow-md">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800">Hozzávalók</h2>
+            <div style={{ overflow: 'hidden' }}>
+              <ul className="space-y-1.5">
+                {displayedIngredients.map((ingredient, index) => (
+                  <li key={index} className="flex items-center bg-orange-50 p-1.5 rounded-lg text-sm">
+                    <span className="w-5 h-5 flex items-center justify-center bg-orange-100 rounded-full mr-2 text-orange-600 text-xs font-medium flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    <span className="text-gray-700 truncate">
+                      {ingredient.name}: {ingredient.amount} {ingredient.unit}
+                    </span>
+                  </li>
+                ))}
+                {recipe.ingredients.length > maxIngredients && (
+                  <li className="text-center text-xs text-gray-500 mt-1">
+                    +{recipe.ingredients.length - maxIngredients} további hozzávaló
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+
+          {/* Elkészítés lépései - fix magasság */}
+          <div style={{ overflow: 'hidden' }} className="bg-white p-3 rounded-xl shadow-md">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800">Elkészítés</h2>
+            <div style={{ overflow: 'hidden' }}>
+              <ol className="space-y-1.5">
+                {displayedSteps.map((step, index) => (
+                  <li key={index} className="flex text-sm">
+                    <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center bg-orange-500 text-white rounded-full mr-2 text-xs font-medium">
+                      {index + 1}
+                    </span>
+                    <div className="bg-gray-50 p-2 rounded-lg flex-grow">
+                      <p className="text-gray-700 line-clamp-2">{step}</p>
+                    </div>
+                  </li>
+                ))}
+                {recipe.steps.length > maxSteps && (
+                  <li className="text-center text-xs text-gray-500 mt-1">
+                    +{recipe.steps.length - maxSteps} további lépés
+                  </li>
+                )}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RecipeDetail; 

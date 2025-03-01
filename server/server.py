@@ -46,6 +46,34 @@ def get_recipies():
 
     return jsonify(result)
 
+# Új végpont egy adott recept részleteinek lekérdezéséhez
+@app.route('/recipe/<recipe_name>', methods=['GET'])
+def get_recipe_details(recipe_name):
+    # Keresés a recept neve alapján
+    recipe = collection.find_one({"name": recipe_name})
+    
+    if not recipe:
+        return jsonify({"message": "A recept nem található"}), 404
+    
+    # Kép adatok kezelése
+    image_data = recipe.get("image", None)
+    if image_data:
+        image_data = image_data.decode('utf-8') if isinstance(image_data, bytes) else image_data
+    
+    # Recept adatok összeállítása
+    result = {
+        "name": recipe.get("name"),
+        "cookingTime": recipe.get("cookingTime"),
+        "image": image_data,
+        "mealType": recipe.get("mealType"),
+        "difficulty": recipe.get("difficulty"),
+        "description": recipe.get("description"),
+        "ingredients": recipe.get("ingredients"),
+        "steps": recipe.get("steps")
+    }
+    
+    return jsonify(result)
+
 # Csekkolja a regisztrációt
 @app.route('/register', methods=['POST'])
 def register():

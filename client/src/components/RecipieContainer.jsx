@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import RecipieCard from "./RecipieCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /*Betölti a recepteket egy API-ból*/
 const RecipieContainer = () => {
@@ -9,6 +8,7 @@ const RecipieContainer = () => {
   const [loading, setLoading] = useState(true);
   const { selectedMealType, searchText } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageTransition, setPageTransition] = useState('fade');
   // Reszponzív recipesPerPage - megtartjuk a 2x4-es elrendezést, de kisebb képernyőn kevesebb recept
   const getRecipesPerPage = () => {
     // Csak kliens oldalon működik
@@ -60,7 +60,7 @@ const RecipieContainer = () => {
   /*Loading állapot, hogy a felhasználó bejelentkezésig ne lásson semmit*/
   if (loading) {
     return (
-      <div className="px-6 sm:px-10 py-6 min-h-[500px] flex justify-center items-center">
+      <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex justify-center items-center">
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
       </div>
     );
@@ -81,54 +81,50 @@ const RecipieContainer = () => {
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = filteredRecipies.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-  // Lapozás kezelése
+  // Lapozás kezelése egyszerű fade effekttel
   const handlePrevPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
+    if (currentPage > 1) {
+      setPageTransition('fade-out');
+      setTimeout(() => {
+        setCurrentPage(prev => prev - 1);
+        setPageTransition('fade-in');
+      }, 200);
+    }
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    if (currentPage < totalPages) {
+      setPageTransition('fade-out');
+      setTimeout(() => {
+        setCurrentPage(prev => prev + 1);
+        setPageTransition('fade-in');
+      }, 200);
+    }
+  };
+
+  // Közvetlen oldalra ugrás
+  const handlePageClick = (pageNumber) => {
+    if (pageNumber !== currentPage) {
+      setPageTransition('fade-out');
+      setTimeout(() => {
+        setCurrentPage(pageNumber);
+        setPageTransition('fade-in');
+      }, 200);
+    }
   };
 
   /*a recipies.map()-al minden receptet a RecipieCard komponensbe jelenítjük meg
   Grid --> kártya elrendezése, görgető*/
   return (
-    <div className="px-6 sm:px-10 py-6 min-h-[500px] flex flex-col">
+    <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
       {filteredRecipies.length === 0 ? (
         <div className="text-center py-10">
           <p className="text-gray-500 text-lg">Nincs találat a keresési feltételekre.</p>
         </div>
       ) : (
         <div className="relative">
-          {/* Nyilak a konténer szélein, de nem lógnak rá a kártyákra */}
-          {totalPages > 1 && (
-            <div className="flex justify-between items-center absolute w-full top-1/2 -translate-y-1/2 px-4 pointer-events-none">
-              <button 
-                onClick={handlePrevPage} 
-                disabled={currentPage === 1}
-                className={`pointer-events-auto z-10 ${currentPage === 1 ? 'opacity-0' : 'opacity-90 hover:opacity-100'}
-                  w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center
-                  transition-all duration-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-300`}
-                aria-label="Előző oldal"
-              >
-                <ChevronLeft size={18} className={`${currentPage === 1 ? 'text-gray-300' : 'text-orange-500'}`} />
-              </button>
-              
-              <button 
-                onClick={handleNextPage} 
-                disabled={currentPage === totalPages}
-                className={`pointer-events-auto z-10 ${currentPage === totalPages ? 'opacity-0' : 'opacity-90 hover:opacity-100'}
-                  w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center
-                  transition-all duration-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-300`}
-                aria-label="Következő oldal"
-              >
-                <ChevronRight size={18} className={`${currentPage === totalPages ? 'text-gray-300' : 'text-orange-500'}`} />
-              </button>
-            </div>
-          )}
-
-          {/* Reszponzív grid elrendezés - nagyobb térközzel */}
-          <div className="gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+          {/* Reszponzív grid elrendezés egyszerű fade animációval */}
+          <div className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${pageTransition === 'fade-in' ? 'animate-fade-in' : pageTransition === 'fade-out' ? 'animate-fade-out' : ''}`}>
             {currentRecipes.map((recipe, index) => (
               <RecipieCard
                 key={index}
@@ -144,16 +140,17 @@ const RecipieContainer = () => {
           {/* Modernebb lapozó navigáció középen alul */}
           {totalPages > 1 && (
             <div className="flex justify-center items-center mt-2 mb-2">
-              <div className="bg-white shadow-md rounded-full px-3 py-1 text-sm text-gray-600 flex items-center space-x-1">
+              <div className="bg-white shadow-md rounded-full px-4 py-2 text-sm text-gray-600 flex items-center space-x-2">
                 {Array.from({ length: totalPages }, (_, i) => (
                   <button
                     key={i}
-                    onClick={() => setCurrentPage(i + 1)}
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
-                      currentPage === i + 1
-                        ? 'bg-orange-500 text-white'
+                    onClick={() => handlePageClick(i + 1)}
+                    disabled={pageTransition === 'fade-out'}
+                    className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 
+                      ${currentPage === i + 1
+                        ? 'bg-orange-500 text-white scale-110'
                         : 'text-gray-600 hover:bg-orange-100'
-                    }`}
+                      }`}
                   >
                     {i + 1}
                   </button>
@@ -163,6 +160,27 @@ const RecipieContainer = () => {
           )}
         </div>
       )}
+
+      {/* CSS animációk */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 300ms ease-in-out forwards;
+        }
+        
+        .animate-fade-out {
+          animation: fadeOut 200ms ease-in-out forwards;
+        }
+      `}</style>
     </div>
   );
 };

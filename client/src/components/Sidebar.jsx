@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const buttons = [
     {
-      label: "Főoldal",
+      label: "Receptek",
       route: "/recipies",
       icon: <Home size={20} />,
     },

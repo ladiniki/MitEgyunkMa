@@ -6,8 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '480px',
+      },
       colors: {
-        light:{
+        light: {
           background: '#FFEED7',
           primary: '#FFF8EE',
           secondary: '#FFFFFF',
