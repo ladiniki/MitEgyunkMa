@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const buttons = [
     {
-      label: "Receptek",
+      label: "Főoldal",
       route: "/recipies",
       icon: <Home size={20} />,
     },
@@ -18,9 +18,10 @@ const Sidebar = () => {
       route: "/favorites",
       icon: <Heart size={20} />,
     },
-    { label: "Hozzávalóim",
+    {
+      label: "Hozzávalóim",
       route: "/ingredients",
-      icon: <ShoppingBag size={20} />
+      icon: <ShoppingBag size={20} />,
     },
     {
       label: "Kijelentkezés",
@@ -64,8 +65,10 @@ const Sidebar = () => {
     <div className="flex flex-col items-center bg-white/80 backdrop-blur-md h-full border-r border-orange-100">
       {/* Admin profil rész */}
       <div className="flex flex-col items-center w-full pt-6 pb-6 border-b border-orange-100">
-        <div className="flex justify-center items-center bg-orange-500 rounded-full w-20 h-20 
-                      shadow-lg shadow-orange-100 transition-transform hover:scale-105">
+        <div
+          className="flex justify-center items-center bg-orange-500 rounded-full w-20 h-20 
+                      shadow-lg shadow-orange-100 transition-transform hover:scale-105"
+        >
           <span className="flex justify-center items-center w-full h-full text-3xl font-bold text-white">
             {username ? username.charAt(0).toUpperCase() : "?"}
           </span>
@@ -89,7 +92,9 @@ const Sidebar = () => {
                       }`}
             onClick={() => navigate(button.route)}
           >
-            <span className="transition-colors duration-200">{button.icon}</span>
+            <span className="transition-colors duration-200">
+              {button.icon}
+            </span>
             {button.label}
           </button>
         ))}

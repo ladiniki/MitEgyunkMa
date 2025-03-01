@@ -11,6 +11,7 @@ import Ingredients from "./components/pages/Ingredients";
 
 const AuthenticatedLayout = () => {
   const [selectedMealType, setSelectedMealType] = useState(null);
+  const [searchText, setSearchText] = useState('');
 
   return (
     <div className="flex h-screen font-primary bg-light-background">
@@ -22,10 +23,14 @@ const AuthenticatedLayout = () => {
       {/* Main content area with background */}
       <div className="ml-[15%] flex flex-col w-[85%] h-screen overflow-hidden">
         <div className="sticky top-0 z-50 bg-light-background">
-          <Navbar selectedMealType={selectedMealType} onMealTypeChange={setSelectedMealType} />
+          <Navbar 
+            selectedMealType={selectedMealType} 
+            onMealTypeChange={setSelectedMealType} 
+            onSearchChange={setSearchText}
+          />
         </div>
         <div className="flex-1 overflow-y-auto bg-light-background">
-          <Outlet context={{ selectedMealType }} />
+          <Outlet context={{ selectedMealType, searchText }} />
         </div>
       </div>
     </div>

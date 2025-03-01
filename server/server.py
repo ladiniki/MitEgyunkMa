@@ -40,7 +40,8 @@ def get_recipies():
             "name": recipe.get("name"),
             "cookingTime": recipe.get("cookingTime"),
             "image": image_data,
-            "mealType": recipe.get("mealType")
+            "mealType": recipe.get("mealType"),
+            "difficulty": recipe.get("difficulty")
         })
 
     return jsonify(result)
@@ -63,6 +64,7 @@ def register():
 
     return jsonify({'message': 'Successful registration'}), 201
 
+
 # Ellenőriz, majd odaadja a tokent (JWT authentikáció)
 @app.route('/login', methods=['POST'])
 def login():
@@ -79,6 +81,7 @@ def login():
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token), 200
+
 
 # Kikérjük a felhasználó nevét (Admin)
 @app.route('/user', methods=['GET'])

@@ -7,10 +7,19 @@ import {
   ChefHat,
 } from "lucide-react";
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-const Navbar = ({ selectedMealType, onMealTypeChange }) => {
+const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
+  const [searchText, setSearchText] = useState('');
+
   const handleMealTypeClick = (mealType) => {
     onMealTypeChange(mealType === selectedMealType ? null : mealType);
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchText(value);
+    onSearchChange(value);
   };
 
   return (
@@ -81,6 +90,8 @@ const Navbar = ({ selectedMealType, onMealTypeChange }) => {
             <input
               type="text"
               placeholder="Keresés..."
+              value={searchText}
+              onChange={handleSearchChange}
               className="w-[300px] px-4 py-2 pl-10 rounded-full 
                        bg-white border-2 border-orange-500/30
                        focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20
@@ -101,7 +112,8 @@ const Navbar = ({ selectedMealType, onMealTypeChange }) => {
 
 Navbar.propTypes = {
   selectedMealType: PropTypes.string,
-  onMealTypeChange: PropTypes.func.isRequired
+  onMealTypeChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired
 };
 
 export default Navbar;
