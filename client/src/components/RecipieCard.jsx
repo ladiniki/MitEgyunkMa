@@ -3,7 +3,7 @@ import { Heart, ChefHat, Flame, Utensils, Trophy } from "lucide-react"; //A BEL�
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
+const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
@@ -33,7 +33,10 @@ const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
 
   // Recept részletes oldalára navigálás
   const handleCardClick = () => {
-    navigate(`/recipe/${encodeURIComponent(name)}`);
+    // Csak akkor navigálunk a recept oldalára, ha van cookingTime (tehát recept, nem hozzávaló)
+    if (cookingTime) {
+      navigate(`/recipe/${encodeURIComponent(name)}`);
+    }
   };
 
   // Nehézségi szint megjelenítése
@@ -70,10 +73,28 @@ const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
     );
   };
 
+  // Meghatározzuk, hogy mit jelenítsünk meg a bal alsó sarokban
+  const renderLeftInfo = () => {
+    // Ha van mennyiség és mértékegység (hozzávaló esetén)
+    if (quantity && unit) {
+      return (
+        <span className="text-orange-600 text-xs">{quantity} {unit}</span>
+      );
+    }
+    // Ha van elkészítési idő (recept esetén)
+    else if (cookingTime) {
+      return (
+        <span className="text-orange-600 text-xs">{cookingTime} perc</span>
+      );
+    }
+    // Ha egyik sincs
+    return null;
+  };
+
   return (
     <div className="h-full">
       <div 
-        className="bg-white rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl h-full flex flex-col cursor-pointer"
+        className={`bg-white rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl h-full flex flex-col ${cookingTime ? 'cursor-pointer' : ''}`}
         onClick={handleCardClick}
       >
         <img 
@@ -86,7 +107,7 @@ const RecipieCard = ({ name, cookingTime, image, difficulty }) => {
             <h3 className="font-semibold text-gray-800 text-xs xs:text-sm sm:text-base line-clamp-1">{name}</h3>
           </div>
           <div className="flex justify-between items-center mt-0.5">
-            <span className="text-orange-600 text-xs">{cookingTime} perc</span>
+            {renderLeftInfo()}
             {renderDifficulty()}
           </div>
         </div>

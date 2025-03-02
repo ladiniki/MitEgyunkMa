@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IngredientsModal from "./IngredientsModal";
 import RecipieCard from "../RecipieCard";
+import { Plus } from "lucide-react";
 
 const Ingredients = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,14 +35,15 @@ const Ingredients = () => {
           </div>
         )}
 
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <div className="absolute bottom-8 right-8">
           <button
-            className="px-6 py-3 bg-orange-500 text-white rounded-lg 
-                       hover:bg-orange-600 hover:scale-105
-                       transition-all duration-200"
+            className="w-14 h-14 bg-orange-500 text-white rounded-full 
+                       hover:bg-orange-600 hover:scale-105 shadow-lg
+                       transition-all duration-200 flex items-center justify-center"
             onClick={() => setIsModalOpen(true)}
+            aria-label="Hozzávalók hozzáadása"
           >
-            Szerkesztés
+            <Plus size={24} />
           </button>
         </div>
       </div>

@@ -1,0 +1,224 @@
+{
+    "ingredients": [
+        {
+            "name": "Bors",
+            "unit": "csomag",
+            "image": "fekete-bors-egesz.webp"
+        },
+        {
+            "name": "Krumpli",
+            "unit": "db",
+            "image": "krumpli.jpg"
+        },
+        {
+            "name": "Kukorica",
+            "unit": "db",
+            "image": "kukorica2.jpg"
+        },
+        {
+            "name": "Káposzta",
+            "unit": "db",
+            "image": "fejeskaposzta.jpg"
+        },
+        {
+            "name": "Liszt",
+            "unit": "dkg",
+            "image": "liszt.jpg"
+        },
+        {
+            "name": "Tej",
+            "unit": "ml",
+            "image": "tej.jpg"
+        },
+        {
+            "name": "Tojás",
+            "unit": "db",
+            "image": "tojas.jpg"
+        },
+        {
+            "name": "Vaj",
+            "unit": "g",
+            "image": "vaj.jpg"
+        },
+        {
+            "name": "Cukor",
+            "unit": "g",
+            "image": "cukor.jpg"
+        },
+        {
+            "name": "Sütőpor",
+            "unit": "tk",
+            "image": "sutopor.jpg"
+        },
+        {
+            "name": "Paradicsom",
+            "unit": "db",
+            "image": "paradicsom.jpg"
+        },
+        {
+            "name": "Hagyma",
+            "unit": "db",
+            "image": "hagyma.jpg"
+        },
+        {
+            "name": "Fokhagyma",
+            "unit": "gerezd",
+            "image": "fokhagyma.jpg"
+        },
+        {
+            "name": "Olívaolaj",
+            "unit": "ek",
+            "image": "olivaolaj.jpg"
+        },
+        {
+            "name": "Bazsalikom",
+            "unit": "csokor",
+            "image": "bazsalikom.jpg"
+        },
+        {
+            "name": "Tejszín",
+            "unit": "ml",
+            "image": "tejszin.jpg"
+        },
+        {
+            "name": "Garnélarák",
+            "unit": "g",
+            "image": "garnelarak.jpg"
+        },
+        {
+            "name": "Bulgur",
+            "unit": "g",
+            "image": "bulgur.jpg"
+        },
+        {
+            "name": "Citromlé",
+            "unit": "ek",
+            "image": "citromle.jpg"
+        },
+        {
+            "name": "Petrezselyem",
+            "unit": "csokor",
+            "image": "petrezselyem.jpg"
+        },
+        {
+            "name": "Só",
+            "unit": "tk",
+            "image": "so.jpg"
+        },
+        {
+            "name": "Fahéj",
+            "unit": "tk",
+            "image": "fahej.jpg"
+        },
+        {
+            "name": "Kenyér",
+            "unit": "szelet",
+            "image": "kenyer.jpg"
+        },
+        {
+            "name": "Müzli",
+            "unit": "g",
+            "image": "muzli.jpg"
+        },
+        {
+            "name": "Joghurt",
+            "unit": "g",
+            "image": "joghurt.jpg"
+        },
+        {
+            "name": "Méz",
+            "unit": "ek",
+            "image": "mez.jpg"
+        },
+        {
+            "name": "Banán",
+            "unit": "db",
+            "image": "banan.jpg"
+        },
+        {
+            "name": "Cukkini",
+            "unit": "db",
+            "image": "cukkini.jpg"
+        },
+        {
+            "name": "Olaj",
+            "unit": "ek",
+            "image": "olaj.jpg"
+        },
+        {
+            "name": "Mozzarella",
+            "unit": "g",
+            "image": "mozzarella.jpg"
+        },
+        {
+            "name": "Balzsamecet",
+            "unit": "tk",
+            "image": "balzsamecet.jpg"
+        },
+        {
+            "name": "Szárazbab",
+            "unit": "g",
+            "image": "szarazbab.jpg"
+        },
+        {
+            "name": "Füstölt hús",
+            "unit": "g",
+            "image": "fustolthus.jpg"
+        },
+        {
+            "name": "Vöröshagyma",
+            "unit": "db",
+            "image": "voroshagyma.jpg"
+        },
+        {
+            "name": "Sárgarépa",
+            "unit": "g",
+            "image": "sargarepa.jpg"
+        },
+        {
+            "name": "Sonka",
+            "unit": "g",
+            "image": "sonka.jpg"
+        },
+        {
+            "name": "Tonhalkonzerv",
+            "unit": "db",
+            "image": "tonhalkonzerv.jpg"
+        },
+        {
+            "name": "Uborka",
+            "unit": "db",
+            "image": "uborka.jpg"
+        },
+        {
+            "name": "Salátalevél",
+            "unit": "g",
+            "image": "salatalevél.jpg"
+        },
+        {
+            "name": "Zöldborsó",
+            "unit": "g",
+            "image": "zoldborso.jpg"
+        },
+        {
+            "name": "Padlizsán",
+            "unit": "db",
+            "image": "padlizsan.jpg"
+        },
+        {
+            "name": "Parmezán",
+            "unit": "g",
+            "image": "parmezan.jpg"
+        },
+        {
+            "name": "Zabpehely",
+            "unit": "g",
+            "image": "zabpehely.jpg"
+        },
+        {
+            "name": "Alma",
+            "unit": "db",
+            "image": "alma.jpg"
+        }
+    ]
+}
