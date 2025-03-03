@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Heart, ChefHat, Flame, Utensils, Trophy } from "lucide-react"; //A BELÉPETT FELHASZNÁLÓ KEDVENCEIT MENTSE EL
+import { Heart, ChefHat, Utensils, Trophy } from "lucide-react"; //A BELÉPETT FELHASZNÁLÓ KEDVENCEIT MENTSE EL
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */

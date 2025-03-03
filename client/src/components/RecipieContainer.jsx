@@ -8,11 +8,11 @@ const RecipieContainer = () => {
   const [loading, setLoading] = useState(true);
   const { selectedMealType, searchText } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageTransition, setPageTransition] = useState('fade');
+  const [pageTransition, setPageTransition] = useState("fade");
   // Reszponzív recipesPerPage - megtartjuk a 2x4-es elrendezést, de kisebb képernyőn kevesebb recept
   const getRecipesPerPage = () => {
     // Csak kliens oldalon működik
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (window.innerWidth < 640) return 2; // Mobil: 1x2
       if (window.innerWidth < 768) return 4; // Tablet: 2x2
       if (window.innerWidth < 1024) return 6; // Kisebb desktop: 3x2
@@ -20,7 +20,7 @@ const RecipieContainer = () => {
     }
     return 8; // Alapértelmezett
   };
-  
+
   const [recipesPerPage, setRecipesPerPage] = useState(getRecipesPerPage());
 
   // Ablakméret változás figyelése
@@ -29,17 +29,17 @@ const RecipieContainer = () => {
       setRecipesPerPage(getRecipesPerPage());
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     const fetchRecipies = async () => {
       try {
-        const url = selectedMealType 
+        const url = selectedMealType
           ? `http://localhost:5000/recipies?mealType=${selectedMealType}`
           : "http://localhost:5000/recipies";
-          
+
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,47 +68,49 @@ const RecipieContainer = () => {
 
   // Szűrjük a recepteket a keresési szöveg alapján
   const filteredRecipies = searchText
-    ? recipies.filter(recipe => 
+    ? recipies.filter((recipe) =>
         recipe.name.toLowerCase().includes(searchText.toLowerCase())
       )
     : recipies;
 
   // Kiszámoljuk az oldalak számát
   const totalPages = Math.ceil(filteredRecipies.length / recipesPerPage);
-  
+
   // Kiszámoljuk az aktuális oldalon megjelenítendő recepteket
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = filteredRecipies.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const currentRecipes = filteredRecipies.slice(
+    indexOfFirstRecipe,
+    indexOfLastRecipe
+  );
 
   // Lapozás kezelése egyszerű fade effekttel
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setPageTransition('fade-out');
+  const handlePageClick = pageNumber => {
+    if (pageNumber !== currentPage) {
+      setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(prev => prev - 1);
-        setPageTransition('fade-in');
+        setCurrentPage(pageNumber);
+        setPageTransition("fade-in");
       }, 200);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setPageTransition('fade-out');
+      setPageTransition("fade-out");
       setTimeout(() => {
         setCurrentPage(prev => prev + 1);
-        setPageTransition('fade-in');
+        setPageTransition("fade-in");
       }, 200);
     }
   };
 
-  // Közvetlen oldalra ugrás
-  const handlePageClick = (pageNumber) => {
-    if (pageNumber !== currentPage) {
-      setPageTransition('fade-out');
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(pageNumber);
-        setPageTransition('fade-in');
+        setCurrentPage(prev => prev - 1);
+        setPageTransition("fade-in");
       }, 200);
     }
   };
@@ -119,12 +121,22 @@ const RecipieContainer = () => {
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
       {filteredRecipies.length === 0 ? (
         <div className="text-center py-10">
-          <p className="text-gray-500 text-lg">Nincs találat a keresési feltételekre.</p>
+          <p className="text-gray-500 text-lg">
+            Nincs találat a keresési feltételekre.
+          </p>
         </div>
       ) : (
         <div className="relative">
           {/* Reszponzív grid elrendezés egyszerű fade animációval */}
-          <div className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${pageTransition === 'fade-in' ? 'animate-fade-in' : pageTransition === 'fade-out' ? 'animate-fade-out' : ''}`}>
+          <div
+            className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${
+              pageTransition === "fade-in"
+                ? "animate-fade-in"
+                : pageTransition === "fade-out"
+                ? "animate-fade-out"
+                : ""
+            }`}
+          >
             {currentRecipes.map((recipe, index) => (
               <RecipieCard
                 key={index}
@@ -136,7 +148,7 @@ const RecipieContainer = () => {
               />
             ))}
           </div>
-          
+
           {/* Finomított, modern lapozó */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-6 mb-4">
@@ -144,44 +156,70 @@ const RecipieContainer = () => {
                 {/* Előző gomb */}
                 <button
                   onClick={handlePrevPage}
-                  disabled={currentPage === 1 || pageTransition === 'fade-out'}
+                  disabled={currentPage === 1 || pageTransition === "fade-out"}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                    ${currentPage === 1 
-                      ? 'text-gray-300 cursor-not-allowed' 
-                      : 'text-gray-600 hover:bg-gray-100'}`}
+                    ${
+                      currentPage === 1
+                        ? "text-gray-300 cursor-not-allowed"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                   aria-label="Előző oldal"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </button>
-                
+
                 {/* Oldalszámok */}
                 <div className="flex items-center px-2">
-                  {/* Aktuális oldal - kiemelt */}
-                  <div className="w-8 h-8 flex items-center justify-center rounded-full bg-orange-500 text-white font-medium">
+                  {/* Aktuális oldal */}
+                  <button
+                    className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 text-white"
+                  >
                     {currentPage}
-                  </div>
-                  
+                  </button>
+
                   {/* Elválasztó és utolsó oldal */}
                   <div className="flex items-center ml-2 text-gray-500">
                     <span className="text-xs text-gray-400 mx-1">/</span>
                     <span>{totalPages}</span>
                   </div>
                 </div>
-                
+
                 {/* Következő gomb */}
                 <button
                   onClick={handleNextPage}
-                  disabled={currentPage === totalPages || pageTransition === 'fade-out'}
+                  disabled={
+                    currentPage === totalPages || pageTransition === "fade-out"
+                  }
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                    ${currentPage === totalPages 
-                      ? 'text-gray-300 cursor-not-allowed' 
-                      : 'text-gray-600 hover:bg-gray-100'}`}
+                    ${
+                      currentPage === totalPages
+                        ? "text-gray-300 cursor-not-allowed"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                   aria-label="Következő oldal"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </button>
               </div>
@@ -191,7 +229,8 @@ const RecipieContainer = () => {
       )}
 
       {/* CSS animációk */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -209,7 +248,7 @@ const RecipieContainer = () => {
         .animate-fade-out {
           animation: fadeOut 200ms ease-in-out forwards;
         }
-      `}</style>
+      `}} />
     </div>
   );
 };

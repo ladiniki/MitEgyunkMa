@@ -155,7 +155,7 @@ const RecipeDetail = () => {
   const displayedSteps = recipe.steps.slice(0, maxSteps);
 
   return (
-    <div style={{ overflow: 'hidden' }} className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col">
+    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col">
       {/* Navigációs "breadcrumb" stílusú visszalépés */}
       <nav className="mb-4">
         <div className="flex items-center text-sm">
@@ -172,11 +172,11 @@ const RecipeDetail = () => {
         </div>
       </nav>
 
-      {/* Fő tartalom konténer - fix magasság, nincs görgetés */}
-      <div style={{ overflow: 'hidden' }} className="flex-1 flex flex-col lg:flex-row gap-4 h-[calc(100%-3rem)]">
+      {/* Fő tartalom konténer */}
+      <div className="flex-1 flex flex-col lg:flex-row gap-4 h-[calc(100%-3rem)]">
         {/* Bal oldal: Kép és alapadatok */}
-        <div style={{ overflow: 'hidden' }} className="lg:w-1/3 flex flex-col h-full">
-          {/* Kép konténer - fix magasság */}
+        <div className="lg:w-1/3 flex flex-col h-full">
+          {/* Kép konténer */}
           <div className="relative rounded-xl overflow-hidden shadow-md h-40 sm:h-48 md:h-56 lg:h-64 flex-shrink-0">
             <img 
               src={recipe.image} 
@@ -200,19 +200,19 @@ const RecipeDetail = () => {
             </div>
           </div>
 
-          {/* Leírás - fix magasság */}
-          <div style={{ overflow: 'hidden' }} className="mt-3 bg-white p-3 rounded-xl shadow-md flex-1">
+          {/* Leírás */}
+          <div className="mt-3 bg-white p-3 rounded-xl shadow-md flex-1">
             <h2 className="text-lg font-semibold mb-2 text-gray-800">Leírás</h2>
             <p className="text-gray-600 text-sm line-clamp-6">{recipe.description}</p>
           </div>
         </div>
 
         {/* Jobb oldal: Hozzávalók és elkészítés lépései */}
-        <div style={{ overflow: 'hidden' }} className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3 h-full">
-          {/* Hozzávalók - fix magasság */}
-          <div style={{ overflow: 'hidden' }} className="bg-white p-3 rounded-xl shadow-md">
+        <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3 h-full">
+          {/* Hozzávalók */}
+          <div className="bg-white p-3 rounded-xl shadow-md">
             <h2 className="text-lg font-semibold mb-2 text-gray-800">Hozzávalók</h2>
-            <div style={{ overflow: 'hidden' }}>
+            <div>
               <ul className="space-y-1.5">
                 {displayedIngredients.map((ingredient, index) => (
                   <li key={index} className="flex items-center bg-orange-50 p-1.5 rounded-lg text-sm">
@@ -233,10 +233,10 @@ const RecipeDetail = () => {
             </div>
           </div>
 
-          {/* Elkészítés lépései - fix magasság */}
-          <div style={{ overflow: 'hidden' }} className="bg-white p-3 rounded-xl shadow-md">
+          {/* Elkészítés lépései */}
+          <div className="bg-white p-3 rounded-xl shadow-md">
             <h2 className="text-lg font-semibold mb-2 text-gray-800">Elkészítés</h2>
-            <div style={{ overflow: 'hidden' }}>
+            <div>
               <ol className="space-y-1.5">
                 {displayedSteps.map((step, index) => (
                   <li key={index} className="flex text-sm">
