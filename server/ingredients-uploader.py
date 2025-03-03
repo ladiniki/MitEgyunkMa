@@ -26,7 +26,10 @@ collection = db["IngredientsCollection"]  # Új collection az összetevőknek
 # Placeholder kép base64 formátumban
 PLACEHOLDER_IMAGE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
-assets_dir = "client/src/assets"
+# Abszolút elérési út az assets könyvtárhoz
+script_dir = os.path.dirname(os.path.abspath(__file__))
+workspace_dir = os.path.dirname(script_dir)  # Egy szinttel feljebb
+assets_dir = os.path.join(workspace_dir, "client", "src", "assets")
 print(f"Assets directory: {os.path.abspath(assets_dir)}")
 
 # Ellenőrizzük, hogy létezik-e az assets könyvtár
@@ -39,7 +42,7 @@ delete_result = collection.delete_many({})
 print(f"Deleted {delete_result.deleted_count} existing ingredients from the collection")
 
 # Hozzávalókat a JSON fájlból
-json_path = 'server/new-ingredients.json'
+json_path = os.path.join(script_dir, 'new-ingredients.json')
 print(f"Reading ingredients from: {os.path.abspath(json_path)}")
 
 if not os.path.exists(json_path):

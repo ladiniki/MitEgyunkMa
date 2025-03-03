@@ -1,63 +1,50 @@
-import { useState } from "react";
-import { X, Search } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X, Search, Loader2 } from "lucide-react";
 import PropTypes from "prop-types";
-
-const ingredientsList = [
-  { name: "Bors", unit: "csomag", image: "fekete-bors-egesz.webp" },
-  { name: "Krumpli", unit: "db", image: "krumpli.jpg" },
-  { name: "Kukorica", unit: "db", image: "kukorica.jpg" },
-  { name: "Káposzta", unit: "db", image: "tukortojás.jpg" },
-  { name: "Liszt", unit: "dkg", image: "csokitorta.jpeg" },
-  { name: "Tej", unit: "ml", image: "tej.jpg" },
-  { name: "Tojás", unit: "db", image: "tojas.jpg" },
-  { name: "Vaj", unit: "g", image: "vaj.jpg" },
-  { name: "Cukor", unit: "g", image: "cukor.jpg" },
-  { name: "Sütőpor", unit: "tk", image: "sutopor.jpg" },
-  { name: "Paradicsom", unit: "db", image: "paradicsom.jpg" },
-  { name: "Hagyma", unit: "db", image: "hagyma.jpg" },
-  { name: "Fokhagyma", unit: "gerezd", image: "fokhagyma.jpg" },
-  { name: "Olívaolaj", unit: "ek", image: "olivaolaj.jpg" },
-  { name: "Bazsalikom", unit: "csokor", image: "bazsalikom.jpg" },
-  { name: "Tejszín", unit: "ml", image: "tejszin.jpg" },
-  { name: "Garnélarák", unit: "g", image: "garnelarak.jpg" },
-  { name: "Bulgur", unit: "g", image: "bulgur.jpg" },
-  { name: "Citromlé", unit: "ek", image: "citromle.jpg" },
-  { name: "Petrezselyem", unit: "csokor", image: "petrezselyem.jpg" },
-  { name: "Só", unit: "tk", image: "so.jpg" },
-  { name: "Fahéj", unit: "tk", image: "fahej.jpg" },
-  { name: "Kenyér", unit: "szelet", image: "kenyer.jpg" },
-  { name: "Müzli", unit: "g", image: "muzli.jpg" },
-  { name: "Joghurt", unit: "g", image: "joghurt.jpg" },
-  { name: "Méz", unit: "ek", image: "mez.jpg" },
-  { name: "Banán", unit: "db", image: "banan.jpg" },
-  { name: "Cukkini", unit: "db", image: "cukkini.jpg" },
-  { name: "Olaj", unit: "ek", image: "olaj.jpg" },
-  { name: "Mozzarella", unit: "g", image: "mozzarella.jpg" },
-  { name: "Balzsamecet", unit: "tk", image: "balzsamecet.jpg" },
-  { name: "Szárazbab", unit: "g", image: "szarazbab.jpg" },
-  { name: "Füstölt hús", unit: "g", image: "fustolthus.jpg" },
-  { name: "Vöröshagyma", unit: "db", image: "voroshagyma.jpg" },
-  { name: "Sárgarépa", unit: "g", image: "sargarepa.jpg" },
-  { name: "Sonka", unit: "g", image: "sonka.jpg" },
-  { name: "Tonhalkonzerv", unit: "db", image: "tonhalkonzerv.jpg" },
-  { name: "Uborka", unit: "db", image: "uborka.jpg" },
-  { name: "Salátalevél", unit: "g", image: "salatalevél.jpg" },
-  { name: "Zöldborsó", unit: "g", image: "zoldborso.jpg" },
-  { name: "Padlizsán", unit: "db", image: "padlizsan.jpg" },
-  { name: "Parmezán", unit: "g", image: "parmezan.jpg" },
-  { name: "Zabpehely", unit: "g", image: "zabpehely.jpg" },
-  { name: "Alma", unit: "db", image: "alma.jpg" },
-];
 
 const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
   const [quantities, setQuantities] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchIngredients();
+    }
+  }, [isOpen]);
+
+  const fetchIngredients = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch(`http://localhost:5000/ingredients${searchTerm ? `?search=${searchTerm}` : ''}`);
+      if (!response.ok) {
+        throw new Error('Hiba történt a hozzávalók betöltése közben');
+      }
+      const data = await response.json();
+      setIngredients(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      if (isOpen) {
+        fetchIngredients();
+      }
+    }, 300);
+
+    return () => clearTimeout(debounceTimer);
+  }, [searchTerm, isOpen]);
 
   if (!isOpen) return null;
 
   const handleQuantityChange = (ingredientName, value) => {
-    // Ha a mező üres volt és most kap először értéket, vagy
-    // ha az érték kisebb mint 1, akkor 1-et állítunk be
     if ((!quantities[ingredientName] && value) || Number(value) < 1) {
       setQuantities((prev) => ({
         ...prev,
@@ -72,7 +59,7 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
   };
 
   const handleSubmit = () => {
-    const ingredients = ingredientsList
+    const selectedIngredients = ingredients
       .filter((ing) => quantities[ing.name])
       .map((ing) => ({
         name: ing.name,
@@ -81,13 +68,8 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
         image: ing.image,
       }));
 
-    onAdd(ingredients);
+    onAdd(selectedIngredients);
   };
-
-  // Szűrjük a hozzávalókat a keresési kifejezés alapján
-  const filteredIngredients = ingredientsList.filter(ingredient =>
-    ingredient.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -125,9 +107,17 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          {filteredIngredients.length > 0 ? (
+          {isLoading ? (
+            <div className="flex items-center justify-center h-full">
+              <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-red-500 text-center">{error}</p>
+            </div>
+          ) : ingredients.length > 0 ? (
             <div className="divide-y divide-gray-100">
-              {filteredIngredients.map((ingredient) => (
+              {ingredients.map((ingredient) => (
                 <div
                   key={ingredient.name}
                   className="flex items-center justify-between gap-3 px-6 py-2.5"

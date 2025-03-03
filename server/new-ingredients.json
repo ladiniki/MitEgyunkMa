@@ -219,6 +219,161 @@
             "name": "Alma",
             "unit": "db",
             "image": "alma.jpg"
+        },
+        {
+            "name": "Kakaópor",
+            "unit": "ek",
+            "image": "kakaopor.jpg"
+        },
+        {
+            "name": "Étcsokoládé",
+            "unit": "g",
+            "image": "etcsokolade.jpg"
+        },
+        {
+            "name": "Tortilla",
+            "unit": "db",
+            "image": "tortilla.jpg"
+        },
+        {
+            "name": "Cheddar sajt",
+            "unit": "g",
+            "image": "cheddar.jpg"
+        },
+        {
+            "name": "Tejföl",
+            "unit": "ml",
+            "image": "tejfol.jpg"
+        },
+        {
+            "name": "Chili por",
+            "unit": "tk",
+            "image": "chilipor.jpg"
+        },
+        {
+            "name": "Oregánó",
+            "unit": "tk",
+            "image": "oregano.jpg"
+        },
+        {
+            "name": "Brokkoli",
+            "unit": "g",
+            "image": "brokkoli.jpg"
+        },
+        {
+            "name": "Paradicsomszósz",
+            "unit": "g",
+            "image": "paradicsomszosz.jpg"
+        },
+        {
+            "name": "Rizs",
+            "unit": "g",
+            "image": "rizs.jpg"
+        },
+        {
+            "name": "Füstölt szalonna",
+            "unit": "g",
+            "image": "fustolt_szalonna.jpg"
+        },
+        {
+            "name": "Darálthús",
+            "unit": "g",
+            "image": "daralthus.jpg"
+        },
+        {
+            "name": "Mascarpone",
+            "unit": "g",
+            "image": "mascarpone.jpg"
+        },
+        {
+            "name": "Babapiskóta",
+            "unit": "g",
+            "image": "babapiskota.jpg"
+        },
+        {
+            "name": "Erős kávé",
+            "unit": "ml",
+            "image": "kave.jpg"
+        },
+        {
+            "name": "Marhahús",
+            "unit": "g",
+            "image": "marhahus.jpg"
+        },
+        {
+            "name": "Paprika",
+            "unit": "db",
+            "image": "paprika.jpg"
+        },
+        {
+            "name": "Pirospaprika",
+            "unit": "tk",
+            "image": "pirospaprika.jpg"
+        },
+        {
+            "name": "Csirkemell",
+            "unit": "g",
+            "image": "csirkemell.jpg"
+        },
+        {
+            "name": "Zsemlemorzsa",
+            "unit": "g",
+            "image": "zsemlemorzsa.jpg"
+        },
+        {
+            "name": "Rozmaring",
+            "unit": "ág",
+            "image": "rozmaring.jpg"
+        },
+        {
+            "name": "Zeller",
+            "unit": "g",
+            "image": "zeller.jpg"
+        },
+        {
+            "name": "Petrezselyemgyökér",
+            "unit": "g",
+            "image": "petrezselyemgyoker.jpg"
+        },
+        {
+            "name": "Cérnametélt",
+            "unit": "g",
+            "image": "cernametelt.jpg"
+        },
+        {
+            "name": "Kolbász",
+            "unit": "g",
+            "image": "kolbasz.jpg"
+        },
+        {
+            "name": "Darált keksz",
+            "unit": "g",
+            "image": "daralt_keksz.jpg"
+        },
+        {
+            "name": "Krémsajt",
+            "unit": "g",
+            "image": "kremsajt.jpg"
+        },
+        {
+            "name": "Szegfűszeg",
+            "unit": "tk",
+            "image": "szegfuszeg.jpg"
+        },
+        {
+            "name": "Kapor",
+            "unit": "ek",
+            "image": "kapor.jpg"
+        },
+        {
+            "name": "Mustár",
+            "unit": "tk",
+            "image": "mustar.jpg"
+        },
+        {
+            "name": "Pulykamell",
+            "unit": "g",
+            "image": "pulykamell.jpg"
         }
     ]
 }
