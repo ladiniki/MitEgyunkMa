@@ -3,6 +3,9 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
+from bson import json_util, ObjectId
+import json
+from datetime import datetime
 import base64
 import os
 import logging
@@ -18,7 +21,8 @@ logger.info("Connecting to MongoDB...")
 client = MongoClient("mongodb://localhost:27017/")
 db = client["MitEszunkMaDB"]
 collection = db["RecipiesCollection"]
-ingredients_collection = db["IngredientsCollection"]  # Új collection az összetevőknek
+ingredients_collection = db["IngredientsCollection"]
+reviews_collection = db["ReviewsCollection"]  # Új collection a véleményeknek
 
 # Ellenőrizzük a kapcsolatot
 try:
@@ -183,5 +187,87 @@ def get_ingredients():
         logger.error(f"Error in /ingredients endpoint: {e}")
         return jsonify({"error": str(e)}), 500
 
+# Vélemények lekérése egy recepthez
+@app.route('/recipe/<recipe_name>/reviews', methods=['GET'])
+def get_recipe_reviews(recipe_name):
+    try:
+        # Recept azonosítójának lekérése
+        recipe = collection.find_one({"name": recipe_name})
+        if not recipe:
+            return jsonify({"message": "A recept nem található"}), 404
+        
+        recipe_id = recipe['_id']
+        
+        # Vélemények lekérése a reviews collection-ből
+        reviews = list(reviews_collection.find({"recipe_id": recipe_id}).sort("date", -1))
+        
+        # ObjectId és dátum konvertálása string-é
+        for review in reviews:
+            review['_id'] = str(review['_id'])
+            review['recipe_id'] = str(review['recipe_id'])
+            review['date'] = review['date'].isoformat()
+        
+        return jsonify(reviews)
+    except Exception as e:
+        logger.error(f"Error getting reviews: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# Új vélemény hozzáadása egy recepthez
+@app.route('/recipe/<recipe_name>/reviews', methods=['POST'])
+@jwt_required()  # JWT token szükséges a vélemény írásához
+def add_recipe_review(recipe_name):
+    try:
+        current_user = get_jwt_identity()
+        logger.info(f"Új vélemény beküldése - Felhasználó: {current_user}, Recept: {recipe_name}")
+        
+        review_data = request.json
+        logger.info(f"Beérkezett adatok: {review_data}")
+        
+        if not review_data or not all(key in review_data for key in ["rating", "comment"]):
+            logger.error("Hiányzó adatok a kérésben")
+            return jsonify({"message": "Hiányzó adatok"}), 400
+
+        # Recept azonosítójának lekérése
+        recipe = collection.find_one({"name": recipe_name})
+        if not recipe:
+            logger.error(f"A recept nem található: {recipe_name}")
+            return jsonify({"message": "A recept nem található"}), 404
+
+        # Ellenőrizzük az értékelést
+        rating = int(review_data["rating"])
+        if not 1 <= rating <= 5:
+            logger.error(f"Érvénytelen értékelés: {rating}")
+            return jsonify({"message": "Az értékelésnek 1 és 5 között kell lennie"}), 400
+
+        # Új vélemény létrehozása
+        new_review = {
+            "recipe_id": recipe['_id'],
+            "recipe_name": recipe_name,
+            "username": current_user,
+            "rating": rating,
+            "comment": review_data["comment"],
+            "date": datetime.now()
+        }
+        logger.info(f"Új vélemény objektum létrehozva: {new_review}")
+
+        # Vélemény mentése a reviews collection-be
+        result = reviews_collection.insert_one(new_review)
+        logger.info(f"Vélemény sikeresen elmentve, ID: {result.inserted_id}")
+
+        if not result.inserted_id:
+            logger.error("Hiba történt a vélemény mentése közben")
+            return jsonify({"message": "Hiba történt a vélemény mentése közben"}), 500
+
+        # Frissített vélemény visszaküldése
+        new_review['_id'] = str(result.inserted_id)
+        new_review['recipe_id'] = str(new_review['recipe_id'])
+        new_review['date'] = new_review['date'].isoformat()
+
+        logger.info("Vélemény sikeresen hozzáadva és visszaküldve")
+        return jsonify(new_review)
+    except Exception as e:
+        logger.error(f"Hiba a vélemény hozzáadásakor: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1')
+    app.run(debug=True, host='0.0.0.0')

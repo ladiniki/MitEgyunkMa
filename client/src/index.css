@@ -12,9 +12,28 @@
   caret-color: transparent;
 }
 
-/* Input mezőkben visszaállítjuk a kurzort */
+/* Input mezőkben visszaállítjuk a kurzort és felülírjuk az alapértelmezett stílusokat */
 input, textarea, [contenteditable="true"] {
   caret-color: auto;
+  background-color: white !important;
+}
+
+/* Input mezők fókusz állapotának felülírása */
+input:focus {
+  outline-color: #f97316 !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 4px rgba(249,115,22,0.2) !important;
+  background-color: white !important;
+}
+
+/* Autofill stílusok felülírása - csak itt legyen narancssárga */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px rgb(255, 247, 237) inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: rgb(255, 247, 237) !important;
 }
 
 /* ... existing scrollbar styles ... */

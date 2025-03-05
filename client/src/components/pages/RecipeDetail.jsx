@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, ChefHat, Utensils, Trophy, Home, Check } from "lucide-react";
+import { ArrowLeft, Clock, ChefHat, Utensils, Trophy, Home, Check, MessageCircle, Star, ChevronDown, ChevronUp } from "lucide-react";
 
 const RecipeDetail = () => {
   const { recipeName } = useParams();
@@ -9,6 +9,12 @@ const RecipeDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
+  const [showReviews, setShowReviews] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState({ rating: 5, comment: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [reviewError, setReviewError] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   // Görgetés letiltása az oldal betöltésekor
   useEffect(() => {
@@ -46,6 +52,114 @@ const RecipeDetail = () => {
 
     fetchRecipeDetails();
   }, [recipeName]);
+
+  // Vélemények betöltése
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/recipe/${encodeURIComponent(recipeName)}/reviews`);
+        if (!response.ok) throw new Error('Nem sikerült betölteni a véleményeket');
+        const data = await response.json();
+        setReviews(data);
+      } catch (error) {
+        console.error('Hiba a vélemények betöltésekor:', error);
+        setReviewError('Nem sikerült betölteni a véleményeket');
+      }
+    };
+
+    if (recipeName) {
+      fetchReviews();
+    }
+  }, [recipeName]);
+
+  // Jelenlegi felhasználó lekérése
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const token = localStorage.getItem('jwt');
+        if (!token) return;
+
+        const response = await fetch('http://localhost:5000/user', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setCurrentUser(data.username);
+        }
+      } catch (error) {
+        console.error('Hiba a felhasználó lekérésekor:', error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
+  // Új vélemény beküldése
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    if (!newReview.comment.trim()) return;
+
+    setIsSubmitting(true);
+    setReviewError(null);
+
+    try {
+      const token = localStorage.getItem('jwt');
+      if (!token) {
+        throw new Error('A véleményezéshez be kell jelentkezni!');
+      }
+
+      const response = await fetch(`http://localhost:5000/recipe/${encodeURIComponent(recipeName)}/reviews`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          rating: newReview.rating,
+          comment: newReview.comment
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Hiba történt a vélemény mentése közben');
+      }
+
+      const savedReview = await response.json();
+      setReviews(prevReviews => [savedReview, ...prevReviews]);
+      setNewReview({ rating: 5, comment: "" });
+    } catch (error) {
+      console.error('Hiba:', error);
+      setReviewError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Csillagok renderelése
+  const renderStars = (rating, isInteractive = false) => {
+    return [...Array(5)].map((_, index) => (
+      <button
+        key={index}
+        type={isInteractive ? "button" : undefined}
+        onClick={isInteractive ? () => setNewReview(prev => ({ ...prev, rating: index + 1 })) : undefined}
+        className={`${isInteractive ? 'cursor-pointer focus:outline-none' : ''}`}
+        disabled={!isInteractive}
+      >
+        <Star
+          size={isInteractive ? 24 : 16}
+          className={`${
+            index < rating
+              ? "fill-yellow-400 text-yellow-400"
+              : "fill-gray-200 text-gray-200"
+          } ${isInteractive ? 'transition-colors hover:fill-yellow-400 hover:text-yellow-400' : ''}`}
+        />
+      </button>
+    ));
+  };
 
   // Lépés befejezettként megjelölése
   const toggleStepCompletion = (index) => {
@@ -155,7 +269,7 @@ const RecipeDetail = () => {
   const displayedSteps = recipe.steps.slice(0, maxSteps);
 
   return (
-    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col">
+    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col overflow-y-auto">
       {/* Navigációs "breadcrumb" stílusú visszalépés */}
       <nav className="mb-4">
         <div className="flex items-center text-sm">
@@ -277,6 +391,115 @@ const RecipeDetail = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Vélemények szekció */}
+      <div className="mt-4 mb-6">
+        <button
+          onClick={() => setShowReviews(!showReviews)}
+          className="w-full flex items-center justify-between p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+        >
+          <div className="flex items-center">
+            <MessageCircle size={20} className="text-orange-500 mr-2" />
+            <span className="font-semibold text-gray-800">Vélemények</span>
+            {reviews.length > 0 && (
+              <span className="ml-2 px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full text-sm">
+                {reviews.length}
+              </span>
+            )}
+          </div>
+          {showReviews ? (
+            <ChevronUp size={20} className="text-gray-500" />
+          ) : (
+            <ChevronDown size={20} className="text-gray-500" />
+          )}
+        </button>
+
+        {showReviews && (
+          <div className="mt-3 bg-white p-4 rounded-xl shadow-md">
+            {/* Új vélemény form */}
+            <form onSubmit={handleSubmitReview} className="mb-6">
+              <div className="flex flex-col space-y-4">
+                <div className="flex items-center">
+                  <span className="text-sm text-gray-600 mr-3">Értékelés:</span>
+                  <div className="flex space-x-1">
+                    {renderStars(newReview.rating, true)}
+                  </div>
+                </div>
+                
+                <div className="flex flex-col space-y-2">
+                  <textarea
+                    value={newReview.comment}
+                    onChange={(e) => setNewReview(prev => ({ ...prev, comment: e.target.value }))}
+                    placeholder="Írd le a véleményed..."
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 min-h-[100px] resize-none"
+                  />
+                  {reviewError && (
+                    <p className="text-red-500 text-sm">{reviewError}</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !newReview.comment.trim()}
+                    className={`self-end px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors ${
+                      (isSubmitting || !newReview.comment.trim()) ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {isSubmitting ? 'Küldés...' : 'Vélemény küldése'}
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            {/* Vélemények listája */}
+            <div className="space-y-4">
+              {reviews.length === 0 ? (
+                <p className="text-center text-gray-500 py-4">
+                  Még nincsenek vélemények. Légy te az első!
+                </p>
+              ) : (
+                reviews.map((review, index) => (
+                  <div
+                    key={review._id || index}
+                    className={`p-4 rounded-lg transition-colors ${
+                      review.username === currentUser 
+                        ? 'bg-orange-50 hover:bg-orange-100 border-2 border-orange-200' 
+                        : 'bg-gray-50 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center">
+                        <div className="flex items-center">
+                          <span className="font-medium text-gray-800 mr-2">
+                            {review.username}
+                          </span>
+                          {review.username === currentUser && (
+                            <span className="px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full text-xs font-medium">
+                              Te
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex ml-3">
+                          {renderStars(review.rating)}
+                        </div>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        {review.date ? new Date(review.date).toLocaleString('hu-HU', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          timeZone: 'Europe/Budapest'
+                        }) : 'Ismeretlen dátum'}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 mt-2">{review.comment}</p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
