@@ -76,21 +76,27 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const token = localStorage.getItem('jwt');
-        if (!token) return;
+        const token = localStorage.getItem("jwt");
+        if (!token) {
+          console.error("Nincs bejelentkezési token");
+          return;
+        }
 
-        const response = await fetch('http://localhost:5000/user', {
+        const response = await fetch("http://localhost:5000/user", {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setCurrentUser(data.username);
+
+        if (!response.ok) {
+          throw new Error(`HTTP hiba: ${response.status} ${response.statusText}`);
         }
+
+        const data = await response.json();
+        setCurrentUser(data.username);
       } catch (error) {
-        console.error('Hiba a felhasználó lekérésekor:', error);
+        console.error("Hiba a felhasználó lekérdezésekor:", error.message);
       }
     };
 

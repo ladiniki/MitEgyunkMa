@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import RecipieCard from "./RecipieCard";
+import { Search } from "lucide-react";
 
 /*Betölti a recepteket egy API-ból*/
 const RecipieContainer = () => {
@@ -120,10 +121,16 @@ const RecipieContainer = () => {
   return (
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
       {filteredRecipies.length === 0 ? (
-        <div className="text-center py-10">
-          <p className="text-gray-500 text-lg">
-            Nincs találat a keresési feltételekre.
-          </p>
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <div className="text-center p-8 rounded-2xl bg-white/50 backdrop-blur-sm shadow-sm">
+            <Search className="w-12 h-12 text-orange-300 mx-auto mb-4" />
+            <p className="text-gray-600 text-lg font-medium mb-2">
+              Nincs találat a keresési feltételekre.
+            </p>
+            <p className="text-gray-400 text-sm">
+              Próbálkozz más kulcsszavakkal vagy szűrőkkel.
+            </p>
+          </div>
         </div>
       ) : (
         <div className="relative">
