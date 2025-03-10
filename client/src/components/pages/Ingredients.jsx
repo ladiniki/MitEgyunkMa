@@ -135,6 +135,48 @@ const Ingredients = () => {
     }
   };
 
+  // Mennyiség változás kezelése
+  const handleQuantityChange = async (name, newQuantity) => {
+    try {
+      const token = localStorage.getItem('jwt');
+      if (!token) {
+        throw new Error('Nincs bejelentkezve!');
+      }
+
+      // Frissítjük a helyi állapotot
+      const updatedIngredients = ingredients.map(ing => 
+        ing.name === name ? { ...ing, quantity: newQuantity } : ing
+      );
+
+      // Ha a mennyiség 0, töröljük az alapanyagot
+      if (newQuantity === 0) {
+        await handleRemoveIngredient(name);
+        return;
+      }
+
+      // Küldjük a frissített listát a szervernek
+      const response = await fetch('http://localhost:5000/user/ingredients', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ingredients: updatedIngredients
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Hiba történt a mennyiség módosítása közben');
+      }
+
+      setIngredients(updatedIngredients);
+    } catch (err) {
+      console.error('Hiba:', err);
+      alert(err.message);
+    }
+  };
+
   // Lapozás kezelése
   const totalPages = Math.ceil(ingredients.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -204,6 +246,7 @@ const Ingredients = () => {
                     quantity={ingredient.quantity}
                     unit={ingredient.unit}
                     image={ingredient.image}
+                    onQuantityChange={handleQuantityChange}
                   />
                   <button
                     onClick={() => handleRemoveIngredient(ingredient.name)}

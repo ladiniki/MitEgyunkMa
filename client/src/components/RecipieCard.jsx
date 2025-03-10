@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Heart, ChefHat, Utensils, Trophy } from "lucide-react"; //A BELÉPETT FELHASZNÁLÓ KEDVENCEIT MENTSE EL
+import { Heart, ChefHat, Utensils, Trophy, Plus, Minus } from "lucide-react"; //A BELÉPETT FELHASZNÁLÓ KEDVENCEIT MENTSE EL
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit }) => {
+const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit, onQuantityChange }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
@@ -107,12 +107,43 @@ const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit }) =
     );
   };
 
+  // Mennyiség módosítása
+  const handleQuantityChange = (amount) => {
+    if (onQuantityChange) {
+      const newQuantity = Math.max(0, Number(quantity) + amount);
+      onQuantityChange(name, newQuantity);
+    }
+  };
+
   // Meghatározzuk, hogy mit jelenítsünk meg a bal alsó sarokban
   const renderLeftInfo = () => {
     // Ha van mennyiség és mértékegység (hozzávaló esetén)
-    if (quantity && unit) {
+    if (quantity !== undefined && unit) {
       return (
-        <span className="text-orange-600 text-xs">{quantity} {unit}</span>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-orange-600 text-xs min-w-[2rem]">{quantity} {unit}</span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleQuantityChange(-1);
+              }}
+              className="w-6 h-6 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 hover:bg-orange-200 transition-colors"
+              disabled={quantity <= 0}
+            >
+              <Minus size={14} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleQuantityChange(1);
+              }}
+              className="w-6 h-6 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 hover:bg-orange-200 transition-colors"
+            >
+              <Plus size={14} />
+            </button>
+          </div>
+        </div>
       );
     }
     // Ha van elkészítési idő (recept esetén)

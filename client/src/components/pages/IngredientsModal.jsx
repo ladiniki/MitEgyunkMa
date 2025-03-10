@@ -145,7 +145,7 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
         <div className="flex-1 overflow-y-auto">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
-              <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-500"></div>
             </div>
           ) : error ? (
             <div className="flex items-center justify-center h-full">
