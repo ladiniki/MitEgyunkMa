@@ -145,12 +145,14 @@ const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit }) =
             {renderDifficulty()}
           </div>
         </div>
-        <button 
-          className="absolute top-1.5 right-1.5 p-1 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-md transition-all duration-200" 
-          onClick={toggleFavorite}
-        >
-          <Heart className={`${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'} w-3.5 h-3.5`} />
-        </button>
+        {cookingTime && (
+          <button 
+            className="absolute top-1.5 right-1.5 p-1 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-md transition-all duration-200" 
+            onClick={toggleFavorite}
+          >
+            <Heart className={`${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'} w-5 h-5`} />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -61,8 +61,10 @@ const RecipieContainer = () => {
   /*Loading állapot, hogy a felhasználó bejelentkezésig ne lásson semmit*/
   if (loading) {
     return (
-      <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex justify-center items-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+        </div>
       </div>
     );
   }

@@ -232,8 +232,10 @@ const RecipeDetail = () => {
 
   if (loading) {
     return (
-      <div className="px-4 sm:px-6 py-4 h-full flex justify-center items-center overflow-hidden">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+        </div>
       </div>
     );
   }

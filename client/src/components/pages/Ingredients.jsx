@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import IngredientsModal from "./IngredientsModal";
 import RecipieCard from "../RecipieCard";
-import { Plus, Loader2 } from "lucide-react";
+import { Plus, Loader2, Search, Trash2 } from "lucide-react";
 
 const Ingredients = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,6 +65,20 @@ const Ingredients = () => {
         throw new Error('Nincs bejelentkezve!');
       }
 
+      // Frissítjük a meglévő hozzávalókat az újakkal
+      const updatedIngredients = [...ingredients];
+      
+      newIngredients.forEach(newIng => {
+        const existingIndex = updatedIngredients.findIndex(ing => ing.name === newIng.name);
+        if (existingIndex !== -1) {
+          // Ha már létezik, frissítjük a mennyiséget
+          updatedIngredients[existingIndex] = newIng;
+        } else {
+          // Ha még nem létezik, hozzáadjuk
+          updatedIngredients.push(newIng);
+        }
+      });
+
       const response = await fetch('http://localhost:5000/user/ingredients', {
         method: 'POST',
         headers: {
@@ -72,7 +86,7 @@ const Ingredients = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          ingredients: newIngredients
+          ingredients: updatedIngredients
         })
       });
 
@@ -80,9 +94,41 @@ const Ingredients = () => {
         throw new Error('Hiba történt a hozzávalók mentése közben');
       }
 
-      setIngredients(newIngredients);
+      setIngredients(updatedIngredients);
       setIsModalOpen(false);
       setCurrentPage(1);
+    } catch (err) {
+      console.error('Hiba:', err);
+      alert(err.message);
+    }
+  };
+
+  const handleRemoveIngredient = async (name) => {
+    try {
+      const token = localStorage.getItem('jwt');
+      if (!token) {
+        throw new Error('Nincs bejelentkezve!');
+      }
+
+      const response = await fetch('http://localhost:5000/user/ingredients/remove', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Hiba történt a hozzávaló törlése közben');
+      }
+
+      // Frissítjük a helyi állapotot
+      setIngredients(prevIngredients => 
+        prevIngredients.filter(ingredient => ingredient.name !== name)
+      );
     } catch (err) {
       console.error('Hiba:', err);
       alert(err.message);
@@ -118,7 +164,9 @@ const Ingredients = () => {
   if (isLoading) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+        </div>
       </div>
     );
   }
@@ -135,22 +183,36 @@ const Ingredients = () => {
     <>
       <div className="min-h-[calc(100vh-4rem)] relative p-4 flex flex-col">
         {ingredients.length === 0 ? (
-          <div className="flex items-center justify-center flex-1">
-            <p className="text-gray-600">
-              Jelenleg üres a hozzávalóid listája.
-            </p>
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="text-center p-8 rounded-2xl bg-white/50 backdrop-blur-sm shadow-sm">
+              <Search className="w-12 h-12 text-orange-300 mx-auto mb-4" />
+              <p className="text-gray-600 text-lg font-medium mb-2">
+                Még nincsenek hozzávalóid.
+              </p>
+              <p className="text-gray-400 text-sm">
+                Adj hozzá hozzávalókat a + gomb megnyomásával!
+              </p>
+            </div>
           </div>
         ) : (
           <>
             <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4 ${pageTransition === 'fade-in' ? 'animate-fade-in' : pageTransition === 'fade-out' ? 'animate-fade-out' : ''}`}>
               {currentItems.map((ingredient, index) => (
-                <RecipieCard
-                  key={index}
-                  name={ingredient.name}
-                  quantity={ingredient.quantity}
-                  unit={ingredient.unit}
-                  image={ingredient.image}
-                />
+                <div key={index} className="relative group">
+                  <RecipieCard
+                    name={ingredient.name}
+                    quantity={ingredient.quantity}
+                    unit={ingredient.unit}
+                    image={ingredient.image}
+                  />
+                  <button
+                    onClick={() => handleRemoveIngredient(ingredient.name)}
+                    className="absolute top-1.5 right-1.5 p-1 rounded-full bg-white/80 backdrop-blur-sm text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-500 hover:text-white shadow-sm"
+                    aria-label="Hozzávaló törlése"
+                  >
+                    <Trash2 size={20} />
+                  </button>
+                </div>
               ))}
             </div>
 

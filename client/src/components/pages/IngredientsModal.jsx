@@ -9,6 +9,42 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Meglévő hozzávalók betöltése
+  useEffect(() => {
+    const loadExistingIngredients = async () => {
+      if (!isOpen) return;
+
+      try {
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+          throw new Error('Nincs bejelentkezve!');
+        }
+
+        const response = await fetch('http://localhost:5000/user/ingredients', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Hiba történt a hozzávalók betöltése közben');
+        }
+
+        const data = await response.json();
+        // Beállítjuk a mennyiségeket a meglévő hozzávalók alapján
+        const existingQuantities = {};
+        data.ingredients.forEach(ing => {
+          existingQuantities[ing.name] = ing.quantity;
+        });
+        setQuantities(existingQuantities);
+      } catch (err) {
+        console.error('Hiba:', err);
+      }
+    };
+
+    loadExistingIngredients();
+  }, [isOpen]);
+
   useEffect(() => {
     if (isOpen) {
       fetchIngredients();

@@ -407,5 +407,31 @@ def update_user_ingredients():
         logger.error(f"Error updating user ingredients: {e}")
         return jsonify({"error": str(e)}), 500
 
+# Hozzávaló törlése
+@app.route('/user/ingredients/remove', methods=['POST'])
+@jwt_required()
+def remove_ingredient():
+    try:
+        current_user = get_jwt_identity()
+        data = request.get_json()
+        
+        if not data or 'name' not in data:
+            return jsonify({'message': 'Ingredient name is required'}), 400
+            
+        ingredient_name = data['name']
+        
+        # Eltávolítjuk a hozzávalót a felhasználó listájából
+        result = db.users.update_one(
+            {'username': current_user},
+            {'$pull': {'ingredients': {'name': ingredient_name}}}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({'message': 'Ingredient removed successfully'}), 200
+        return jsonify({'message': 'Ingredient was not in the list'}), 200
+    except Exception as e:
+        logger.error(f"Error removing ingredient: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
