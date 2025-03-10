@@ -7,28 +7,62 @@ const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit }) =
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
+  // Kedvenc státusz lekérése
   useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setIsFavorite(savedFavorites.some((recipe) => recipe.name === name));
+    const fetchFavoriteStatus = async () => {
+      try {
+        const token = localStorage.getItem("jwt");
+        if (!token) return;
+
+        const response = await fetch("http://localhost:5000/favorites", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setIsFavorite(data.favorites.some(recipe => recipe.name === name));
+        }
+      } catch (error) {
+        console.error("Error fetching favorite status:", error);
+      }
+    };
+
+    fetchFavoriteStatus();
   }, [name]);
 
-  const toggleFavorite = (e) => {
-    // Megállítjuk az esemény buborékolását, hogy ne navigáljon a kártyára kattintáskor
+  const toggleFavorite = async (e) => {
     e.stopPropagation();
     
-    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    let updatedFavorites;
+    try {
+      const token = localStorage.getItem("jwt");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
 
-    if (isFavorite) {
-      updatedFavorites = savedFavorites.filter(
-        (recipe) => recipe.name !== name
-      );
-    } else {
-      updatedFavorites = [...savedFavorites, { name, cookingTime, image, difficulty }];
+      const endpoint = isFavorite ? "/favorites/remove" : "/favorites/add";
+      
+      const response = await fetch(`http://localhost:5000${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          recipeName: name, // A recept nevét küldjük azonosítóként
+        }),
+      });
+
+      if (response.ok) {
+        setIsFavorite(!isFavorite);
+      } else {
+        console.error("Error toggling favorite status");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    setIsFavorite(!isFavorite);
   };
 
   // Recept részletes oldalára navigálás

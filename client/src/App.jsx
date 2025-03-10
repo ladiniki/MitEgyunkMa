@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import RecipieContainer from "./components/RecipieContainer";
 import Ingredients from "./components/pages/Ingredients";
 import RecipeDetail from "./components/pages/RecipeDetail";
+import Favorites from "./components/pages/Favorites";
 
 const AuthenticatedLayout = () => {
   const [selectedMealType, setSelectedMealType] = useState(null);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/recipies" element={<ProtectedRoute><RecipieContainer /></ProtectedRoute>} />
         <Route path="/recipe/:recipeName" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
         <Route path="/ingredients" element={<ProtectedRoute><Ingredients /></ProtectedRoute>} />
+        <Route path="/favorites" element={<ProtectedRoute><Favorites /></ProtectedRoute>} />
       </Route>
     </Routes>
   );

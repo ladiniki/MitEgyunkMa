@@ -113,7 +113,12 @@ def register():
         return jsonify({'message': 'User already exists'}), 400
 
     hashed_password = generate_password_hash(password)
-    db.users.insert_one({'username': username, 'password': hashed_password})
+    db.users.insert_one({
+        'username': username, 
+        'password': hashed_password,
+        'favorites': [],  # Üres lista a kedvenceknek
+        'ingredients': []  # Üres lista a hozzávalóknak
+    })
 
     return jsonify({'message': 'Successful registration'}), 201
 
@@ -267,6 +272,139 @@ def add_recipe_review(recipe_name):
         return jsonify(new_review)
     except Exception as e:
         logger.error(f"Hiba a vélemény hozzáadásakor: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+# Kedvencek lekérdezése
+@app.route('/favorites', methods=['GET'])
+@jwt_required()
+def get_favorites():
+    try:
+        current_user = get_jwt_identity()
+        user = db.users.find_one({'username': current_user})
+        
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+            
+        # Lekérjük a kedvenc receptek részletes adatait
+        favorite_recipes = []
+        for recipe_name in user.get('favorites', []):
+            recipe = collection.find_one({'name': recipe_name})
+            if recipe:
+                image_data = recipe.get("image", None)
+                if image_data:
+                    image_data = image_data.decode('utf-8') if isinstance(image_data, bytes) else image_data
+                
+                favorite_recipes.append({
+                    "name": recipe.get("name"),
+                    "cookingTime": recipe.get("cookingTime"),
+                    "image": image_data,
+                    "mealType": recipe.get("mealType"),
+                    "difficulty": recipe.get("difficulty")
+                })
+        
+        return jsonify({'favorites': favorite_recipes}), 200
+    except Exception as e:
+        logger.error(f"Error getting favorites: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# Kedvenc hozzáadása
+@app.route('/favorites/add', methods=['POST'])
+@jwt_required()
+def add_favorite():
+    try:
+        current_user = get_jwt_identity()
+        data = request.get_json()
+        
+        if not data or 'recipeName' not in data:
+            return jsonify({'message': 'Recipe name is required'}), 400
+            
+        recipe_name = data['recipeName']
+        
+        # Ellenőrizzük, hogy létezik-e a recept
+        recipe = collection.find_one({'name': recipe_name})
+        if not recipe:
+            return jsonify({'message': 'Recipe not found'}), 404
+            
+        # Hozzáadjuk a kedvencekhez, ha még nincs benne
+        result = db.users.update_one(
+            {'username': current_user, 'favorites': {'$ne': recipe_name}},
+            {'$push': {'favorites': recipe_name}}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({'message': 'Recipe added to favorites'}), 200
+        return jsonify({'message': 'Recipe is already in favorites'}), 200
+    except Exception as e:
+        logger.error(f"Error adding favorite: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# Kedvenc eltávolítása
+@app.route('/favorites/remove', methods=['POST'])
+@jwt_required()
+def remove_favorite():
+    try:
+        current_user = get_jwt_identity()
+        data = request.get_json()
+        
+        if not data or 'recipeName' not in data:
+            return jsonify({'message': 'Recipe name is required'}), 400
+            
+        recipe_name = data['recipeName']
+        
+        # Eltávolítjuk a kedvencekből
+        result = db.users.update_one(
+            {'username': current_user},
+            {'$pull': {'favorites': recipe_name}}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({'message': 'Recipe removed from favorites'}), 200
+        return jsonify({'message': 'Recipe was not in favorites'}), 200
+    except Exception as e:
+        logger.error(f"Error removing favorite: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# Felhasználó hozzávalóinak lekérdezése
+@app.route('/user/ingredients', methods=['GET'])
+@jwt_required()
+def get_user_ingredients():
+    try:
+        current_user = get_jwt_identity()
+        user = db.users.find_one({'username': current_user})
+        
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+            
+        # Ha nincsenek hozzávalók, üres listát adunk vissza
+        ingredients = user.get('ingredients', [])
+        
+        return jsonify({'ingredients': ingredients}), 200
+    except Exception as e:
+        logger.error(f"Error getting user ingredients: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# Felhasználó hozzávalóinak frissítése
+@app.route('/user/ingredients', methods=['POST'])
+@jwt_required()
+def update_user_ingredients():
+    try:
+        current_user = get_jwt_identity()
+        data = request.get_json()
+        
+        if not data or 'ingredients' not in data:
+            return jsonify({'message': 'Ingredients list is required'}), 400
+            
+        # Frissítjük a felhasználó hozzávalóit
+        result = db.users.update_one(
+            {'username': current_user},
+            {'$set': {'ingredients': data['ingredients']}}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({'message': 'Ingredients updated successfully'}), 200
+        return jsonify({'message': 'No changes were made'}), 200
+    except Exception as e:
+        logger.error(f"Error updating user ingredients: {e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IngredientsModal from "./IngredientsModal";
 import RecipieCard from "../RecipieCard";
-import { Plus } from "lucide-react";
+import { Plus, Loader2 } from "lucide-react";
 
 const Ingredients = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageTransition, setPageTransition] = useState('fade');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Reszponzív itemsPerPage - megtartjuk a 2x4-es elrendezést
   const getItemsPerPage = () => {
@@ -22,10 +24,69 @@ const Ingredients = () => {
 
   const [itemsPerPage] = useState(getItemsPerPage());
 
-  const handleAddIngredients = (newIngredients) => {
-    setIngredients(newIngredients);
-    setIsModalOpen(false);
-    setCurrentPage(1); // Visszaállítjuk az első oldalra új hozzávalók hozzáadásakor
+  // Hozzávalók betöltése
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+          throw new Error('Nincs bejelentkezve!');
+        }
+
+        const response = await fetch('http://localhost:5000/user/ingredients', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Hiba történt a hozzávalók betöltése közben');
+        }
+
+        const data = await response.json();
+        setIngredients(data.ingredients);
+      } catch (err) {
+        setError(err.message);
+        console.error('Hiba:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchIngredients();
+  }, []);
+
+  const handleAddIngredients = async (newIngredients) => {
+    try {
+      const token = localStorage.getItem('jwt');
+      if (!token) {
+        throw new Error('Nincs bejelentkezve!');
+      }
+
+      const response = await fetch('http://localhost:5000/user/ingredients', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ingredients: newIngredients
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Hiba történt a hozzávalók mentése közben');
+      }
+
+      setIngredients(newIngredients);
+      setIsModalOpen(false);
+      setCurrentPage(1);
+    } catch (err) {
+      console.error('Hiba:', err);
+      alert(err.message);
+    }
   };
 
   // Lapozás kezelése
@@ -54,6 +115,22 @@ const Ingredients = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="min-h-[calc(100vh-4rem)] relative p-4 flex flex-col">
@@ -79,9 +156,8 @@ const Ingredients = () => {
 
             {/* Lapozó */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center py-4">
-                <div className="inline-flex items-center bg-white shadow-md rounded-full px-1 py-1">
-                  {/* Előző gomb */}
+              <div className="flex justify-center mt-4">
+                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm">
                   <button
                     onClick={handlePrevPage}
                     disabled={currentPage === 1 || pageTransition === 'fade-out'}
@@ -95,19 +171,11 @@ const Ingredients = () => {
                       <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </button>
-                  
-                  {/* Oldalszámok */}
-                  <div className="flex items-center px-2">
-                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-orange-500 text-white font-medium">
-                      {currentPage}
-                    </div>
-                    <div className="flex items-center ml-2 text-gray-500">
-                      <span className="text-xs text-gray-400 mx-1">/</span>
-                      <span>{totalPages}</span>
-                    </div>
-                  </div>
-                  
-                  {/* Következő gomb */}
+
+                  <span className="text-sm text-gray-600">
+                    {currentPage} / {totalPages}
+                  </span>
+
                   <button
                     onClick={handleNextPage}
                     disabled={currentPage === totalPages || pageTransition === 'fade-out'}
