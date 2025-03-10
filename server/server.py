@@ -433,5 +433,71 @@ def remove_ingredient():
         logger.error(f"Error removing ingredient: {e}")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/recipe/<recipe_name>/match', methods=['GET'])
+@jwt_required()
+def get_recipe_match(recipe_name):
+    try:
+        current_user = get_jwt_identity()
+        logger.info(f"Calculating match for recipe {recipe_name} and user {current_user}")
+        
+        user = db.users.find_one({'username': current_user})
+        if not user:
+            logger.error(f"User {current_user} not found")
+            return jsonify({'message': 'User not found'}), 404
+            
+        # Recept lekérése
+        recipe = collection.find_one({"name": recipe_name})
+        if not recipe:
+            logger.error(f"Recipe {recipe_name} not found")
+            return jsonify({"message": "Recipe not found"}), 404
+            
+        # Felhasználó hozzávalói
+        user_ingredients = user.get('ingredients', [])
+        logger.info(f"User ingredients: {json.dumps(user_ingredients, indent=2)}")
+        
+        # Recept hozzávalói
+        recipe_ingredients = recipe.get('ingredients', [])
+        logger.info(f"Recipe ingredients: {json.dumps(recipe_ingredients, indent=2)}")
+        
+        # Egyezések számolása
+        total_ingredients = len(recipe_ingredients)
+        matching_ingredients = 0
+        
+        for recipe_ing in recipe_ingredients:
+            # Ellenőrizzük a recept hozzávaló struktúráját
+            logger.info(f"Checking recipe ingredient: {json.dumps(recipe_ing, indent=2)}")
+            
+            # Név kinyerése a receptből
+            recipe_ingredient_name = recipe_ing.get('name', '')
+            logger.info(f"Recipe ingredient name: {recipe_ingredient_name}")
+            
+            # Keresés a felhasználó hozzávalói között
+            for user_ing in user_ingredients:
+                user_ingredient_name = user_ing.get('name', '')
+                logger.info(f"Comparing with user ingredient: {user_ingredient_name}")
+                
+                if user_ingredient_name.lower() == recipe_ingredient_name.lower():
+                    matching_ingredients += 1
+                    logger.info(f"Found matching ingredient: {recipe_ingredient_name}")
+                    break
+        
+        # Százalék számítása
+        match_percentage = (matching_ingredients / total_ingredients * 100) if total_ingredients > 0 else 0
+        logger.info(f"Match percentage: {match_percentage}% ({matching_ingredients}/{total_ingredients})")
+        
+        result = {
+            'total_ingredients': total_ingredients,
+            'matching_ingredients': matching_ingredients,
+            'match_percentage': round(match_percentage, 1)
+        }
+        logger.info(f"Returning result: {json.dumps(result, indent=2)}")
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        logger.error(f"Error calculating recipe match: {e}")
+        logger.exception("Detailed error:")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
