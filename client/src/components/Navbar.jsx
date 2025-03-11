@@ -25,7 +25,7 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
 
   const navButtons = [
     {
-      label: "Receptek",
+      label: "Összes",
       value: null,
       icon: <Receipt className="w-5 h-5" />,
     },
@@ -52,7 +52,7 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md border-b border-orange-100 dark:border-dark-secondary">
+    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-dark-primary/90 backdrop-blur-lg shadow-lg">
       <div className="w-full px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Bal oldali szűrők */}
@@ -60,37 +60,41 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
             {navButtons.map((button) => (
               <button
                 key={button.value ?? 'all'}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 
-                         flex items-center gap-2 group
+                className={`px-4 py-2.5 rounded-xl font-medium transition-all duration-300 
+                         flex items-center gap-2 group hover:scale-105
                          ${selectedMealType === button.value 
-                           ? 'bg-orange-100 text-orange-600 dark:bg-dark-secondary dark:text-dark-tertiary' 
-                           : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-dark-secondary dark:hover:text-dark-tertiary'}`}
+                           ? 'bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20' 
+                           : 'text-gray-700 hover:bg-orange-100/50 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary'}`}
                 onClick={() => handleMealTypeClick(button.value)}
               >
-                <span className="transition-colors duration-200 group-hover:text-orange-600 dark:group-hover:text-dark-tertiary">
+                <span className={`transition-transform duration-300 ${selectedMealType === button.value ? 'text-white' : ''}`}>
                   {button.icon}
                 </span>
-                {button.label}
+                <span className="font-medium">{button.label}</span>
               </button>
             ))}
           </div>
 
           {/* Jobb oldali keresés és témaváltó */}
           <div className="flex items-center gap-4">
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className={`w-5 h-5 transition-colors duration-300 ${searchText ? 'text-white' : 'text-gray-400 group-hover:text-orange-500'}`} />
+              </div>
               <input
                 type="text"
                 placeholder="Keresés..."
                 value={searchText}
                 onChange={handleSearchChange}
-                className="pl-10 pr-4 py-2 rounded-lg border-2 border-orange-300
-                         focus:border-orange-500 focus:ring-4 focus:ring-orange-200
-                         bg-white/80 font-primary w-64
-                         dark:bg-dark-secondary dark:border-dark-tertiary dark:text-gray-200
-                         dark:focus:ring-dark-tertiary/20
-                         transition duration-200"
+                className={`w-64 pl-11 pr-4 py-2.5 rounded-xl font-medium transition-all duration-300
+                          ${searchText 
+                            ? 'bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white placeholder-white/70 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20' 
+                            : 'bg-transparent text-gray-700 dark:text-gray-300 hover:bg-orange-100/50 hover:text-orange-600 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary'} 
+                          border border-orange-200/50 dark:border-dark-tertiary/20
+                          focus:border-orange-500/50 dark:focus:border-dark-tertiary/50
+                          focus:ring-2 focus:ring-orange-500/20 dark:focus:ring-dark-tertiary/20
+                          hover:scale-105`}
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
             </div>
             <ThemeToggle />
           </div>

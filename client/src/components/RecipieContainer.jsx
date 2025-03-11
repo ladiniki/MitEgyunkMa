@@ -136,41 +136,36 @@ const RecipieContainer = () => {
         </div>
       ) : (
         <div className="relative">
-          {/* Reszponzív grid elrendezés egyszerű fade animációval */}
-          <div
-            className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${
-              pageTransition === "fade-in"
-                ? "animate-fade-in"
-                : pageTransition === "fade-out"
-                ? "animate-fade-out"
-                : ""
-            }`}
-          >
+          <div className="gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
             {currentRecipes.map((recipe, index) => (
-              <RecipieCard
-                key={index}
-                name={recipe.name}
-                cookingTime={recipe.cookingTime}
-                image={recipe.image}
-                mealType={recipe.mealType}
-                difficulty={recipe.difficulty}
-              />
+              <div
+                key={`${currentPage}-${index}`}
+                className="animate-fade-in-down opacity-0"
+                style={{
+                  animationDelay: `${index * 50}ms`,
+                }}
+              >
+                <RecipieCard
+                  name={recipe.name}
+                  cookingTime={recipe.cookingTime}
+                  image={recipe.image}
+                  mealType={recipe.mealType}
+                  difficulty={recipe.difficulty}
+                />
+              </div>
             ))}
           </div>
 
-          {/* Finomított, modern lapozó */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-6 mb-4">
               <div className="inline-flex items-center bg-white dark:bg-dark-secondary shadow-md dark:shadow-dark-tertiary/10 rounded-full px-1 py-1">
-                {/* Előző gomb */}
                 <button
                   onClick={handlePrevPage}
-                  disabled={currentPage === 1 || pageTransition === "fade-out"}
+                  disabled={currentPage === 1}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                    ${
-                      currentPage === 1
-                        ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
-                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
+                    ${currentPage === 1
+                      ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                     }`}
                   aria-label="Előző oldal"
                 >
@@ -188,31 +183,26 @@ const RecipieContainer = () => {
                   </svg>
                 </button>
 
-                {/* Oldalszámok */}
                 <div className="flex items-center px-2">
-                  {/* Aktuális oldal */}
                   <button
                     className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 dark:bg-dark-tertiary text-white"
                   >
                     {currentPage}
                   </button>
 
-                  {/* Elválasztó és utolsó oldal */}
                   <div className="flex items-center ml-2 text-gray-500 dark:text-gray-400">
                     <span className="text-xs text-gray-400 dark:text-gray-500 mx-1">/</span>
                     <span>{totalPages}</span>
                   </div>
                 </div>
 
-                {/* Következő gomb */}
                 <button
                   onClick={handleNextPage}
-                  disabled={currentPage === totalPages || pageTransition === "fade-out"}
+                  disabled={currentPage === totalPages}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                    ${
-                      currentPage === totalPages
-                        ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
-                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
+                    ${currentPage === totalPages
+                      ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                     }`}
                   aria-label="Következő oldal"
                 >
@@ -235,25 +225,21 @@ const RecipieContainer = () => {
         </div>
       )}
 
-      {/* CSS animációk */}
       <style dangerouslySetInnerHTML={{
         __html: `
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        @keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
         
-        @keyframes fadeOut {
-          from { opacity: 1; }
-          to { opacity: 0; }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 300ms ease-in-out forwards;
-        }
-        
-        .animate-fade-out {
-          animation: fadeOut 200ms ease-in-out forwards;
+        .animate-fade-in-down {
+          animation: fadeInDown 0.4s ease-out forwards;
         }
       `}} />
     </div>

@@ -70,57 +70,71 @@ const Sidebar = ({ onCompactChange }) => {
   }, []);
 
   return (
-    <div className={`flex flex-col items-center bg-white/80 dark:bg-dark-primary/80 backdrop-blur-md h-full border-r border-orange-100 dark:border-dark-secondary transition-all duration-300 ${isCompact ? 'w-20' : 'w-full'} relative`}>
+    <div className={`flex flex-col items-center bg-white/90 dark:bg-dark-primary/90 backdrop-blur-lg h-full border-r border-orange-100/50 dark:border-dark-secondary/50 shadow-lg transition-all duration-300 ${isCompact ? 'w-20' : 'w-full'} relative`}>
       {/* Admin profil rész */}
-      <div className={`flex flex-col items-center w-full pt-6 pb-6 border-b border-orange-100 dark:border-dark-secondary ${isCompact ? 'px-2' : 'px-4'}`}>
+      <div className={`flex flex-col items-center w-full pt-8 pb-8 border-b border-orange-100/50 dark:border-dark-secondary/50 ${isCompact ? 'px-2' : 'px-4'}`}>
         <div
-          className="flex justify-center items-center bg-orange-500 dark:bg-dark-tertiary rounded-full w-16 h-16 
-                      shadow-lg shadow-orange-100 dark:shadow-dark-tertiary/20 transition-transform hover:scale-105"
+          className="flex justify-center items-center bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 
+                     rounded-full w-16 h-16 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20 
+                     transition-all duration-300"
         >
           <span className="flex justify-center items-center w-full h-full text-2xl font-bold text-white">
             {username ? username.charAt(0).toUpperCase() : "?"}
           </span>
         </div>
         {!isCompact && (
-          <span className="mt-3 text-gray-700 dark:text-gray-200 text-lg font-medium">
-            {username || "Betöltés..."}
-          </span>
+          <div className="mt-4 text-center">
+            <span className="text-gray-700 dark:text-gray-200 text-lg font-medium">
+              {username || "Betöltés..."}
+            </span>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Felhasználó</p>
+          </div>
         )}
       </div>
 
       {/* Toggle gomb */}
       <button
         onClick={toggleCompact}
-        className="absolute right-0 top-[140px] transform translate-x-1/2 bg-white dark:bg-dark-primary rounded-full p-1.5 shadow-md border border-orange-100 dark:border-dark-secondary hover:bg-orange-50 dark:hover:bg-dark-secondary transition-colors"
+        className="absolute -right-3 top-[140px] transform bg-white dark:bg-dark-primary rounded-xl p-2 
+                 shadow-lg shadow-orange-500/10 dark:shadow-dark-tertiary/10 border border-orange-100/50 dark:border-dark-secondary/50 
+                 hover:bg-orange-50 dark:hover:bg-dark-secondary transition-all duration-300 hover:scale-110 
+                 hover:shadow-xl hover:shadow-orange-500/20 dark:hover:shadow-dark-tertiary/20 group"
       >
-        {isCompact ? <ChevronRight size={16} className="text-gray-600 dark:text-gray-300" /> : <ChevronLeft size={16} className="text-gray-600 dark:text-gray-300" />}
+        {isCompact ? 
+          <ChevronRight size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:translate-x-0.5" /> : 
+          <ChevronLeft size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        }
       </button>
 
       {/* Navigációs gombok */}
-      <div className={`flex flex-col items-start w-full pt-6 ${isCompact ? 'px-2' : 'px-4'}`}>
+      <div className={`flex flex-col items-start w-full pt-8 ${isCompact ? 'px-2' : 'px-4'} space-y-2`}>
         {buttons.map((button, index) => (
           <button
             key={index}
-            className={`mb-3 w-full text-left px-4 py-2.5 rounded-xl transition-all duration-200
-                      flex items-center gap-3 hover:bg-orange-50 dark:hover:bg-dark-secondary
+            className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300
+                      flex items-center gap-3 group hover:scale-105
                       ${location.pathname === button.route
-                ? "text-orange-600 dark:text-dark-tertiary font-medium bg-orange-50 dark:bg-dark-secondary"
-                : "text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-dark-tertiary"
+                ? "bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20"
+                : "text-gray-700 dark:text-gray-300 hover:bg-orange-100/50 dark:hover:bg-dark-secondary/50 hover:text-orange-600 dark:hover:text-dark-tertiary"
               }`}
             onClick={() => navigate(button.route)}
             title={isCompact ? button.label : undefined}
           >
-            <span className="transition-colors duration-200">
+            <span className={`transition-all duration-300 ${location.pathname === button.route ? 'text-white scale-110' : 'group-hover:scale-110'}`}>
               {button.icon}
             </span>
-            {!isCompact && button.label}
+            {!isCompact && (
+              <span className={`transition-transform duration-300 ${location.pathname === button.route ? 'font-medium' : ''}`}>
+                {button.label}
+              </span>
+            )}
           </button>
         ))}
       </div>
 
       {/* Logo az alján */}
       {!isCompact && (
-        <div className="mt-auto pb-6 hover:opacity-95 transition-opacity">
+        <div className="mt-auto pb-6 transition-opacity duration-300 hover:opacity-90">
           <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="w-40" />
         </div>
       )}
