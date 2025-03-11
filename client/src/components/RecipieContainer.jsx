@@ -63,7 +63,7 @@ const RecipieContainer = () => {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500 dark:border-dark-tertiary"></div>
         </div>
       </div>
     );
@@ -124,12 +124,12 @@ const RecipieContainer = () => {
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
       {filteredRecipies.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="text-center p-8 rounded-2xl bg-white/50 backdrop-blur-sm shadow-sm">
-            <Search className="w-12 h-12 text-orange-300 mx-auto mb-4" />
-            <p className="text-gray-600 text-lg font-medium mb-2">
+          <div className="text-center p-8 rounded-2xl bg-white/50 dark:bg-dark-secondary/50 backdrop-blur-sm shadow-sm">
+            <Search className="w-12 h-12 text-orange-300 dark:text-dark-tertiary mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-300 text-lg font-medium mb-2">
               Nincs találat a keresési feltételekre.
             </p>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 dark:text-gray-500 text-sm">
               Próbálkozz más kulcsszavakkal vagy szűrőkkel.
             </p>
           </div>
@@ -161,7 +161,7 @@ const RecipieContainer = () => {
           {/* Finomított, modern lapozó */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-6 mb-4">
-              <div className="inline-flex items-center bg-white shadow-md rounded-full px-1 py-1">
+              <div className="inline-flex items-center bg-white dark:bg-dark-secondary shadow-md dark:shadow-dark-tertiary/10 rounded-full px-1 py-1">
                 {/* Előző gomb */}
                 <button
                   onClick={handlePrevPage}
@@ -169,8 +169,8 @@ const RecipieContainer = () => {
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                     ${
                       currentPage === 1
-                        ? "text-gray-300 cursor-not-allowed"
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                     }`}
                   aria-label="Előző oldal"
                 >
@@ -192,14 +192,14 @@ const RecipieContainer = () => {
                 <div className="flex items-center px-2">
                   {/* Aktuális oldal */}
                   <button
-                    className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 text-white"
+                    className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 dark:bg-dark-tertiary text-white"
                   >
                     {currentPage}
                   </button>
 
                   {/* Elválasztó és utolsó oldal */}
-                  <div className="flex items-center ml-2 text-gray-500">
-                    <span className="text-xs text-gray-400 mx-1">/</span>
+                  <div className="flex items-center ml-2 text-gray-500 dark:text-gray-400">
+                    <span className="text-xs text-gray-400 dark:text-gray-500 mx-1">/</span>
                     <span>{totalPages}</span>
                   </div>
                 </div>
@@ -207,14 +207,12 @@ const RecipieContainer = () => {
                 {/* Következő gomb */}
                 <button
                   onClick={handleNextPage}
-                  disabled={
-                    currentPage === totalPages || pageTransition === "fade-out"
-                  }
+                  disabled={currentPage === totalPages || pageTransition === "fade-out"}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                     ${
                       currentPage === totalPages
-                        ? "text-gray-300 cursor-not-allowed"
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                     }`}
                   aria-label="Következő oldal"
                 >

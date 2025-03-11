@@ -15,32 +15,34 @@
 /* Input mezőkben visszaállítjuk a kurzort és felülírjuk az alapértelmezett stílusokat */
 input, textarea, [contenteditable="true"] {
   caret-color: auto;
-  background-color: white !important;
+  @apply bg-white dark:bg-dark-secondary !important;
 }
 
 /* Input mezők fókusz állapotának felülírása */
 input:focus {
-  outline-color: #f97316 !important;
-  border-color: #f97316 !important;
+  @apply outline-orange-500 dark:outline-dark-tertiary border-orange-500 dark:border-dark-tertiary !important;
   box-shadow: 0 0 0 4px rgba(249,115,22,0.2) !important;
-  background-color: white !important;
 }
 
-/* Autofill stílusok felülírása - csak itt legyen narancssárga */
+/* Autofill stílusok felülírása */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 30px rgb(255, 247, 237) inset !important;
   -webkit-text-fill-color: inherit !important;
   transition: background-color 5000s ease-in-out 0s;
-  background-color: rgb(255, 247, 237) !important;
 }
 
-/* ... existing scrollbar styles ... */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px rgb(42, 39, 37) inset !important;
+  -webkit-text-fill-color: rgb(229, 231, 235) !important;
+}
 
 /* Modern layout styles */
 .main-layout {
-  background: linear-gradient(120deg, #fdf2ed 0%, #fff6f3 100%);
+  @apply bg-gradient-to-br from-orange-50 to-orange-100 dark:from-dark-background dark:to-dark-primary;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -58,10 +60,13 @@ input:-webkit-autofill:focus {
   pointer-events: none;
 }
 
+.dark .main-layout::before {
+  background: radial-gradient(circle at 0% 0%, rgba(255, 139, 62, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 100% 100%, rgba(255, 224, 194, 0.05) 0%, transparent 50%);
+}
+
 .glass-effect {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  @apply bg-white/70 dark:bg-dark-primary/70 backdrop-blur-md border border-white/20 dark:border-dark-secondary/20;
 }
 
 /* Modern container transitions */

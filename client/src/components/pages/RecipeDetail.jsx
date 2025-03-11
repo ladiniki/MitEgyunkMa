@@ -159,9 +159,9 @@ const RecipeDetail = () => {
           size={isInteractive ? 24 : 16}
           className={`${
             index < rating
-              ? "fill-yellow-400 text-yellow-400"
-              : "fill-gray-200 text-gray-200"
-          } ${isInteractive ? 'transition-colors hover:fill-yellow-400 hover:text-yellow-400' : ''}`}
+              ? "fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500"
+              : "fill-gray-200 text-gray-200 dark:fill-gray-600 dark:text-gray-600"
+          } ${isInteractive ? 'transition-colors hover:fill-yellow-400 hover:text-yellow-400 dark:hover:fill-yellow-500 dark:hover:text-yellow-500' : ''}`}
         />
       </button>
     ));
@@ -204,17 +204,17 @@ const RecipeDetail = () => {
     
     switch(difficulty) {
       case "könnyű":
-        color = "bg-green-100 text-green-700";
+        color = "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400";
         icon = <ChefHat size={16} className="mr-1" />;
         label = "Könnyű";
         break;
       case "közepes":
-        color = "bg-yellow-100 text-yellow-700";
+        color = "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400";
         icon = <Utensils size={16} className="mr-1" />;
         label = "Közepes";
         break;
       case "haladó":
-        color = "bg-red-100 text-red-700";
+        color = "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400";
         icon = <Trophy size={16} className="mr-1" />;
         label = "Haladó";
         break;
@@ -234,7 +234,7 @@ const RecipeDetail = () => {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500 dark:border-dark-tertiary"></div>
         </div>
       </div>
     );
@@ -243,10 +243,10 @@ const RecipeDetail = () => {
   if (error) {
     return (
       <div className="px-4 sm:px-6 py-4 h-full flex flex-col items-center justify-center overflow-hidden">
-        <p className="text-red-500 text-lg mb-4">{error}</p>
+        <p className="text-red-500 dark:text-red-400 text-lg mb-4">{error}</p>
         <button 
           onClick={() => navigate("/recipies")} 
-          className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center px-4 py-2 bg-orange-500 dark:bg-dark-tertiary text-white rounded-lg hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors"
         >
           <ArrowLeft size={18} className="mr-2" />
           Vissza a receptekhez
@@ -258,10 +258,10 @@ const RecipeDetail = () => {
   if (!recipe) {
     return (
       <div className="px-4 sm:px-6 py-4 h-full flex flex-col items-center justify-center overflow-hidden">
-        <p className="text-gray-500 text-lg mb-4">A recept nem található.</p>
+        <p className="text-gray-500 dark:text-gray-400 text-lg mb-4">A recept nem található.</p>
         <button 
           onClick={() => navigate("/recipies")} 
-          className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center px-4 py-2 bg-orange-500 dark:bg-dark-tertiary text-white rounded-lg hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors"
         >
           <ArrowLeft size={18} className="mr-2" />
           Vissza a receptekhez
@@ -277,20 +277,20 @@ const RecipeDetail = () => {
   const displayedSteps = recipe.steps.slice(0, maxSteps);
 
   return (
-    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col overflow-y-auto">
+    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col overflow-y-auto bg-gray-50 dark:bg-dark-primary">
       {/* Navigációs "breadcrumb" stílusú visszalépés */}
       <nav className="mb-4">
         <div className="flex items-center text-sm">
           <button 
             onClick={() => navigate("/recipies")} 
-            className="flex items-center text-orange-500 hover:text-orange-600 transition-colors"
+            className="flex items-center text-orange-500 hover:text-orange-600 dark:text-dark-tertiary dark:hover:text-orange-500 transition-colors"
             aria-label="Vissza a receptekhez"
           >
             <Home size={16} className="mr-1" />
             <span>Receptek</span>
           </button>
-          <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-600 truncate max-w-[250px]">{recipe.name}</span>
+          <span className="mx-2 text-gray-400 dark:text-gray-600">/</span>
+          <span className="text-gray-600 dark:text-gray-400 truncate max-w-[250px]">{recipe.name}</span>
         </div>
       </nav>
 
@@ -323,31 +323,31 @@ const RecipeDetail = () => {
           </div>
 
           {/* Leírás */}
-          <div className="mt-3 bg-white p-3 rounded-xl shadow-md flex-1">
-            <h2 className="text-lg font-semibold mb-2 text-gray-800">Leírás</h2>
-            <p className="text-gray-600 text-sm line-clamp-6">{recipe.description}</p>
+          <div className="mt-3 bg-white dark:bg-dark-secondary p-3 rounded-xl shadow-md flex-1">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Leírás</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-6">{recipe.description}</p>
           </div>
         </div>
 
         {/* Jobb oldal: Hozzávalók és elkészítés lépései */}
         <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3 h-full">
           {/* Hozzávalók */}
-          <div className="bg-white p-3 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-2 text-gray-800">Hozzávalók</h2>
+          <div className="bg-white dark:bg-dark-secondary p-3 rounded-xl shadow-md">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Hozzávalók</h2>
             <div>
               <ul className="space-y-1.5">
                 {displayedIngredients.map((ingredient, index) => (
-                  <li key={index} className="flex items-center bg-orange-50 p-1.5 rounded-lg text-sm">
-                    <span className="w-5 h-5 flex items-center justify-center bg-orange-100 rounded-full mr-2 text-orange-600 text-xs font-medium flex-shrink-0">
+                  <li key={index} className="flex items-center bg-orange-50 dark:bg-dark-primary p-1.5 rounded-lg text-sm">
+                    <span className="w-5 h-5 flex items-center justify-center bg-orange-100 dark:bg-dark-secondary rounded-full mr-2 text-orange-600 dark:text-dark-tertiary text-xs font-medium flex-shrink-0">
                       {index + 1}
                     </span>
-                    <span className="text-gray-700 truncate">
+                    <span className="text-gray-700 dark:text-gray-300 truncate">
                       {ingredient.name}: {ingredient.amount} {ingredient.unit}
                     </span>
                   </li>
                 ))}
                 {recipe.ingredients.length > maxIngredients && (
-                  <li className="text-center text-xs text-gray-500 mt-1">
+                  <li className="text-center text-xs text-gray-500 dark:text-gray-400 mt-1">
                     +{recipe.ingredients.length - maxIngredients} további hozzávaló
                   </li>
                 )}
@@ -356,8 +356,8 @@ const RecipeDetail = () => {
           </div>
 
           {/* Elkészítés lépései */}
-          <div className="bg-white p-3 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-2 text-gray-800">Elkészítés</h2>
+          <div className="bg-white dark:bg-dark-secondary p-3 rounded-xl shadow-md">
+            <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Elkészítés</h2>
             <div>
               <ol className="space-y-1.5">
                 {displayedSteps.map((step, index) => (
@@ -366,10 +366,10 @@ const RecipeDetail = () => {
                       onClick={() => toggleStepCompletion(index)}
                       className={`flex-shrink-0 w-5 h-5 flex items-center justify-center ${
                         completedSteps.includes(index) 
-                          ? 'bg-green-500' 
+                          ? 'bg-green-500 dark:bg-green-600' 
                           : isStepCheckable(index)
-                            ? 'bg-orange-500'
-                            : 'bg-gray-400'
+                            ? 'bg-orange-500 dark:bg-dark-tertiary'
+                            : 'bg-gray-400 dark:bg-gray-600'
                       } text-white rounded-full mr-2 text-xs font-medium transition-colors`}
                       disabled={!isStepCheckable(index) && !completedSteps.includes(index)}
                       aria-label={`${completedSteps.includes(index) ? 'Lépés visszaállítása' : 'Lépés befejezése'}`}
@@ -378,12 +378,12 @@ const RecipeDetail = () => {
                       {completedSteps.includes(index) ? <Check size={12} /> : index + 1}
                     </button>
                     <div 
-                      className={`bg-gray-50 p-2 rounded-lg flex-grow ${
-                        completedSteps.includes(index) ? 'bg-green-50' : ''
+                      className={`bg-gray-50 dark:bg-dark-primary p-2 rounded-lg flex-grow ${
+                        completedSteps.includes(index) ? 'bg-green-50 dark:bg-green-900/20' : ''
                       }`}
                     >
-                      <p className={`text-gray-700 line-clamp-2 ${
-                        completedSteps.includes(index) ? 'line-through text-gray-500' : ''
+                      <p className={`text-gray-700 dark:text-gray-300 line-clamp-2 ${
+                        completedSteps.includes(index) ? 'line-through text-gray-500 dark:text-gray-500' : ''
                       }`}>
                         {step}
                       </p>
@@ -391,7 +391,7 @@ const RecipeDetail = () => {
                   </li>
                 ))}
                 {recipe.steps.length > maxSteps && (
-                  <li className="text-center text-xs text-gray-500 mt-1">
+                  <li className="text-center text-xs text-gray-500 dark:text-gray-400 mt-1">
                     +{recipe.steps.length - maxSteps} további lépés
                   </li>
                 )}
@@ -405,31 +405,31 @@ const RecipeDetail = () => {
       <div className="mt-4 mb-6">
         <button
           onClick={() => setShowReviews(!showReviews)}
-          className="w-full flex items-center justify-between p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+          className="w-full flex items-center justify-between p-4 bg-white dark:bg-dark-secondary rounded-xl shadow-md hover:shadow-lg dark:hover:shadow-dark-tertiary/10 transition-all duration-200"
         >
           <div className="flex items-center">
-            <MessageCircle size={20} className="text-orange-500 mr-2" />
-            <span className="font-semibold text-gray-800">Vélemények</span>
+            <MessageCircle size={20} className="text-orange-500 dark:text-dark-tertiary mr-2" />
+            <span className="font-semibold text-gray-800 dark:text-gray-200">Vélemények</span>
             {reviews.length > 0 && (
-              <span className="ml-2 px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full text-sm">
+              <span className="ml-2 px-2 py-0.5 bg-orange-100 dark:bg-dark-primary text-orange-600 dark:text-dark-tertiary rounded-full text-sm">
                 {reviews.length}
               </span>
             )}
           </div>
           {showReviews ? (
-            <ChevronUp size={20} className="text-gray-500" />
+            <ChevronUp size={20} className="text-gray-500 dark:text-gray-400" />
           ) : (
-            <ChevronDown size={20} className="text-gray-500" />
+            <ChevronDown size={20} className="text-gray-500 dark:text-gray-400" />
           )}
         </button>
 
         {showReviews && (
-          <div className="mt-3 bg-white p-4 rounded-xl shadow-md">
+          <div className="mt-3 bg-white dark:bg-dark-secondary p-4 rounded-xl shadow-md">
             {/* Új vélemény form */}
             <form onSubmit={handleSubmitReview} className="mb-6">
               <div className="flex flex-col space-y-4">
                 <div className="flex items-center">
-                  <span className="text-sm text-gray-600 mr-3">Értékelés:</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400 mr-3">Értékelés:</span>
                   <div className="flex space-x-1">
                     {renderStars(newReview.rating, true)}
                   </div>
@@ -440,15 +440,19 @@ const RecipeDetail = () => {
                     value={newReview.comment}
                     onChange={(e) => setNewReview(prev => ({ ...prev, comment: e.target.value }))}
                     placeholder="Írd le a véleményed..."
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 min-h-[100px] resize-none"
+                    className="w-full px-3 py-2 border border-gray-200 dark:border-dark-tertiary rounded-lg 
+                             focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-dark-tertiary 
+                             min-h-[100px] resize-none bg-white dark:bg-dark-primary 
+                             text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
                   />
                   {reviewError && (
-                    <p className="text-red-500 text-sm">{reviewError}</p>
+                    <p className="text-red-500 dark:text-red-400 text-sm">{reviewError}</p>
                   )}
                   <button
                     type="submit"
                     disabled={isSubmitting || !newReview.comment.trim()}
-                    className={`self-end px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors ${
+                    className={`self-end px-4 py-2 bg-orange-500 dark:bg-dark-tertiary text-white rounded-lg 
+                              hover:bg-orange-600 dark:hover:bg-orange-600 transition-colors ${
                       (isSubmitting || !newReview.comment.trim()) ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
@@ -461,7 +465,7 @@ const RecipeDetail = () => {
             {/* Vélemények listája */}
             <div className="space-y-4">
               {reviews.length === 0 ? (
-                <p className="text-center text-gray-500 py-4">
+                <p className="text-center text-gray-500 dark:text-gray-400 py-4">
                   Még nincsenek vélemények. Légy te az első!
                 </p>
               ) : (
@@ -470,18 +474,18 @@ const RecipeDetail = () => {
                     key={review._id || index}
                     className={`p-4 rounded-lg transition-colors ${
                       review.username === currentUser 
-                        ? 'bg-orange-50 hover:bg-orange-100 border-2 border-orange-200' 
-                        : 'bg-gray-50 hover:bg-gray-100'
+                        ? 'bg-orange-50 dark:bg-dark-primary hover:bg-orange-100 dark:hover:bg-dark-primary/80 border-2 border-orange-200 dark:border-dark-tertiary' 
+                        : 'bg-gray-50 dark:bg-dark-primary hover:bg-gray-100 dark:hover:bg-dark-primary/80'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center">
                         <div className="flex items-center">
-                          <span className="font-medium text-gray-800 mr-2">
+                          <span className="font-medium text-gray-800 dark:text-gray-200 mr-2">
                             {review.username}
                           </span>
                           {review.username === currentUser && (
-                            <span className="px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full text-xs font-medium">
+                            <span className="px-2 py-0.5 bg-orange-100 dark:bg-dark-secondary text-orange-600 dark:text-dark-tertiary rounded-full text-xs font-medium">
                               Te
                             </span>
                           )}
@@ -490,7 +494,7 @@ const RecipeDetail = () => {
                           {renderStars(review.rating)}
                         </div>
                       </div>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
                         {review.date ? new Date(review.date).toLocaleString('hu-HU', {
                           year: 'numeric',
                           month: 'long',
@@ -501,7 +505,7 @@ const RecipeDetail = () => {
                         }) : 'Ismeretlen dátum'}
                       </span>
                     </div>
-                    <p className="text-gray-600 mt-2">{review.comment}</p>
+                    <p className="text-gray-600 dark:text-gray-400 mt-2">{review.comment}</p>
                   </div>
                 ))
               )}

@@ -14,24 +14,24 @@ import Favorites from "./components/pages/Favorites";
 const AuthenticatedLayout = () => {
   const [selectedMealType, setSelectedMealType] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const [isSidebarCompact, setIsSidebarCompact] = useState(false);
 
   return (
-    <div className="flex h-screen font-primary bg-light-background">
-
-      <div className="fixed top-0 left-0 w-[15%] h-screen bg-light-background">
-        <Sidebar />
+    <div className="flex h-screen font-primary bg-light-background dark:bg-dark-background">
+      <div className={`fixed top-0 left-0 h-screen bg-light-background dark:bg-dark-background transition-all duration-300 ${isSidebarCompact ? 'w-20' : 'w-[15%]'}`}>
+        <Sidebar onCompactChange={setIsSidebarCompact} />
       </div>
 
       {/* Main content area with background */}
-      <div className="ml-[15%] flex flex-col w-[85%] h-screen overflow-hidden">
-        <div className="sticky top-0 z-50 bg-light-background">
+      <div className={`transition-all duration-300 ${isSidebarCompact ? 'ml-20' : 'ml-[15%]'} flex flex-col w-full h-screen overflow-hidden`}>
+        <div className="sticky top-0 z-50 bg-light-background dark:bg-dark-background">
           <Navbar 
             selectedMealType={selectedMealType} 
             onMealTypeChange={setSelectedMealType} 
             onSearchChange={setSearchText}
           />
         </div>
-        <div className="flex-1 overflow-y-auto bg-light-background">
+        <div className="flex-1 overflow-y-auto bg-light-background dark:bg-dark-background">
           <Outlet context={{ selectedMealType, searchText }} />
         </div>
       </div>
