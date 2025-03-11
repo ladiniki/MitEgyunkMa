@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import FoodBackground from "../FoodBackground";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,8 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 via-orange-50 to-orange-100 dark:from-dark-background dark:via-dark-primary dark:to-dark-background">
-      <div className="max-w-md w-full bg-white/90 dark:bg-dark-primary/90 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(249,115,22,0.1)] dark:shadow-[0_8px_30px_rgba(255,139,62,0.1)] p-8 space-y-6 border border-orange-200 dark:border-dark-secondary">
+      <FoodBackground />
+      <div className="relative z-10 max-w-md w-full bg-white/90 dark:bg-dark-primary/90 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(249,115,22,0.1)] dark:shadow-[0_8px_30px_rgba(255,139,62,0.1)] p-8 space-y-6 border border-orange-200 dark:border-dark-secondary">
         <div className="text-center">
           <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="mx-auto w-64" />
         </div>

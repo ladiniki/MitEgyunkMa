@@ -277,7 +277,7 @@ const RecipeDetail = () => {
   const displayedSteps = recipe.steps.slice(0, maxSteps);
 
   return (
-    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col overflow-y-auto bg-gray-50 dark:bg-dark-primary">
+    <div className="px-4 sm:px-6 py-4 h-[calc(100vh-64px)] flex flex-col overflow-y-auto bg-beige dark:bg-dark-primary">
       {/* Navigációs "breadcrumb" stílusú visszalépés */}
       <nav className="mb-4">
         <div className="flex items-center text-sm">

@@ -185,7 +185,7 @@ const RecipieCard = ({ name, cookingTime, image, difficulty, quantity, unit, onQ
   return (
     <div className="h-full">
       <div 
-        className={`bg-white dark:bg-dark-primary rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl dark:hover:shadow-dark-tertiary/10 h-full flex flex-col ${cookingTime ? 'cursor-pointer' : ''}`}
+        className={`bg-white dark:bg-dark-secondary rounded-xl overflow-hidden relative transform-gpu hover:scale-[1.02] transition-all duration-300 hover:shadow-xl dark:hover:shadow-dark-tertiary/10 h-full flex flex-col ${cookingTime ? 'cursor-pointer' : ''}`}
         onClick={handleCardClick}
       >
         <div className="relative">
