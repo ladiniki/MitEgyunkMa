@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, Search, Loader2 } from "lucide-react";
+import { X, Search } from "lucide-react";
 import PropTypes from "prop-types";
 
 const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
@@ -9,36 +9,36 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Meglévő hozzávalók betöltése
+  //Meglévő hozzávalók betöltése
   useEffect(() => {
     const loadExistingIngredients = async () => {
       if (!isOpen) return;
 
       try {
-        const token = localStorage.getItem('jwt');
+        const token = localStorage.getItem("jwt");
         if (!token) {
-          throw new Error('Nincs bejelentkezve!');
+          throw new Error("Nincs bejelentkezve!");
         }
 
-        const response = await fetch('http://localhost:5000/user/ingredients', {
+        const response = await fetch("http://localhost:5000/user/ingredients", {
           headers: {
-            'Authorization': `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         if (!response.ok) {
-          throw new Error('Hiba történt a hozzávalók betöltése közben');
+          throw new Error("Hiba történt a hozzávalók betöltése közben");
         }
 
         const data = await response.json();
-        // Beállítjuk a mennyiségeket a meglévő hozzávalók alapján
+        //Beállítjuk a mennyiségeket a meglévő hozzávalók alapján
         const existingQuantities = {};
-        data.ingredients.forEach(ing => {
+        data.ingredients.forEach((ing) => {
           existingQuantities[ing.name] = ing.quantity;
         });
         setQuantities(existingQuantities);
       } catch (err) {
-        console.error('Hiba:', err);
+        console.error("Hiba:", err);
       }
     };
 
@@ -55,9 +55,13 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
     try {
       setIsLoading(true);
       setError(null);
-      const response = await fetch(`http://localhost:5000/ingredients${searchTerm ? `?search=${searchTerm}` : ''}`);
+      const response = await fetch(
+        `http://localhost:5000/ingredients${
+          searchTerm ? `?search=${searchTerm}` : ""
+        }`
+      );
       if (!response.ok) {
-        throw new Error('Hiba történt a hozzávalók betöltése közben');
+        throw new Error("Hiba történt a hozzávalók betöltése közben");
       }
       const data = await response.json();
       setIngredients(data);
@@ -113,7 +117,9 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
         {/* Fejléc */}
         <div className="flex items-center justify-between p-6 border-b border-orange-100 dark:border-dark-secondary">
           <div className="flex items-center gap-3">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">Hozzávalók hozzáadása</h2>
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+              Hozzávalók hozzáadása
+            </h2>
           </div>
           <button
             onClick={onClose}
@@ -149,7 +155,9 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
             </div>
           ) : error ? (
             <div className="flex items-center justify-center h-full">
-              <p className="text-red-500 dark:text-red-400 text-center">{error}</p>
+              <p className="text-red-500 dark:text-red-400 text-center">
+                {error}
+              </p>
             </div>
           ) : ingredients.length > 0 ? (
             <div className="divide-y divide-gray-100 dark:divide-dark-secondary">

@@ -1,55 +1,55 @@
 import { useState, useEffect } from "react";
 import IngredientsModal from "./IngredientsModal";
 import RecipieCard from "../RecipieCard";
-import { Plus, Loader2, Search, Trash2 } from "lucide-react";
+import { Plus, Search, Trash2 } from "lucide-react";
 
 const Ingredients = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageTransition, setPageTransition] = useState('fade');
+  const [pageTransition, setPageTransition] = useState("fade");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Reszponzív itemsPerPage - megtartjuk a 2x4-es elrendezést
+  //Reszponzív itemsPerPage - 2x4-es elrendezés
   const getItemsPerPage = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 640) return 2; // Mobil: 1x2
-      if (window.innerWidth < 768) return 4; // Tablet: 2x2
-      if (window.innerWidth < 1024) return 6; // Kisebb desktop: 3x2
-      return 8; // Nagy képernyő: 4x2
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 2; //Mobil: 1x2
+      if (window.innerWidth < 768) return 4; //Tablet: 2x2
+      if (window.innerWidth < 1024) return 6; //Kisebb desktop: 3x2
+      return 8;
     }
-    return 8; // Alapértelmezett
+    return 8;
   };
 
   const [itemsPerPage] = useState(getItemsPerPage());
 
-  // Hozzávalók betöltése
+  //Hozzávalók betöltése
   useEffect(() => {
     const fetchIngredients = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        const token = localStorage.getItem('jwt');
+        const token = localStorage.getItem("jwt");
         if (!token) {
-          throw new Error('Nincs bejelentkezve!');
+          throw new Error("Nincs bejelentkezve!");
         }
 
-        const response = await fetch('http://localhost:5000/user/ingredients', {
+        const response = await fetch("http://localhost:5000/user/ingredients", {
           headers: {
-            'Authorization': `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         if (!response.ok) {
-          throw new Error('Hiba történt a hozzávalók betöltése közben');
+          throw new Error("Hiba történt a hozzávalók betöltése közben");
         }
 
         const data = await response.json();
         setIngredients(data.ingredients);
       } catch (err) {
         setError(err.message);
-        console.error('Hiba:', err);
+        console.error("Hiba:", err);
       } finally {
         setIsLoading(false);
       }
@@ -60,16 +60,18 @@ const Ingredients = () => {
 
   const handleAddIngredients = async (newIngredients) => {
     try {
-      const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem("jwt");
       if (!token) {
-        throw new Error('Nincs bejelentkezve!');
+        throw new Error("Nincs bejelentkezve!");
       }
 
-      // Frissítjük a meglévő hozzávalókat az újakkal
+      //Frissítjük a meglévő hozzávalókat az újakkal
       const updatedIngredients = [...ingredients];
-      
-      newIngredients.forEach(newIng => {
-        const existingIndex = updatedIngredients.findIndex(ing => ing.name === newIng.name);
+
+      newIngredients.forEach((newIng) => {
+        const existingIndex = updatedIngredients.findIndex(
+          (ing) => ing.name === newIng.name
+        );
         if (existingIndex !== -1) {
           // Ha már létezik, frissítjük a mennyiséget
           updatedIngredients[existingIndex] = newIng;
@@ -79,105 +81,106 @@ const Ingredients = () => {
         }
       });
 
-      const response = await fetch('http://localhost:5000/user/ingredients', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/user/ingredients", {
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ingredients: updatedIngredients
-        })
+          ingredients: updatedIngredients,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Hiba történt a hozzávalók mentése közben');
+        throw new Error("Hiba történt a hozzávalók mentése közben");
       }
 
       setIngredients(updatedIngredients);
       setIsModalOpen(false);
       setCurrentPage(1);
     } catch (err) {
-      console.error('Hiba:', err);
+      console.error("Hiba:", err);
       alert(err.message);
     }
   };
 
   const handleRemoveIngredient = async (name) => {
     try {
-      const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem("jwt");
       if (!token) {
-        throw new Error('Nincs bejelentkezve!');
+        throw new Error("Nincs bejelentkezve!");
       }
 
-      const response = await fetch('http://localhost:5000/user/ingredients/remove', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name
-        })
-      });
+      const response = await fetch(
+        "http://localhost:5000/user/ingredients/remove",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+          }),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Hiba történt a hozzávaló törlése közben');
+        throw new Error("Hiba történt a hozzávaló törlése közben");
       }
 
-      // Frissítjük a helyi állapotot
-      setIngredients(prevIngredients => 
-        prevIngredients.filter(ingredient => ingredient.name !== name)
+      //Frissítjük a helyi állapotot
+      setIngredients((prevIngredients) =>
+        prevIngredients.filter((ingredient) => ingredient.name !== name)
       );
     } catch (err) {
-      console.error('Hiba:', err);
+      console.error("Hiba:", err);
       alert(err.message);
     }
   };
 
-  // Mennyiség változás kezelése
+  //Mennyiség változás kezelése
   const handleQuantityChange = async (name, newQuantity) => {
     try {
-      const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem("jwt");
       if (!token) {
-        throw new Error('Nincs bejelentkezve!');
+        throw new Error("Nincs bejelentkezve!");
       }
 
-      // Frissítjük a helyi állapotot
-      const updatedIngredients = ingredients.map(ing => 
+      const updatedIngredients = ingredients.map((ing) =>
         ing.name === name ? { ...ing, quantity: newQuantity } : ing
       );
 
-      // Ha a mennyiség 0, töröljük az alapanyagot
       if (newQuantity === 0) {
         await handleRemoveIngredient(name);
         return;
       }
 
-      // Küldjük a frissített listát a szervernek
-      const response = await fetch('http://localhost:5000/user/ingredients', {
-        method: 'POST',
+      //Küldjük a frissített listát a szervernek
+      const response = await fetch("http://localhost:5000/user/ingredients", {
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ingredients: updatedIngredients
-        })
+          ingredients: updatedIngredients,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Hiba történt a mennyiség módosítása közben');
+        throw new Error("Hiba történt a mennyiség módosítása közben");
       }
 
       setIngredients(updatedIngredients);
     } catch (err) {
-      console.error('Hiba:', err);
+      console.error("Hiba:", err);
       alert(err.message);
     }
   };
 
-  // Lapozás kezelése
+  //Lapozás kezelése
   const totalPages = Math.ceil(ingredients.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -185,20 +188,20 @@ const Ingredients = () => {
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setPageTransition('fade-out');
+      setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(prev => prev - 1);
-        setPageTransition('fade-in');
+        setCurrentPage((prev) => prev - 1);
+        setPageTransition("fade-in");
       }, 200);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setPageTransition('fade-out');
+      setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(prev => prev + 1);
-        setPageTransition('fade-in');
+        setCurrentPage((prev) => prev + 1);
+        setPageTransition("fade-in");
       }, 200);
     }
   };
@@ -238,7 +241,15 @@ const Ingredients = () => {
           </div>
         ) : (
           <>
-            <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4 ${pageTransition === 'fade-in' ? 'animate-fade-in' : pageTransition === 'fade-out' ? 'animate-fade-out' : ''}`}>
+            <div
+              className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4 ${
+                pageTransition === "fade-in"
+                  ? "animate-fade-in"
+                  : pageTransition === "fade-out"
+                  ? "animate-fade-out"
+                  : ""
+              }`}
+            >
               {currentItems.map((ingredient, index) => (
                 <div key={index} className="relative group">
                   <RecipieCard
@@ -265,15 +276,28 @@ const Ingredients = () => {
                 <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm">
                   <button
                     onClick={handlePrevPage}
-                    disabled={currentPage === 1 || pageTransition === 'fade-out'}
+                    disabled={
+                      currentPage === 1 || pageTransition === "fade-out"
+                    }
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                      ${currentPage === 1 
-                        ? 'text-gray-300 cursor-not-allowed' 
-                        : 'text-gray-600 hover:bg-gray-100'}`}
+                      ${
+                        currentPage === 1
+                          ? "text-gray-300 cursor-not-allowed"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
                     aria-label="Előző oldal"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </button>
 
@@ -283,15 +307,29 @@ const Ingredients = () => {
 
                   <button
                     onClick={handleNextPage}
-                    disabled={currentPage === totalPages || pageTransition === 'fade-out'}
+                    disabled={
+                      currentPage === totalPages ||
+                      pageTransition === "fade-out"
+                    }
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                      ${currentPage === totalPages 
-                        ? 'text-gray-300 cursor-not-allowed' 
-                        : 'text-gray-600 hover:bg-gray-100'}`}
+                      ${
+                        currentPage === totalPages
+                          ? "text-gray-300 cursor-not-allowed"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
                     aria-label="Következő oldal"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -318,27 +356,6 @@ const Ingredients = () => {
         onClose={() => setIsModalOpen(false)}
         onAdd={handleAddIngredients}
       />
-
-      {/* CSS animációk */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-          from { opacity: 1; }
-          to { opacity: 0; }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 300ms ease-in-out forwards;
-        }
-        
-        .animate-fade-out {
-          animation: fadeOut 200ms ease-in-out forwards;
-        }
-      `}</style>
     </>
   );
 };

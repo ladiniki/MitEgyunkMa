@@ -1,14 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const FoodBackground = () => {
   const canvasRef = useRef(null);
 
-  // Előre definiált étel emoji-k
-  const foodEmojis = ['🍕', '🌮', '🍔', '🥗', '🥘', '🍝', '🥪', '🥨', '🥐', '🧀', '🥩', '🥑', '🍅', '🥕', '🥦'];
-  
+  const foodEmojis = [
+    "🍕",
+    "🌮",
+    "🍔",
+    "🥗",
+    "🥘",
+    "🍝",
+    "🥪",
+    "🥨",
+    "🥐",
+    "🧀",
+    "🥩",
+    "🥑",
+    "🍅",
+    "🥕",
+    "🥦",
+  ];
+
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
     let foods = [];
 
@@ -17,7 +32,7 @@ const FoodBackground = () => {
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
     class FoodItem {
@@ -42,35 +57,36 @@ const FoodBackground = () => {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.globalAlpha = this.opacity;
-        
-        // Emoji rajzolása
+
+        //Emoji rajzolása
         ctx.font = `${this.size}px Arial`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
         ctx.fillText(this.emoji, 0, 0);
-        
+
         ctx.restore();
       }
 
       update(mouseX, mouseY) {
-        // Mozgás és forgás
+        //Mozgás és forgás
         this.x += this.speedX;
         this.y += this.speedY;
         this.rotation += this.rotationSpeed;
 
-        // Pattogó animáció
-        this.size = this.baseSize + Math.sin(Date.now() / 1000 + this.bounceOffset) * 2;
+        //Pattogó animáció
+        this.size =
+          this.baseSize + Math.sin(Date.now() / 1000 + this.bounceOffset) * 2;
 
-        // Opacity fade in
+        //Opacity fade in
         if (this.opacity < this.targetOpacity) {
           this.opacity += 0.01;
         }
 
-        // Egér interakció
+        //Egér interakció
         const dx = mouseX - this.x;
         const dy = mouseY - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < 100) {
           const angle = Math.atan2(dy, dx);
           const force = (100 - distance) / 100;
@@ -84,7 +100,7 @@ const FoodBackground = () => {
           this.speedY = (Math.random() - 0.5) * 1;
         }
 
-        // Képernyő széleinél visszapattanás
+        //Képernyő széleinél visszapattanás
         if (this.x < 0 || this.x > canvas.width) {
           this.speedX *= -1;
           this.rotationSpeed = (Math.random() - 0.5) * 0.03;
@@ -96,34 +112,37 @@ const FoodBackground = () => {
       }
     }
 
-    // Ételek inicializálása
+    //Ételek inicializálása
     const init = () => {
       foods = [];
-      const numberOfFoods = Math.min((canvas.width * canvas.height) / 40000, 30);
+      const numberOfFoods = Math.min(
+        (canvas.width * canvas.height) / 40000,
+        30
+      );
       for (let i = 0; i < numberOfFoods; i++) {
         foods.push(new FoodItem());
       }
     };
 
-    // Egér pozíció követése
+    //Egér pozíció követése
     let mouseX = 0;
     let mouseY = 0;
-    canvas.addEventListener('mousemove', (e) => {
+    canvas.addEventListener("mousemove", (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     });
 
-    // Animációs ciklus
+    //Animációs ciklus
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      foods.forEach(food => {
+
+      foods.forEach((food) => {
         food.update(mouseX, mouseY);
         food.draw();
       });
 
-      // Vonalak rajzolása közeli ételek között
+      //Vonalak rajzolása közeli ételek között
       for (let i = 0; i < foods.length; i++) {
         for (let j = i + 1; j < foods.length; j++) {
           const dx = foods[i].x - foods[j].x;
@@ -132,7 +151,9 @@ const FoodBackground = () => {
 
           if (distance < 150) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(249, 115, 22, ${0.15 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(249, 115, 22, ${
+              0.15 * (1 - distance / 150)
+            })`;
             ctx.lineWidth = 1;
             ctx.moveTo(foods[i].x, foods[i].y);
             ctx.lineTo(foods[j].x, foods[j].y);
@@ -140,7 +161,7 @@ const FoodBackground = () => {
           }
         }
       }
-      
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -148,7 +169,7 @@ const FoodBackground = () => {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -157,7 +178,7 @@ const FoodBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-auto"
-      style={{ background: 'transparent' }}
+      style={{ background: "transparent" }}
     />
   );
 };

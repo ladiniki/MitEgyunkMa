@@ -11,7 +11,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement registration logic
+    //TODO: Implement registration logic
     console.log("Registration data:", formData);
   };
 
@@ -20,12 +20,19 @@ const Register = () => {
       <FoodBackground />
       <div className="relative z-10 max-w-md w-full bg-white/90 dark:bg-dark-primary/90 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(249,115,22,0.1)] dark:shadow-[0_8px_30px_rgba(255,139,62,0.1)] p-8 space-y-6 border border-orange-200 dark:border-dark-secondary">
         <div className="text-center">
-          <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="mx-auto w-64" />
+          <img
+            src="/mit-egyunk-ma2.png"
+            alt="Mit együnk ma?"
+            className="mx-auto w-64"
+          />
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1">
+            <label
+              htmlFor="username"
+              className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1"
+            >
               Felhasználónév
             </label>
             <input
@@ -33,7 +40,9 @@ const Register = () => {
               id="username"
               name="username"
               value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, username: e.target.value })
+              }
               className="w-full px-4 py-2 rounded-xl border-2 border-orange-300 dark:border-dark-tertiary
                        focus:border-orange-500 dark:focus:border-dark-tertiary focus:ring-4 focus:ring-orange-200 dark:focus:ring-dark-tertiary/20
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200
@@ -43,7 +52,10 @@ const Register = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1"
+            >
               Jelszó
             </label>
             <input
@@ -51,7 +63,9 @@ const Register = () => {
               id="password"
               name="password"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
               className="w-full px-4 py-2 rounded-xl border-2 border-orange-300 dark:border-dark-tertiary
                        focus:border-orange-500 dark:focus:border-dark-tertiary focus:ring-4 focus:ring-orange-200 dark:focus:ring-dark-tertiary/20
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200
@@ -61,7 +75,10 @@ const Register = () => {
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1"
+            >
               Jelszó megerősítése
             </label>
             <input
@@ -69,7 +86,9 @@ const Register = () => {
               id="confirmPassword"
               name="confirmPassword"
               value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, confirmPassword: e.target.value })
+              }
               className="w-full px-4 py-2 rounded-xl border-2 border-orange-300 dark:border-dark-tertiary
                        focus:border-orange-500 dark:focus:border-dark-tertiary focus:ring-4 focus:ring-orange-200 dark:focus:ring-dark-tertiary/20
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200

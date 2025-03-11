@@ -95,3 +95,30 @@ input:-webkit-autofill:focus {
   z-index: 0;
 }
 
+/* Fade animációk */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 300ms ease-in-out forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 200ms ease-in-out forwards;
+}
+

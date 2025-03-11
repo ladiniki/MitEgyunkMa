@@ -29,28 +29,6 @@ export default {
       fontFamily: {
         'primary': ['Josefin Sans', 'sans-serif']
       },
-      animation: {
-        bubble1: 'bubble1 6s ease-in-out infinite',
-        bubble2: 'bubble2 8s ease-in-out infinite',
-        bubble3: 'bubble3 7s ease-in-out infinite',
-      },
-      keyframes: {
-        bubble1: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(-15px, -15px) scale(1.1)' },
-          '100%': { transform: 'translate(0, 0) scale(1)' },
-        },
-        bubble2: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(20px, -20px) scale(0.95)' },
-          '100%': { transform: 'translate(0, 0) scale(1)' },
-        },
-        bubble3: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(-10px, 15px) scale(1.05)' },
-          '100%': { transform: 'translate(0, 0) scale(1)' },
-        },
-      },
     },
   },
   plugins: [],

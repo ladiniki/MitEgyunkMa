@@ -6,7 +6,7 @@ import mimetypes
 
 def get_mime_type(file_path):
     mime_type, _ = mimetypes.guess_type(file_path)
-    return mime_type or 'image/jpeg'  # default to jpeg if can't determine
+    return mime_type or 'image/jpeg' 
 
 def encode_image(image_path):
     try:
@@ -22,14 +22,14 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["MitEszunkMaDB"]
 collection = db["RecipiesCollection"]
 
-# Placeholder kép base64 formátumban
+#Placeholder kép base64 formátumban
 PLACEHOLDER_IMAGE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
 assets_dir = "client/src/assets"
 
 collection.delete_many({})
 
-# Recepteket a JSON fájlból
+#Recepteket a JSON fájlból
 with open('server/recipes.json', 'r', encoding='utf-8') as f:
     recipe_data = json.load(f)
 

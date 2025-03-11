@@ -10,7 +10,7 @@ const Favorites = () => {
   const [pageTransition, setPageTransition] = useState("fade");
   const navigate = useNavigate();
 
-  // Token ellenőrzése és kedvencek betöltése
+  //Token ellenőrzése és kedvencek betöltése
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
@@ -42,8 +42,7 @@ const Favorites = () => {
     fetchFavorites();
   }, [navigate]);
 
-  // ... rest of the component code stays the same ...
-  // Reszponzív recipesPerPage
+  //Reszponzív recipesPerPage
   const getRecipesPerPage = () => {
     if (typeof window !== "undefined") {
       if (window.innerWidth < 640) return 2;
@@ -56,7 +55,7 @@ const Favorites = () => {
 
   const [recipesPerPage, setRecipesPerPage] = useState(getRecipesPerPage());
 
-  // Ablakméret változás figyelése
+  //Ablakméret változás figyelése
   useEffect(() => {
     const handleResize = () => {
       setRecipesPerPage(getRecipesPerPage());
@@ -76,24 +75,11 @@ const Favorites = () => {
     );
   }
 
-  // Kiszámoljuk az oldalak számát
   const totalPages = Math.ceil(favorites.length / recipesPerPage);
 
-  // Kiszámoljuk az aktuális oldalon megjelenítendő recepteket
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = favorites.slice(indexOfFirstRecipe, indexOfLastRecipe);
-
-  // Lapozás kezelése
-  const handlePageClick = (pageNumber) => {
-    if (pageNumber !== currentPage) {
-      setPageTransition("fade-out");
-      setTimeout(() => {
-        setCurrentPage(pageNumber);
-        setPageTransition("fade-in");
-      }, 200);
-    }
-  };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -117,7 +103,6 @@ const Favorites = () => {
 
   return (
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
-      
       {favorites.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="text-center p-8 rounded-2xl bg-white/50 dark:bg-dark-secondary/50 backdrop-blur-sm shadow-sm">
@@ -182,21 +167,23 @@ const Favorites = () => {
                 </button>
 
                 <div className="flex items-center px-2">
-                  <button
-                    className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 dark:bg-dark-tertiary text-white"
-                  >
+                  <button className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 dark:bg-dark-tertiary text-white">
                     {currentPage}
                   </button>
 
                   <div className="flex items-center ml-2 text-gray-500 dark:text-gray-400">
-                    <span className="text-xs text-gray-400 dark:text-gray-500 mx-1">/</span>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 mx-1">
+                      /
+                    </span>
                     <span>{totalPages}</span>
                   </div>
                 </div>
 
                 <button
                   onClick={handleNextPage}
-                  disabled={currentPage === totalPages || pageTransition === "fade-out"}
+                  disabled={
+                    currentPage === totalPages || pageTransition === "fade-out"
+                  }
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                     ${
                       currentPage === totalPages
@@ -251,4 +238,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites; 
+export default Favorites;

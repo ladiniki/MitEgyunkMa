@@ -2,16 +2,15 @@ from pymongo import MongoClient
 from datetime import datetime, timedelta
 import random
 
-# MongoDB kapcsolat létrehozása
 client = MongoClient('mongodb://localhost:27017/')
 db = client['MitEszunkMaDB']
 recipes_collection = db['RecipiesCollection']
 reviews_collection = db['ReviewsCollection']
 
-# Példa felhasználónevek
+#Példa felhasználónevek
 usernames = ['Niki', 'Adam', 'Karesz', 'Zsuzsi', 'Peti', 'Anna', 'Máté', 'Eszter']
 
-# Példa vélemény szövegek
+#Példa vélemény szövegek
 all_comments = {
     'positive': [
         "Nagyon finom lett, mindenkinek ajánlom!",
@@ -47,16 +46,16 @@ all_comments = {
     ]
 }
 
-# Használt kommentek nyilvántartása
+#Használt kommentek nyilvántartása
 used_comments = set()
 
 def get_unused_comment(rating):
     global used_comments
     
-    # Komment típus kiválasztása az értékelés alapján
+    #Komment típus kiválasztása az értékelés alapján
     if rating >= 4:
         available_comments = [c for c in all_comments['positive'] if c not in used_comments]
-        if not available_comments:  # Ha elfogytak a pozitív kommentek, újrakezdjük
+        if not available_comments:
             used_comments = set()
             available_comments = all_comments['positive']
     elif rating == 3:
@@ -70,19 +69,15 @@ def get_unused_comment(rating):
             used_comments = set()
             available_comments = all_comments['negative']
     
-    # Véletlenszerű komment választása és megjelölése használtként
     comment = random.choice(available_comments)
     used_comments.add(comment)
     return comment
 
 def generate_review(recipe_id, recipe_name):
-    # Véletlenszerű értékelés (1-5)
     rating = random.randint(1, 5)
     
-    # Komment kiválasztása
     comment = get_unused_comment(rating)
     
-    # Véletlenszerű dátum az elmúlt 30 napból
     random_days = random.randint(0, 30)
     review_date = datetime.now() - timedelta(days=random_days)
     
@@ -96,16 +91,13 @@ def generate_review(recipe_id, recipe_name):
     }
 
 def upload_sample_reviews():
-    # Töröljük a meglévő véleményeket
     reviews_collection.delete_many({})
     print("Meglévő vélemények törölve.")
     
-    # Lekérjük az összes receptet
     recipes = recipes_collection.find()
     total_reviews = 0
     
     for recipe in recipes:
-        # Minden recepthez 1-3 véleményt generálunk
         num_reviews = random.randint(1, 3)
         
         for _ in range(num_reviews):
