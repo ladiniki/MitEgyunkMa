@@ -113,20 +113,28 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white dark:bg-dark-primary w-full max-w-lg rounded-2xl shadow-xl flex flex-col max-h-[80vh]">
-        {/* Fejléc */}
-        <div className="flex items-center justify-between p-6 border-b border-orange-100 dark:border-dark-secondary">
-          <div className="flex items-center gap-3">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-              Hozzávalók hozzáadása
-            </h2>
-          </div>
+      <div className="bg-white dark:bg-dark-primary w-full max-w-lg rounded-2xl shadow-xl flex flex-col max-h-[90vh] relative">
+        {/* X ikon a modal tetején */}
+        <div className="absolute -top-3 -right-3 z-10">
           <button
             onClick={onClose}
-            className="p-2 hover:bg-orange-50 dark:hover:bg-dark-secondary rounded-lg transition-colors"
+            className="bg-white dark:bg-dark-secondary rounded-full p-2 shadow-md hover:bg-orange-50 dark:hover:bg-dark-tertiary transition-colors"
+            aria-label="Bezárás"
           >
-            <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+            <X className="w-5 h-5 text-orange-500 dark:text-white" />
           </button>
+        </div>
+        
+        {/* Fejléc */}
+        <div className="flex flex-col items-center p-6 border-b border-orange-100 dark:border-dark-secondary">
+          <img 
+            src="/mit-egyunk-ma2.png" 
+            alt="Mit Együnk Ma Logo" 
+            className="h-28 mb-5"
+          />
+          <h2 className="text-base text-gray-700 dark:text-gray-300 text-center mt-1">
+            Adja hozzá a rendelkezésre álló hozzávalóit!
+          </h2>
         </div>
 
         {/* Kereső */}

@@ -6,7 +6,7 @@ import mimetypes
 
 def get_mime_type(file_path):
     mime_type, _ = mimetypes.guess_type(file_path)
-    return mime_type or 'image/jpeg'  # default to jpeg if can't determine
+    return mime_type or 'image/jpeg'
 
 def encode_image(image_path):
     try:
@@ -21,27 +21,25 @@ def encode_image(image_path):
 print("Connecting to MongoDB...")
 client = MongoClient("mongodb://localhost:27017/")
 db = client["MitEszunkMaDB"]
-collection = db["IngredientsCollection"]  # Új collection az összetevőknek
+collection = db["IngredientsCollection"]
 
-# Placeholder kép base64 formátumban
+#Placeholder kép base64 formátumban
 PLACEHOLDER_IMAGE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
-# Abszolút elérési út az assets könyvtárhoz
+#Abszolút elérési út az assets könyvtárhoz
 script_dir = os.path.dirname(os.path.abspath(__file__))
-workspace_dir = os.path.dirname(script_dir)  # Egy szinttel feljebb
+workspace_dir = os.path.dirname(script_dir)
 assets_dir = os.path.join(workspace_dir, "client", "src", "assets")
 print(f"Assets directory: {os.path.abspath(assets_dir)}")
 
-# Ellenőrizzük, hogy létezik-e az assets könyvtár
 if not os.path.exists(assets_dir):
     print(f"HIBA: Az assets könyvtár nem található: {assets_dir}")
     exit(1)
 
-# Töröljük a korábbi adatokat a collection-ből (ha van)
 delete_result = collection.delete_many({})
 print(f"Deleted {delete_result.deleted_count} existing ingredients from the collection")
 
-# Hozzávalókat a JSON fájlból
+#Hozzávalókat a JSON fájlból
 json_path = os.path.join(script_dir, 'new-ingredients.json')
 print(f"Reading ingredients from: {os.path.abspath(json_path)}")
 
@@ -85,7 +83,6 @@ print(f"- Added with encoding errors: {error_count}")
 print(f"- Added with missing images: {missing_image_count}")
 print(f"- Total ingredients added: {success_count + error_count + missing_image_count}")
 
-# Ellenőrizzük, hogy tényleg feltöltődtek-e az adatok
 count = collection.count_documents({})
 print(f"Total ingredients in the collection after upload: {count}")
 

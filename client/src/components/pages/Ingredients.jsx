@@ -273,17 +273,15 @@ const Ingredients = () => {
             {/* Lapozó */}
             {totalPages > 1 && (
               <div className="flex justify-center mt-4">
-                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm">
+                <div className="inline-flex items-center bg-white dark:bg-dark-secondary shadow-md dark:shadow-dark-tertiary/10 rounded-full px-1 py-1">
                   <button
                     onClick={handlePrevPage}
-                    disabled={
-                      currentPage === 1 || pageTransition === "fade-out"
-                    }
+                    disabled={currentPage === 1 || pageTransition === "fade-out"}
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === 1
-                          ? "text-gray-300 cursor-not-allowed"
-                          : "text-gray-600 hover:bg-gray-100"
+                          ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                       }`}
                     aria-label="Előző oldal"
                   >
@@ -301,21 +299,27 @@ const Ingredients = () => {
                     </svg>
                   </button>
 
-                  <span className="text-sm text-gray-600">
-                    {currentPage} / {totalPages}
-                  </span>
+                  <div className="flex items-center px-2">
+                    <button className="w-8 h-8 flex items-center justify-center rounded-full transition-colors mx-0.5 bg-orange-500 dark:bg-dark-tertiary text-white">
+                      {currentPage}
+                    </button>
+
+                    <div className="flex items-center ml-2 text-gray-500 dark:text-gray-400">
+                      <span className="text-xs text-gray-400 dark:text-gray-500 mx-1">
+                        /
+                      </span>
+                      <span>{totalPages}</span>
+                    </div>
+                  </div>
 
                   <button
                     onClick={handleNextPage}
-                    disabled={
-                      currentPage === totalPages ||
-                      pageTransition === "fade-out"
-                    }
+                    disabled={currentPage === totalPages || pageTransition === "fade-out"}
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === totalPages
-                          ? "text-gray-300 cursor-not-allowed"
-                          : "text-gray-600 hover:bg-gray-100"
+                          ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-primary"
                       }`}
                     aria-label="Következő oldal"
                   >

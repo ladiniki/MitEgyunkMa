@@ -9,7 +9,7 @@ const RecipieContainer = () => {
   const [loading, setLoading] = useState(true);
   const { selectedMealType, searchText } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const [setPageTransition] = useState("fade");
+  const [pageTransition, setPageTransition] = useState("fade-in");
   //Reszponzív recipesPerPage - 2x4-es elrendezés
   const getRecipesPerPage = () => {
     if (typeof window !== "undefined") {
@@ -82,13 +82,13 @@ const RecipieContainer = () => {
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = filteredRecipies.slice(
-    indexOfFirstRecipe,
-    indexOfLastRecipe
+    Math.max(0, indexOfFirstRecipe),
+    Math.min(filteredRecipies.length, indexOfLastRecipe)
   );
 
-  /* Lapozás kezelése egyszerű fade effekttel
+  /* Lapozás kezelése egyszerű fade effekttel*/
   const handlePageClick = pageNumber => {
-    if (pageNumber !== currentPage) {
+    if (pageNumber !== currentPage && pageNumber > 0 && pageNumber <= totalPages) {
       setPageTransition("fade-out");
       setTimeout(() => {
         setCurrentPage(pageNumber);
@@ -96,13 +96,12 @@ const RecipieContainer = () => {
       }, 200);
     }
   };
-  */
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage((prev) => prev + 1);
+        setCurrentPage(prev => Math.min(prev + 1, totalPages));
         setPageTransition("fade-in");
       }, 200);
     }
@@ -112,7 +111,7 @@ const RecipieContainer = () => {
     if (currentPage > 1) {
       setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage((prev) => prev - 1);
+        setCurrentPage(prev => Math.max(1, prev - 1));
         setPageTransition("fade-in");
       }, 200);
     }
@@ -136,7 +135,7 @@ const RecipieContainer = () => {
         </div>
       ) : (
         <div className="relative">
-          <div className="gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+          <div className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${pageTransition}`}>
             {currentRecipes.map((recipe, index) => (
               <div
                 key={`${currentPage}-${index}`}
@@ -227,6 +226,7 @@ const RecipieContainer = () => {
         </div>
       )}
 
+      {/* Lapozó animáció */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -243,6 +243,16 @@ const RecipieContainer = () => {
         
         .animate-fade-in-down {
           animation: fadeInDown 0.4s ease-out forwards;
+        }
+
+        .fade-in {
+          opacity: 1;
+          transition: opacity 0.2s ease-in;
+        }
+
+        .fade-out {
+          opacity: 0;
+          transition: opacity 0.2s ease-out;
         }
       `,
         }}

@@ -7,6 +7,39 @@
   --shadow-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
+/* Egyedi narancssárga görgetősáv az egész oldalon */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff9f43, #ff6b6b);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ff8a29, #ff5252);
+}
+
+/* Sötét mód görgetősáv */
+.dark ::-webkit-scrollbar-track {
+  background: #2a2725;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff9f43, #ff6b6b);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ff8a29, #ff5252);
+}
+
 /* Kurzor elrejtése az egész oldalon */
 * {
   caret-color: transparent;
