@@ -5,6 +5,7 @@ import {
   UtensilsCrossed,
   Cake,
   ChefHat,
+  Utensils
 } from "lucide-react";
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -73,6 +74,18 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
                 <span className="font-medium">{button.label}</span>
               </button>
             ))}
+          </div>
+
+          {/* Oldal címe */}
+          <div className="flex items-center">
+            <div className="bg-gradient-to-r from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-transparent bg-clip-text transform transition-all duration-300 hover:scale-105">
+              <h1 className="text-2xl font-bold flex items-center">
+                <Utensils className="w-6 h-6 mr-2 text-orange-500 dark:text-dark-tertiary animate-pulse" />
+                <span className="bg-gradient-to-r from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-transparent bg-clip-text">
+                  Mit együnk ma?
+                </span>
+              </h1>
+            </div>
           </div>
 
           {/* Jobb oldali keresés és témaváltó */}

@@ -76,9 +76,10 @@ const Sidebar = ({ onCompactChange }) => {
         <div
           className="flex justify-center items-center bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 
                      rounded-full w-16 h-16 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20 
-                     transition-all duration-300"
+                     transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-md
+                     group"
         >
-          <span className="flex justify-center items-center w-full h-full text-2xl font-bold text-white">
+          <span className="flex justify-center items-center w-full h-full text-2xl font-bold text-white transition-all duration-300">
             {username ? username.charAt(0).toUpperCase() : "?"}
           </span>
         </div>
