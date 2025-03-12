@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Home, Heart, ShoppingBag, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Heart, ShoppingBag, ChevronLeft, ChevronRight, PlusCircle } from "lucide-react";
 import PropTypes from 'prop-types';
 
 const Sidebar = ({ onCompactChange }) => {
@@ -22,6 +22,11 @@ const Sidebar = ({ onCompactChange }) => {
       icon: <Home size={20} />,
     },
     {
+      label: "Új receptek",
+      route: "/new-recipe",
+      icon: <PlusCircle size={20} />,
+    },
+    {
       label: "Kedvencek",
       route: "/favorites",
       icon: <Heart size={20} />,
@@ -30,11 +35,6 @@ const Sidebar = ({ onCompactChange }) => {
       label: "Hozzávalóim",
       route: "/ingredients",
       icon: <ShoppingBag size={20} />,
-    },
-    {
-      label: "Kijelentkezés",
-      route: "/",
-      icon: <LogOut size={20} />,
     },
   ];
 
@@ -93,26 +93,12 @@ const Sidebar = ({ onCompactChange }) => {
         )}
       </div>
 
-      {/* Toggle gomb */}
-      <button
-        onClick={toggleCompact}
-        className="absolute -right-3 top-[140px] transform bg-white dark:bg-dark-primary rounded-xl p-2 
-                 shadow-lg shadow-orange-500/10 dark:shadow-dark-tertiary/10 border border-orange-100/50 dark:border-dark-secondary/50 
-                 hover:bg-orange-50 dark:hover:bg-dark-secondary transition-all duration-300 hover:scale-110 
-                 hover:shadow-xl hover:shadow-orange-500/20 dark:hover:shadow-dark-tertiary/20 group"
-      >
-        {isCompact ? 
-          <ChevronRight size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:translate-x-0.5" /> : 
-          <ChevronLeft size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:-translate-x-0.5" />
-        }
-      </button>
-
       {/* Navigációs gombok */}
-      <div className={`flex flex-col items-start w-full pt-8 ${isCompact ? 'px-2' : 'px-4'} space-y-2`}>
+      <div className={`flex flex-col items-start w-full pt-4 ${isCompact ? 'px-2' : 'px-4'} space-y-0.5`}>
         {buttons.map((button, index) => (
           <button
             key={index}
-            className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300
+            className={`w-full text-left px-4 py-2 rounded-xl transition-all duration-300
                       flex items-center gap-3 group hover:scale-105
                       ${location.pathname === button.route
                 ? "bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20"
@@ -133,12 +119,28 @@ const Sidebar = ({ onCompactChange }) => {
         ))}
       </div>
 
-      {/* Logo az alján */}
-      {!isCompact && (
-        <div className="mt-auto pb-6 transition-opacity duration-300 hover:opacity-90">
-          <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="w-40" />
-        </div>
-      )}
+      <div className="flex flex-col items-start w-full mt-auto">
+        {/* Logo az alján */}
+        {!isCompact && (
+          <div className={`w-full px-4 pb-6 transition-opacity duration-300 hover:opacity-90 flex justify-center`}>
+            <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="w-40" />
+          </div>
+        )}
+      </div>
+
+      {/* Toggle gomb fix pozícióban, kicsit feljebb */}
+      <button
+        onClick={toggleCompact}
+        className="absolute -right-3 bottom-28 transform bg-white dark:bg-dark-primary rounded-xl p-2 
+                 shadow-lg shadow-orange-500/10 dark:shadow-dark-tertiary/10 border border-orange-100/50 dark:border-dark-secondary/50 
+                 hover:bg-orange-50 dark:hover:bg-dark-secondary transition-all duration-300 hover:scale-110 
+                 hover:shadow-xl hover:shadow-orange-500/20 dark:hover:shadow-dark-tertiary/20 group"
+      >
+        {isCompact ? 
+          <ChevronRight size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:translate-x-0.5" /> : 
+          <ChevronLeft size={16} className="text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        }
+      </button>
     </div>
   );
 };

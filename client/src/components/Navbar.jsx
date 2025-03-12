@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import ThemeToggle from './ThemeToggle';
+import SettingsMenu from './SettingsMenu';
 
 const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
   const [searchText, setSearchText] = useState('');
@@ -88,7 +88,7 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
             </div>
           </div>
 
-          {/* Jobb oldali keresés és témaváltó */}
+          {/* Jobb oldali keresés és beállítások */}
           <div className="flex items-center gap-4">
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -109,7 +109,7 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
                           hover:scale-105`}
               />
             </div>
-            <ThemeToggle />
+            <SettingsMenu />
           </div>
         </div>
       </div>
