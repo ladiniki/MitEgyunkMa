@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import FoodBackground from "./FoodBackground";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
   const {
     register,
     handleSubmit,
@@ -13,6 +15,7 @@ const Login = () => {
 
   const handleFormSubmit = async (data) => {
     try {
+      setLoginError("");
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
@@ -22,7 +25,8 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Login failed");
+        setLoginError("Helytelen felhasználónév vagy jelszó. Kérjük, próbálja újra!");
+        return;
       }
 
       const { access_token } = await response.json();
@@ -30,7 +34,7 @@ const Login = () => {
       navigate("/recipies");
     } catch (error) {
       console.error(error.message);
-      alert("Hiba történt a bejelentkezés során");
+      setLoginError("Helytelen felhasználónév vagy jelszó. Kérjük, próbálja újra!");
     }
   };
 
@@ -43,6 +47,12 @@ const Login = () => {
           <img src="/mit-egyunk-ma2.png" alt="Mit együnk ma?" className="mx-auto w-64" />
         </div>
 
+        {loginError && (
+          <div className="p-4 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-xl text-center text-sm font-primary border border-red-100 dark:border-red-800">
+            {loginError}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-primary text-gray-700 dark:text-gray-300 mb-1">
@@ -51,6 +61,7 @@ const Login = () => {
             <input
               type="text"
               id="username"
+              autoComplete="username"
               {...register("username", { required: "Felhasználónév szükséges" })}
               className="w-full px-4 py-2 rounded-xl border-2 border-orange-300 dark:border-dark-tertiary
                        focus:border-orange-500 dark:focus:border-dark-tertiary focus:ring-4 focus:ring-orange-200 dark:focus:ring-dark-tertiary/20
@@ -72,6 +83,7 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              autoComplete="current-password"
               {...register("password", { required: "Jelszó szükséges" })}
               className="w-full px-4 py-2 rounded-xl border-2 border-orange-300 dark:border-dark-tertiary
                        focus:border-orange-500 dark:focus:border-dark-tertiary focus:ring-4 focus:ring-orange-200 dark:focus:ring-dark-tertiary/20
@@ -113,12 +125,6 @@ const Login = () => {
             </Link>
           </div>
         </form>
-
-        {errors.root && (
-          <div className="p-4 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-xl text-center text-sm font-primary border border-red-100 dark:border-red-800">
-            {errors.root.message}
-          </div>
-        )}
       </div>
     </div>
   );

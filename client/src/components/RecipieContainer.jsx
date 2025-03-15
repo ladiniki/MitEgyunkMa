@@ -68,17 +68,17 @@ const RecipieContainer = () => {
     );
   }
 
-  // Szűrjük a recepteket a keresési szöveg alapján
+  //Szűrjük a recepteket a keresési szöveg alapján
   const filteredRecipies = searchText
     ? recipies.filter((recipe) =>
         recipe.name.toLowerCase().includes(searchText.toLowerCase())
       )
     : recipies;
 
-  // Kiszámoljuk az oldalak számát
+  //Kiszámoljuk az oldalak számát
   const totalPages = Math.ceil(filteredRecipies.length / recipesPerPage);
 
-  // Kiszámoljuk az aktuális oldalon megjelenítendő recepteket
+  //Kiszámoljuk az aktuális oldalon megjelenítendő recepteket
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = filteredRecipies.slice(
@@ -86,22 +86,26 @@ const RecipieContainer = () => {
     Math.min(filteredRecipies.length, indexOfLastRecipe)
   );
 
-  /* Lapozás kezelése egyszerű fade effekttel*/
-  const handlePageClick = pageNumber => {
-    if (pageNumber !== currentPage && pageNumber > 0 && pageNumber <= totalPages) {
+  /* Lapozás kezelése egyszerű fade effekttel
+  const handlePageClick = (pageNumber) => {
+    if (
+      pageNumber !== currentPage &&
+      pageNumber > 0 &&
+      pageNumber <= totalPages
+    ) {
       setPageTransition("fade-out");
       setTimeout(() => {
         setCurrentPage(pageNumber);
         setPageTransition("fade-in");
       }, 200);
     }
-  };
+  };*/
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(prev => Math.min(prev + 1, totalPages));
+        setCurrentPage((prev) => Math.min(prev + 1, totalPages));
         setPageTransition("fade-in");
       }, 200);
     }
@@ -111,7 +115,7 @@ const RecipieContainer = () => {
     if (currentPage > 1) {
       setPageTransition("fade-out");
       setTimeout(() => {
-        setCurrentPage(prev => Math.max(1, prev - 1));
+        setCurrentPage((prev) => Math.max(1, prev - 1));
         setPageTransition("fade-in");
       }, 200);
     }
@@ -135,7 +139,9 @@ const RecipieContainer = () => {
         </div>
       ) : (
         <div className="relative">
-          <div className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${pageTransition}`}>
+          <div
+            className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8 ${pageTransition}`}
+          >
             {currentRecipes.map((recipe, index) => (
               <div
                 key={`${currentPage}-${index}`}

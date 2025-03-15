@@ -31,6 +31,7 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
         }
 
         const data = await response.json();
+
         //Beállítjuk a mennyiségeket a meglévő hozzávalók alapján
         const existingQuantities = {};
         data.ingredients.forEach((ing) => {
@@ -124,12 +125,12 @@ const IngredientsModal = ({ isOpen, onClose, onAdd }) => {
             <X className="w-5 h-5 text-orange-500 dark:text-white" />
           </button>
         </div>
-        
+
         {/* Fejléc */}
         <div className="flex flex-col items-center p-6 border-b border-orange-100 dark:border-dark-secondary">
-          <img 
-            src="/mit-egyunk-ma2.png" 
-            alt="Mit Együnk Ma Logo" 
+          <img
+            src="/mit-egyunk-ma2.png"
+            alt="Mit Együnk Ma Logo"
             className="h-28 mb-5"
           />
           <h2 className="text-base text-gray-700 dark:text-gray-300 text-center mt-1">

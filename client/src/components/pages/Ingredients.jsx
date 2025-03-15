@@ -14,9 +14,9 @@ const Ingredients = () => {
   //Reszponzív itemsPerPage - 2x4-es elrendezés
   const getItemsPerPage = () => {
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 640) return 2; //Mobil: 1x2
-      if (window.innerWidth < 768) return 4; //Tablet: 2x2
-      if (window.innerWidth < 1024) return 6; //Kisebb desktop: 3x2
+      if (window.innerWidth < 640) return 2;
+      if (window.innerWidth < 768) return 4;
+      if (window.innerWidth < 1024) return 6;
       return 8;
     }
     return 8;
@@ -73,10 +73,10 @@ const Ingredients = () => {
           (ing) => ing.name === newIng.name
         );
         if (existingIndex !== -1) {
-          // Ha már létezik, frissítjük a mennyiséget
+          //Ha már létezik, frissítjük a mennyiséget
           updatedIngredients[existingIndex] = newIng;
         } else {
-          // Ha még nem létezik, hozzáadjuk
+          //Ha még nem létezik, hozzáadjuk
           updatedIngredients.push(newIng);
         }
       });
@@ -276,7 +276,9 @@ const Ingredients = () => {
                 <div className="inline-flex items-center bg-white dark:bg-dark-secondary shadow-md dark:shadow-dark-tertiary/10 rounded-full px-1 py-1">
                   <button
                     onClick={handlePrevPage}
-                    disabled={currentPage === 1 || pageTransition === "fade-out"}
+                    disabled={
+                      currentPage === 1 || pageTransition === "fade-out"
+                    }
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === 1
@@ -314,7 +316,10 @@ const Ingredients = () => {
 
                   <button
                     onClick={handleNextPage}
-                    disabled={currentPage === totalPages || pageTransition === "fade-out"}
+                    disabled={
+                      currentPage === totalPages ||
+                      pageTransition === "fade-out"
+                    }
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === totalPages

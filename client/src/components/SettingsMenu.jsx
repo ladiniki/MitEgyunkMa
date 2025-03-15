@@ -1,7 +1,6 @@
 import { Settings, Moon, Sun, LogOut } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
 
 const SettingsMenu = () => {
   const [isDark, setIsDark] = useState(false);
@@ -10,7 +9,7 @@ const SettingsMenu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Kezdeti téma beállítása
+    //Kezdeti téma beállítása
     const isDarkMode = localStorage.getItem("darkMode") === "true";
     setIsDark(isDarkMode);
     if (isDarkMode) {
@@ -19,7 +18,7 @@ const SettingsMenu = () => {
   }, []);
 
   useEffect(() => {
-    // Kattintás figyelése a dokumentumon a menü bezárásához
+    //Kattintás figyelése a dokumentumon a menü bezárásához
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -96,4 +95,4 @@ const SettingsMenu = () => {
   );
 };
 
-export default SettingsMenu; 
+export default SettingsMenu;
