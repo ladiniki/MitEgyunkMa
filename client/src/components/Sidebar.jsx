@@ -103,9 +103,7 @@ const Sidebar = ({ onCompactChange }) => {
             <span className="text-gray-700 dark:text-gray-200 text-lg font-medium">
               {username || "Betöltés..."}
             </span>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
-              Felhasználó
-            </p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Séf</p>
           </div>
         )}
       </div>
