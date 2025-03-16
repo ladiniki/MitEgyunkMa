@@ -7,9 +7,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Coffee,
-  Clock,
-  Sparkles,
-  Flame,
+  UtensilsCrossed,
+  Croissant,
+  IceCream,
+  Soup,
 } from "lucide-react";
 import PropTypes from "prop-types";
 
@@ -17,7 +18,12 @@ const Sidebar = ({ onCompactChange }) => {
   const [username, setUsername] = useState(null);
   const [isCompact, setIsCompact] = useState(false);
   const [favoritesCount, setFavoritesCount] = useState(0);
-  const [lastRecipe, setLastRecipe] = useState(null);
+  const [recipeStats, setRecipeStats] = useState({
+    reggeli: 0,
+    ebéd: 0,
+    desszert: 0,
+    vacsora: 0,
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -55,7 +61,7 @@ const Sidebar = ({ onCompactChange }) => {
           return;
         }
 
-        const [userResponse, favoritesResponse] = await Promise.all([
+        const [userResponse, favoritesResponse, recipesResponse] = await Promise.all([
           fetch("http://localhost:5000/user", {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -67,6 +73,7 @@ const Sidebar = ({ onCompactChange }) => {
               Authorization: `Bearer ${token}`,
             },
           }),
+          fetch("http://localhost:5000/recipies"),
         ]);
 
         if (userResponse.ok) {
@@ -79,12 +86,25 @@ const Sidebar = ({ onCompactChange }) => {
         if (favoritesResponse.ok) {
           const favoritesData = await favoritesResponse.json();
           setFavoritesCount(favoritesData.favorites?.length || 0);
-          // Beállítjuk az utolsó kedvenc receptet, ha van
-          if (favoritesData.favorites?.length > 0) {
-            setLastRecipe(favoritesData.favorites[0]);
-          }
         } else {
           console.error("Hiba történt a kedvencek lekérésekor.");
+        }
+
+        if (recipesResponse.ok) {
+          const recipes = await recipesResponse.json();
+          const validMealTypes = ['reggeli', 'ebéd', 'desszert', 'vacsora'];
+          const stats = recipes.reduce((acc, recipe) => {
+            if (recipe.mealType && validMealTypes.includes(recipe.mealType)) {
+              acc[recipe.mealType] = (acc[recipe.mealType] || 0) + 1;
+            }
+            return acc;
+          }, {
+            reggeli: 0,
+            ebéd: 0,
+            desszert: 0,
+            vacsora: 0
+          });
+          setRecipeStats(stats);
         }
       } catch (error) {
         console.error("Hiba történt a kérés során:", error);
@@ -93,6 +113,13 @@ const Sidebar = ({ onCompactChange }) => {
 
     fetchUserData();
   }, []);
+
+  const mealTypeIcons = {
+    reggeli: <Croissant size={16} />,
+    ebéd: <Soup size={16} />,
+    desszert: <IceCream size={16} />,
+    vacsora: <UtensilsCrossed size={16} />,
+  };
 
   return (
     <div
@@ -190,27 +217,36 @@ const Sidebar = ({ onCompactChange }) => {
         ))}
       </div>
 
-      {/* Utolsó kedvenc recept */}
-      {!isCompact && lastRecipe && (
+      {/* Recept statisztikák */}
+      {!isCompact && (
         <div className="w-full px-4 mt-6">
-          <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-dark-secondary/50 dark:to-dark-tertiary/10 border border-orange-100/50 dark:border-dark-tertiary/20">
-            <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mb-2">
-              <Clock size={12} />
-              <span>Utoljára kedvelt recept</span>
+          <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-dark-secondary/30 dark:to-dark-tertiary/10 border border-orange-100/50 dark:border-dark-tertiary/20">
+            <div className="text-xs text-gray-500 dark:text-gray-400 mb-3 font-medium">
+              Elérhető receptek
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-orange-500 dark:from-dark-tertiary dark:to-orange-500 flex items-center justify-center">
-                <Flame className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex-grow min-w-0">
-                <div className="font-medium text-gray-700 dark:text-gray-200 truncate">
-                  {lastRecipe.name}
+            <div className="grid grid-cols-2 gap-2">
+              {Object.entries(recipeStats).map(([type, count]) => (
+                <div 
+                  key={type}
+                  className="flex items-center gap-2 p-2 rounded-lg bg-white/50 dark:bg-dark-secondary/50 hover:bg-white dark:hover:bg-dark-secondary transition-colors cursor-pointer"
+                  onClick={() => {
+                    navigate('/recipies');
+                    // Itt majd később beállítjuk a szűrőt is
+                  }}
+                >
+                  <div className="text-orange-500 dark:text-dark-tertiary">
+                    {mealTypeIcons[type]}
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-gray-500 dark:text-gray-400 capitalize">
+                      {type}
+                    </div>
+                    <div className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                      {count} db
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                  <Sparkles size={12} className="text-yellow-500" />
-                  <span>{lastRecipe.difficulty || "Közepes"}</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

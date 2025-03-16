@@ -7,11 +7,31 @@
             "mealType": "reggeli",
             "description": "Laktató és egészséges avokádó tojással sütve.",
             "ingredients": [
-                {"name": "avokádó", "amount": 1, "unit": "db"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"},
-                {"name": "parmezán", "amount": 20, "unit": "g"}
+                {
+                    "name": "avokádó",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 20,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Vágd félbe az avokádót és vedd ki a magját.",
@@ -28,13 +48,41 @@
             "mealType": "ebéd",
             "description": "Szaftos csirkemell mézes-mustáros szószban sütve.",
             "ingredients": [
-                {"name": "csirkemell", "amount": 2, "unit": "db"},
-                {"name": "méz", "amount": 2, "unit": "ek"},
-                {"name": "mustár", "amount": 1, "unit": "ek"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "csirkemell",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "méz",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "mustár",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 180°C-ra.",
@@ -52,14 +100,46 @@
             "mealType": "desszert",
             "description": "Klasszikus magyar desszert háromféle piskótával, diós-rumos sziruppal és csokoládéöntettel.",
             "ingredients": [
-                {"name": "piskótalap", "amount": 1, "unit": "db"},
-                {"name": "dió", "amount": 100, "unit": "g"},
-                {"name": "mazsola", "amount": 50, "unit": "g"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "kakaópor", "amount": 2, "unit": "ek"},
-                {"name": "rumaroma", "amount": 1, "unit": "tk"},
-                {"name": "tejszínhab", "amount": 200, "unit": "ml"},
-                {"name": "csokoládéöntet", "amount": 100, "unit": "ml"}
+                {
+                    "name": "piskótalap",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "dió",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "mazsola",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "kakaópor",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "rumaroma",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "tejszínhab",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "csokoládéöntet",
+                    "amount": 100,
+                    "unit": "ml"
+                }
             ],
             "steps": [
                 "Vágd fel a piskótát kis kockákra.",
@@ -160,13 +240,41 @@
             "mealType": "vacsora",
             "description": "Egészséges tésztaétel friss spenóttal és fokhagymával.",
             "ingredients": [
-                { "name": "spagetti", "amount": 250, "unit": "g" },
-                { "name": "friss spenót", "amount": 150, "unit": "g" },
-                { "name": "fokhagyma", "amount": 3, "unit": "gerezd" },
-                { "name": "olívaolaj", "amount": 2, "unit": "evőkanál" },
-                { "name": "parmezán", "amount": 50, "unit": "g" },
-                { "name": "só", "amount": 1, "unit": "teáskanál" },
-                { "name": "bors", "amount": 0.5, "unit": "teáskanál" }
+                {
+                    "name": "spagetti",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "friss spenót",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "evőkanál"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "teáskanál"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "teáskanál"
+                }
             ],
             "steps": [
                 "Főzd meg a spagettit sós vízben.",
@@ -182,12 +290,36 @@
             "mealType": "desszert",
             "description": "Lágy és csokoládés brownie ropogós kéreggel.",
             "ingredients": [
-                {"name": "vaj", "amount": 150, "unit": "g"},
-                {"name": "étcsokoládé", "amount": 200, "unit": "g"},
-                {"name": "cukor", "amount": 150, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "liszt", "amount": 100, "unit": "g"},
-                {"name": "kakaópor", "amount": 2, "unit": "ek"}
+                {
+                    "name": "vaj",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "étcsokoládé",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "kakaópor",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Olvaszd fel a vajat és az étcsokoládét.",
@@ -204,14 +336,46 @@
             "mealType": "vacsora",
             "description": "Ízletes és laktató mexikói stílusú babos wrap.",
             "ingredients": [
-                { "name": "tortilla", "amount": 4, "unit": "db" },
-                { "name": "vörösbab", "amount": 200, "unit": "g" },
-                { "name": "kukorica", "amount": 150, "unit": "g" },
-                { "name": "paradicsom", "amount": 2, "unit": "db" },
-                { "name": "cheddar sajt", "amount": 100, "unit": "g" },
-                { "name": "tejföl", "amount": 100, "unit": "g" },
-                { "name": "chili por", "amount": 0.5, "unit": "teáskanál" },
-                { "name": "só", "amount": 1, "unit": "teáskanál" }
+                {
+                    "name": "tortilla",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "vörösbab",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "kukorica",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "cheddar sajt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "chili por",
+                    "amount": 0.5,
+                    "unit": "teáskanál"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "teáskanál"
+                }
             ],
             "steps": [
                 "Pirítsd meg a babot és a kukoricát egy serpenyőben.",
@@ -228,11 +392,31 @@
             "mealType": "reggeli",
             "description": "Könnyű és krémes túró alapú reggeli friss gyümölcsökkel.",
             "ingredients": [
-                {"name": "túró", "amount": 200, "unit": "g"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "tejföl", "amount": 50, "unit": "ml"},
-                {"name": "eper", "amount": 100, "unit": "g"},
-                {"name": "banán", "amount": 1, "unit": "db"}
+                {
+                    "name": "túró",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 50,
+                    "unit": "ml"
+                },
+                {
+                    "name": "eper",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "banán",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Keverd össze a túrót a mézzel és a tejföllel.",
@@ -248,13 +432,41 @@
             "mealType": "desszert",
             "description": "Frissítő és krémes túrótorta málnával, sütés nélkül.",
             "ingredients": [
-                {"name": "darált keksz", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "túró", "amount": 500, "unit": "g"},
-                {"name": "tejföl", "amount": 200, "unit": "ml"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "zselatin", "amount": 1, "unit": "tasak"},
-                {"name": "málna", "amount": 200, "unit": "g"}
+                {
+                    "name": "darált keksz",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "túró",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "zselatin",
+                    "amount": 1,
+                    "unit": "tasak"
+                },
+                {
+                    "name": "málna",
+                    "amount": 200,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a darált kekszet az olvasztott vajjal, és nyomkodd egy tortaformába.",
@@ -271,12 +483,36 @@
             "mealType": "vacsora",
             "description": "Egészséges házi pizza brokkolival és sajttal.",
             "ingredients": [
-                { "name": "pizzatészta", "amount": 1, "unit": "db" },
-                { "name": "paradicsomszósz", "amount": 100, "unit": "g" },
-                { "name": "brokkoli", "amount": 150, "unit": "g" },
-                { "name": "mozzarella sajt", "amount": 150, "unit": "g" },
-                { "name": "olívaolaj", "amount": 1, "unit": "evőkanál" },
-                { "name": "oregánó", "amount": 1, "unit": "teáskanál" }
+                {
+                    "name": "pizzatészta",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsomszósz",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "brokkoli",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "mozzarella sajt",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 1,
+                    "unit": "evőkanál"
+                },
+                {
+                    "name": "oregánó",
+                    "amount": 1,
+                    "unit": "teáskanál"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 200°C-ra.",
@@ -340,14 +576,46 @@
             "mealType": "desszert",
             "description": "Híres magyar réteges torta ropogós karamellréteggel a tetején.",
             "ingredients": [
-                {"name": "tojás", "amount": 6, "unit": "db"},
-                {"name": "cukor", "amount": 250, "unit": "g"},
-                {"name": "liszt", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 200, "unit": "g"},
-                {"name": "étcsokoládé", "amount": 200, "unit": "g"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "kakaópor", "amount": 2, "unit": "ek"},
-                {"name": "karamellizált cukor", "amount": 100, "unit": "g"}
+                {
+                    "name": "tojás",
+                    "amount": 6,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "étcsokoládé",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "kakaópor",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "karamellizált cukor",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Készítsd el a piskótát a tojások és cukor habosra keverésével, majd süsd vékony rétegekben.",
@@ -411,13 +679,41 @@
             "mealType": "reggeli",
             "description": "Klasszikus francia sós pite ropogós tésztával, sonkával és krémes tojásos töltelékkel.",
             "ingredients": [
-                {"name": "liszt", "amount": 250, "unit": "g"},
-                {"name": "vaj", "amount": 125, "unit": "g"},
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "tej", "amount": 100, "unit": "ml"},
-                {"name": "sonka", "amount": 150, "unit": "g"},
-                {"name": "sajt", "amount": 100, "unit": "g"}
+                {
+                    "name": "liszt",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 125,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "tej",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sonka",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Készíts omlós tésztát lisztből és vajból, majd pihentesd a hűtőben 30 percig.",
@@ -481,12 +777,36 @@
             "mealType": "desszert",
             "description": "Lágy és habos karamellás sütemény ropogós tésztával.",
             "ingredients": [
-                {"name": "leveles tészta", "amount": 1, "unit": "csomag"},
-                {"name": "cukor", "amount": 150, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "vaníliás cukor", "amount": 1, "unit": "csomag"},
-                {"name": "tojás", "amount": 3, "unit": "db"}
+                {
+                    "name": "leveles tészta",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vaníliás cukor",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Süsd meg a leveles tésztát 180°C-on 15 percig.",
@@ -546,13 +866,41 @@
             "mealType": "desszert",
             "description": "Elegáns francia mandulás sütemény, roppanós héjjal és krémes töltelékkel.",
             "ingredients": [
-                {"name": "mandulaliszt", "amount": 100, "unit": "g"},
-                {"name": "porcukor", "amount": 200, "unit": "g"},
-                {"name": "tojásfehérje", "amount": 3, "unit": "db"},
-                {"name": "cukor", "amount": 50, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "csokoládé", "amount": 100, "unit": "g"},
-                {"name": "tejszín", "amount": 50, "unit": "ml"}
+                {
+                    "name": "mandulaliszt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "porcukor",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojásfehérje",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "csokoládé",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 50,
+                    "unit": "ml"
+                }
             ],
             "steps": [
                 "Szitáld össze a mandulalisztet és a porcukrot.",
@@ -571,13 +919,41 @@
             "mealType": "ebéd",
             "description": "Fűszeres, omlós sült oldalas hagymás sült burgonyával.",
             "ingredients": [
-                {"name": "sertés oldalas", "amount": 800, "unit": "g"},
-                {"name": "fokhagyma", "amount": 3, "unit": "gerezd"},
-                {"name": "pirospaprika", "amount": 1, "unit": "tk"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"},
-                {"name": "burgonya", "amount": 500, "unit": "g"},
-                {"name": "hagyma", "amount": 1, "unit": "db"}
+                {
+                    "name": "sertés oldalas",
+                    "amount": 800,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                },
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Fűszerezd be az oldalast fokhagymával, pirospaprikával, sóval és borssal.",
@@ -642,13 +1018,41 @@
             "mealType": "ebéd",
             "description": "Ízletes húsgombócok paradicsomszószban, tésztával tálalva.",
             "ingredients": [
-                {"name": "darálthús", "amount": 400, "unit": "g"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "zsemlemorzsa", "amount": 50, "unit": "g"},
-                {"name": "paradicsomszósz", "amount": 400, "unit": "ml"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "bazsalikom", "amount": 1, "unit": "tk"},
-                {"name": "spagetti", "amount": 250, "unit": "g"}
+                {
+                    "name": "darálthús",
+                    "amount": 400,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "zsemlemorzsa",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsomszósz",
+                    "amount": 400,
+                    "unit": "ml"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "bazsalikom",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "spagetti",
+                    "amount": 250,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a darált húst, tojást, zsemlemorzsát, sót és borsot.",
@@ -665,14 +1069,46 @@
             "mealType": "desszert",
             "description": "Francia klasszikus három réteg ropogós leveles tésztával és vaníliás krémmel.",
             "ingredients": [
-                {"name": "leveles tészta", "amount": 1, "unit": "csomag"},
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "tojássárgája", "amount": 5, "unit": "db"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "keményítő", "amount": 30, "unit": "g"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "vaníliarúd", "amount": 1, "unit": "db"},
-                {"name": "porcukor", "amount": 50, "unit": "g"}
+                {
+                    "name": "leveles tészta",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "tojássárgája",
+                    "amount": 5,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "keményítő",
+                    "amount": 30,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaníliarúd",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "porcukor",
+                    "amount": 50,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Nyújtsd ki a leveles tésztát és süsd aranybarnára 200°C-on.",
@@ -691,12 +1127,36 @@
             "mealType": "reggeli",
             "description": "Gazdag, szaftos omlett kétféle sajttal.",
             "ingredients": [
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "cheddar sajt", "amount": 50, "unit": "g"},
-                {"name": "mozzarella", "amount": 50, "unit": "g"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "cheddar sajt",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "mozzarella",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Verd fel a tojásokat és fűszerezd.",
@@ -765,14 +1225,46 @@
             "mealType": "vacsora",
             "description": "Egészséges és ízletes tengeri finomság bulgurral.",
             "ingredients": [
-                { "name": "garnélarák", "amount": 250, "unit": "g" },
-                { "name": "bulgur", "amount": 200, "unit": "g" },
-                { "name": "fokhagyma", "amount": 3, "unit": "gerezd" },
-                { "name": "citromlé", "amount": 2, "unit": "evőkanál" },
-                { "name": "olívaolaj", "amount": 2, "unit": "evőkanál" },
-                { "name": "petrezselyem", "amount": 1, "unit": "csokor" },
-                { "name": "só", "amount": 1, "unit": "teáskanál" },
-                { "name": "bors", "amount": 0.5, "unit": "teáskanál" }
+                {
+                    "name": "garnélarák",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "bulgur",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 2,
+                    "unit": "evőkanál"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "evőkanál"
+                },
+                {
+                    "name": "petrezselyem",
+                    "amount": 1,
+                    "unit": "csokor"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "teáskanál"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "teáskanál"
+                }
             ],
             "steps": [
                 "Főzd meg a bulgurt sós vízben, majd locsold meg citromlével.",
@@ -789,15 +1281,51 @@
             "mealType": "ebéd",
             "description": "Omlós, lassan sült kacsacomb gazdag vörösboros lencsével.",
             "ingredients": [
-                {"name": "kacsacomb", "amount": 2, "unit": "db"},
-                {"name": "lencse", "amount": 200, "unit": "g"},
-                {"name": "vörösbor", "amount": 250, "unit": "ml"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "sárgarépa", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "kakukkfű", "amount": 1, "unit": "tk"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "kacsacomb",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "lencse",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vörösbor",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sárgarépa",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "kakukkfű",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 160°C-ra.",
@@ -816,12 +1344,36 @@
             "mealType": "reggeli",
             "description": "Édes, fahéjas francia pirítós mézzel.",
             "ingredients": [
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "tej", "amount": 100, "unit": "ml"},
-                {"name": "cukor", "amount": 1, "unit": "ek"},
-                {"name": "fahéj", "amount": 1, "unit": "tk"},
-                {"name": "kenyér", "amount": 4, "unit": "szelet"},
-                {"name": "vaj", "amount": 1, "unit": "ek"}
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "fahéj",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "kenyér",
+                    "amount": 4,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Keverd össze a tojást, tejet, cukrot és fahéjat.",
@@ -838,14 +1390,46 @@
             "mealType": "ebéd",
             "description": "Gazdag francia halleves kagylóval, rákkal és sáfránnyal.",
             "ingredients": [
-                {"name": "fehér húsú hal", "amount": 500, "unit": "g"},
-                {"name": "rák", "amount": 200, "unit": "g"},
-                {"name": "kagyló", "amount": 200, "unit": "g"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "paradicsompüré", "amount": 200, "unit": "ml"},
-                {"name": "hal alaplé", "amount": 1, "unit": "l"},
-                {"name": "sáfrány", "amount": 1, "unit": "csipet"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "fehér húsú hal",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "rák",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "kagyló",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsompüré",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "hal alaplé",
+                    "amount": 1,
+                    "unit": "l"
+                },
+                {
+                    "name": "sáfrány",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát és a paradicsompürét olívaolajon.",
@@ -910,12 +1494,36 @@
             "mealType": "reggeli",
             "description": "Kis adagokban sült, könnyű és sós francia quiche.",
             "ingredients": [
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "tej", "amount": 100, "unit": "ml"},
-                {"name": "sajt", "amount": 50, "unit": "g"},
-                {"name": "sonka", "amount": 50, "unit": "g"},
-                {"name": "leveles tészta", "amount": 1, "unit": "csomag"},
-                {"name": "só", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "sonka",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "leveles tészta",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 180°C-ra.",
@@ -932,13 +1540,41 @@
             "mealType": "vacsora",
             "description": "Szaftos, ropogós bőrű kacsamell édes-savanyú karamellizált körtével és balzsamecetes mártással.",
             "ingredients": [
-                {"name": "kacsamell", "amount": 2, "unit": "db"},
-                {"name": "körte", "amount": 2, "unit": "db"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "balzsamecet", "amount": 2, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "kacsamell",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "körte",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "balzsamecet",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Vágd be a kacsamell bőrét és sózd meg.",
@@ -956,12 +1592,36 @@
             "mealType": "ebéd",
             "description": "Krémes és ízletes lazacos tészta fokhagymás tejszínes szósszal.",
             "ingredients": [
-                {"name": "lazac", "amount": 200, "unit": "g"},
-                {"name": "spagetti", "amount": 250, "unit": "g"},
-                {"name": "fokhagyma", "amount": 3, "unit": "gerezd"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "parmezán", "amount": 50, "unit": "g"},
-                {"name": "vaj", "amount": 1, "unit": "ek"}
+                {
+                    "name": "lazac",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "spagetti",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Főzd meg a spagettit sós vízben.",
@@ -979,13 +1639,41 @@
             "mealType": "desszert",
             "description": "Puha és szaftos banánkenyér csokoládédarabokkal.",
             "ingredients": [
-                {"name": "banán", "amount": 3, "unit": "db"},
-                {"name": "liszt", "amount": 200, "unit": "g"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "sütőpor", "amount": 1, "unit": "tk"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "csokoládédarabok", "amount": 100, "unit": "g"}
+                {
+                    "name": "banán",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "csokoládédarabok",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Törd össze a banánokat és keverd össze a tojásokkal, cukorral és olvasztott vajjal.",
@@ -1002,14 +1690,46 @@
             "mealType": "reggeli",
             "description": "Fűszeres paradicsomszószban sült tojás, közel-keleti fűszerekkel és friss korianderrel.",
             "ingredients": [
-                {"name": "paradicsom", "amount": 500, "unit": "g"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "fűszerpaprika", "amount": 1, "unit": "tk"},
-                {"name": "római kömény", "amount": 1, "unit": "tk"},
-                {"name": "koriander", "amount": 1, "unit": "csokor"}
+                {
+                    "name": "paradicsom",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "fűszerpaprika",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "római kömény",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "koriander",
+                    "amount": 1,
+                    "unit": "csokor"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát és fokhagymát olívaolajon, majd add hozzá a fűszereket.",
@@ -1073,12 +1793,36 @@
             "mealType": "desszert",
             "description": "Könnyű és frissítő tiramisu eperrel és mascarpone krémmel.",
             "ingredients": [
-                {"name": "mascarpone", "amount": 500, "unit": "g"},
-                {"name": "babapiskóta", "amount": 200, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "eper", "amount": 300, "unit": "g"},
-                {"name": "citromlé", "amount": 1, "unit": "ek"}
+                {
+                    "name": "mascarpone",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "babapiskóta",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "eper",
+                    "amount": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Válaszd szét a tojásokat, és keverd ki a sárgáját a cukorral.",
@@ -1096,10 +1840,26 @@
             "mealType": "reggeli",
             "description": "Egészséges és laktató chia puding kókusztejjel és gyümölcsökkel.",
             "ingredients": [
-                {"name": "chia mag", "amount": 3, "unit": "ek"},
-                {"name": "kókusztej", "amount": 250, "unit": "ml"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "eper", "amount": 100, "unit": "g"}
+                {
+                    "name": "chia mag",
+                    "amount": 3,
+                    "unit": "ek"
+                },
+                {
+                    "name": "kókusztej",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "eper",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a chia magot a kókusztejjel és a mézzel.",
@@ -1168,12 +1928,36 @@
             "mealType": "ebéd",
             "description": "Egyszerű és finom rakott karfiol darált hússal és sajttal.",
             "ingredients": [
-                {"name": "karfiol", "amount": 500, "unit": "g"},
-                {"name": "darálthús", "amount": 300, "unit": "g"},
-                {"name": "tejföl", "amount": 200, "unit": "ml"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "sajt", "amount": 100, "unit": "g"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "karfiol",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "darálthús",
+                    "amount": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Főzd elő a karfiolt sós vízben.",
@@ -1191,13 +1975,41 @@
             "mealType": "desszert",
             "description": "Egyszerű és finom, rumos-kakaós ízvilágú kókuszgolyók.",
             "ingredients": [
-                {"name": "darált háztartási keksz", "amount": 250, "unit": "g"},
-                {"name": "kakaópor", "amount": 2, "unit": "ek"},
-                {"name": "porcukor", "amount": 50, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "tej", "amount": 100, "unit": "ml"},
-                {"name": "rumaroma", "amount": 1, "unit": "tk"},
-                {"name": "kókuszreszelék", "amount": 100, "unit": "g"}
+                {
+                    "name": "darált háztartási keksz",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "kakaópor",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "porcukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "rumaroma",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "kókuszreszelék",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a darált kekszet, kakaóport, porcukrot és a rumaromát.",
@@ -1214,10 +2026,26 @@
             "mealType": "reggeli",
             "description": "Egyszerű és laktató reggeli quesadilla olvadt sajttal és sonkával.",
             "ingredients": [
-                {"name": "tortilla", "amount": 1, "unit": "db"},
-                {"name": "sonka", "amount": 50, "unit": "g"},
-                {"name": "sajt", "amount": 50, "unit": "g"},
-                {"name": "vaj", "amount": 1, "unit": "ek"}
+                {
+                    "name": "tortilla",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sonka",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Tedd a sajtot és a sonkát a tortilla felére.",
@@ -1234,11 +2062,31 @@
             "mealType": "desszert",
             "description": "Krémes panna cotta narancsos ízesítéssel.",
             "ingredients": [
-                {"name": "tejszín", "amount": 250, "unit": "ml"},
-                {"name": "cukor", "amount": 50, "unit": "g"},
-                {"name": "narancslé", "amount": 100, "unit": "ml"},
-                {"name": "zselatin", "amount": 5, "unit": "g"},
-                {"name": "vaníliakivonat", "amount": 1, "unit": "tk"}
+                {
+                    "name": "tejszín",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "narancslé",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "zselatin",
+                    "amount": 5,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaníliakivonat",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd fel a tejszínt és a cukrot egy lábasban.",
@@ -1297,13 +2145,41 @@
             "mealType": "reggeli",
             "description": "Francia vajas croissant, tökéletes rétegekkel és ropogós héjjal.",
             "ingredients": [
-                {"name": "liszt", "amount": 500, "unit": "g"},
-                {"name": "élesztő", "amount": 10, "unit": "g"},
-                {"name": "tej", "amount": 250, "unit": "ml"},
-                {"name": "cukor", "amount": 50, "unit": "g"},
-                {"name": "só", "amount": 10, "unit": "g"},
-                {"name": "vaj", "amount": 250, "unit": "g"},
-                {"name": "tojás", "amount": 1, "unit": "db"}
+                {
+                    "name": "liszt",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "élesztő",
+                    "amount": 10,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 10,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Keverd össze a lisztet, élesztőt, cukrot, sót és langyos tejet, majd gyúrd össze és hagyd kelni 2 órán át.",
@@ -1320,12 +2196,36 @@
             "mealType": "desszert",
             "description": "Krémes sajttorta ropogós kekszalapon.",
             "ingredients": [
-                {"name": "darált keksz", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "krémsajt", "amount": 500, "unit": "g"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "citromlé", "amount": 2, "unit": "ek"}
+                {
+                    "name": "darált keksz",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "krémsajt",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Keverd össze a darált kekszet az olvasztott vajjal és nyomkodd egy tortaformába.",
@@ -1342,11 +2242,31 @@
             "mealType": "desszert",
             "description": "Egyszerű és gyors karamellás pohárdesszert ropogós kekszmorzsával.",
             "ingredients": [
-                {"name": "keksz", "amount": 100, "unit": "g"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "tejszín", "amount": 150, "unit": "ml"},
-                {"name": "vaníliás cukor", "amount": 1, "unit": "csomag"}
+                {
+                    "name": "keksz",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 150,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vaníliás cukor",
+                    "amount": 1,
+                    "unit": "csomag"
+                }
             ],
             "steps": [
                 "Törd össze a kekszet és keverd össze az olvasztott vajjal.",
@@ -1406,12 +2326,36 @@
             "mealType": "desszert",
             "description": "Puha, gyümölcsös piskóta friss vagy befőtt meggyel.",
             "ingredients": [
-                {"name": "liszt", "amount": 250, "unit": "g"},
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "cukor", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "sütőpor", "amount": 1, "unit": "csomag"},
-                {"name": "meggy", "amount": 300, "unit": "g"}
+                {
+                    "name": "liszt",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "meggy",
+                    "amount": 300,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Verd fel a tojásokat a cukorral habosra.",
@@ -1428,13 +2372,41 @@
             "mealType": "ebéd",
             "description": "Hagyományos magyar marhapörkölt puha galuskával tálalva.",
             "ingredients": [
-                {"name": "marhahús", "amount": 500, "unit": "g"},
-                {"name": "vöröshagyma", "amount": 2, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "pirospaprika", "amount": 1, "unit": "ek"},
-                {"name": "paradicsom", "amount": 1, "unit": "db"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "galuska", "amount": 300, "unit": "g"}
+                {
+                    "name": "marhahús",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "galuska",
+                    "amount": 300,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát, majd add hozzá a marhahúst és pirítsd meg.",
@@ -1451,9 +2423,21 @@
             "mealType": "reggeli",
             "description": "Ropogós, egészséges almachips fahéjjal és mézzel.",
             "ingredients": [
-                {"name": "alma", "amount": 2, "unit": "db"},
-                {"name": "fahéj", "amount": 1, "unit": "tk"},
-                {"name": "méz", "amount": 1, "unit": "ek"}
+                {
+                    "name": "alma",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "fahéj",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 100°C-ra.",
@@ -1513,13 +2497,41 @@
             "mealType": "ebéd",
             "description": "Frissen készített házi tagliatelle tészta gazdag szarvasgombás-tejszínes mártással.",
             "ingredients": [
-                {"name": "liszt", "amount": 300, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "szarvasgomba", "amount": 10, "unit": "g"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "parmezán", "amount": 50, "unit": "g"}
+                {
+                    "name": "liszt",
+                    "amount": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "szarvasgomba",
+                    "amount": 10,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 50,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Készítsd el a tésztát a liszt, tojás és só összegyúrásával.",
@@ -1537,12 +2549,36 @@
             "mealType": "reggeli",
             "description": "Édes bundás kenyér fahéjjal és mézzel, tökéletes reggeli csemege.",
             "ingredients": [
-                {"name": "kenyér", "amount": 2, "unit": "szelet"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "tej", "amount": 50, "unit": "ml"},
-                {"name": "fahéj", "amount": 1, "unit": "tk"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "méz", "amount": 1, "unit": "ek"}
+                {
+                    "name": "kenyér",
+                    "amount": 2,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 50,
+                    "unit": "ml"
+                },
+                {
+                    "name": "fahéj",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Verd fel a tojást a tejjel és a fahéjjal.",
@@ -1559,14 +2595,46 @@
             "mealType": "vacsora",
             "description": "Gazdag, ízes vaddisznópörkölt vörösboros-áfonyás mártással és házi galuskával.",
             "ingredients": [
-                {"name": "vaddisznóhús", "amount": 800, "unit": "g"},
-                {"name": "vörösbor", "amount": 500, "unit": "ml"},
-                {"name": "vöröshagyma", "amount": 2, "unit": "db"},
-                {"name": "fokhagyma", "amount": 3, "unit": "gerezd"},
-                {"name": "áfonya", "amount": 100, "unit": "g"},
-                {"name": "pirospaprika", "amount": 2, "unit": "tk"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "vaddisznóhús",
+                    "amount": 800,
+                    "unit": "g"
+                },
+                {
+                    "name": "vörösbor",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "áfonya",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 2,
+                    "unit": "tk"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát és fokhagymát, majd add hozzá a vaddisznóhúst.",
@@ -1630,14 +2698,46 @@
             "mealType": "vacsora",
             "description": "Szaftos házi hamburger karamellizált hagymával és ropogós zöldségekkel.",
             "ingredients": [
-                {"name": "marhahús", "amount": 500, "unit": "g"},
-                {"name": "hamburgerzsemle", "amount": 4, "unit": "db"},
-                {"name": "vöröshagyma", "amount": 2, "unit": "db"},
-                {"name": "cheddar sajt", "amount": 4, "unit": "szelet"},
-                {"name": "paradicsom", "amount": 2, "unit": "db"},
-                {"name": "salátalevél", "amount": 100, "unit": "g"},
-                {"name": "mustár", "amount": 1, "unit": "ek"},
-                {"name": "ketchup", "amount": 1, "unit": "ek"}
+                {
+                    "name": "marhahús",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "hamburgerzsemle",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "cheddar sajt",
+                    "amount": 4,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "salátalevél",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "mustár",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "ketchup",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Formázd meg a marhahúspogácsákat és süsd meg serpenyőben.",
@@ -1654,12 +2754,36 @@
             "mealType": "desszert",
             "description": "Fűszeres és illatos mézeskalács, tökéletes ünnepi sütemény.",
             "ingredients": [
-                {"name": "liszt", "amount": 400, "unit": "g"},
-                {"name": "méz", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "fahéj", "amount": 1, "unit": "tk"},
-                {"name": "szegfűszeg", "amount": 1, "unit": "tk"}
+                {
+                    "name": "liszt",
+                    "amount": 400,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fahéj",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "szegfűszeg",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd fel a mézet és a vajat, majd hagyd kihűlni.",
@@ -1676,13 +2800,41 @@
             "mealType": "vacsora",
             "description": "Vegetáriánus fasírt cukkini és sajt keverékével, friss joghurtos öntettel.",
             "ingredients": [
-                { "name": "cukkini", "amount": 1, "unit": "db" },
-                { "name": "tojás", "amount": 1, "unit": "db" },
-                { "name": "zsemlemorzsa", "amount": 100, "unit": "g" },
-                { "name": "sajt", "amount": 50, "unit": "g" },
-                { "name": "fokhagyma", "amount": 1, "unit": "gerezd" },
-                { "name": "natúr joghurt", "amount": 100, "unit": "g" },
-                { "name": "kapor", "amount": 1, "unit": "evőkanál" }
+                {
+                    "name": "cukkini",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "zsemlemorzsa",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 1,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "natúr joghurt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "kapor",
+                    "amount": 1,
+                    "unit": "evőkanál"
+                }
             ],
             "steps": [
                 "Reszeld le a cukkinit, majd nyomkodd ki a levét.",
@@ -1699,13 +2851,41 @@
             "mealType": "desszert",
             "description": "Híres osztrák csokoládétorta baracklekvárral és fényes csokoládébevonattal.",
             "ingredients": [
-                {"name": "liszt", "amount": 150, "unit": "g"},
-                {"name": "cukor", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 150, "unit": "g"},
-                {"name": "étcsokoládé", "amount": 200, "unit": "g"},
-                {"name": "tojás", "amount": 6, "unit": "db"},
-                {"name": "baracklekvár", "amount": 200, "unit": "g"},
-                {"name": "tejszín", "amount": 100, "unit": "ml"}
+                {
+                    "name": "liszt",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "étcsokoládé",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 6,
+                    "unit": "db"
+                },
+                {
+                    "name": "baracklekvár",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 100,
+                    "unit": "ml"
+                }
             ],
             "steps": [
                 "Olvaszd fel az étcsokoládét és keverd a vajjal és cukorral.",
@@ -1724,10 +2904,26 @@
             "mealType": "reggeli",
             "description": "Egészséges és laktató reggeli joghurttal és gyümölcsökkel.",
             "ingredients": [
-                {"name": "müzli", "amount": 50, "unit": "g"},
-                {"name": "joghurt", "amount": 150, "unit": "g"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "banán", "amount": 1, "unit": "db"}
+                {
+                    "name": "müzli",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "joghurt",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "banán",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Önts müzlit egy tálba.",
@@ -1744,12 +2940,36 @@
             "mealType": "reggeli",
             "description": "Egyszerű és egészséges reggeli reszelt cukkini tócsnival.",
             "ingredients": [
-                {"name": "cukkini", "amount": 1, "unit": "db"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "liszt", "amount": 3, "unit": "ek"},
-                {"name": "fokhagyma", "amount": 1, "unit": "gerezd"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "olaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "cukkini",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 3,
+                    "unit": "ek"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 1,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "olaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Reszeld le a cukkinit és nyomkodd ki a levét.",
@@ -1766,14 +2986,46 @@
             "mealType": "vacsora",
             "description": "Kézzel készített házi ravioli gazdag fekete szarvasgombás ricottás töltelékkel, vajas zsályás mártásban.",
             "ingredients": [
-                {"name": "liszt", "amount": 300, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "ricotta", "amount": 200, "unit": "g"},
-                {"name": "parmezán", "amount": 50, "unit": "g"},
-                {"name": "fekete szarvasgomba", "amount": 10, "unit": "g"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "zsálya", "amount": 10, "unit": "levél"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "liszt",
+                    "amount": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "ricotta",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "fekete szarvasgomba",
+                    "amount": 10,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "zsálya",
+                    "amount": 10,
+                    "unit": "levél"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Készítsd el a tésztát lisztből és tojásból, majd hagyd pihenni 30 percig.",
@@ -1792,11 +3044,31 @@
             "mealType": "reggeli",
             "description": "Gyors és egyszerű tojásmuffin, amit előre is el lehet készíteni.",
             "ingredients": [
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "bacon", "amount": 50, "unit": "g"},
-                {"name": "sajt", "amount": 50, "unit": "g"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "bacon",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 180°C-ra.",
@@ -1813,9 +3085,21 @@
             "mealType": "vacsora",
             "description": "Egyszerű, gyors és ropogós grillezett sajtos toast.",
             "ingredients": [
-                {"name": "kenyér", "amount": 2, "unit": "szelet"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "sajt", "amount": 100, "unit": "g"}
+                {
+                    "name": "kenyér",
+                    "amount": 2,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Vajazd meg a kenyérszeleteket.",
@@ -1832,13 +3116,41 @@
             "mealType": "ebéd",
             "description": "Klasszikus csirkepaprikás zöldségekkel és nokedlivel tálalva.",
             "ingredients": [
-                {"name": "csirkecomb", "amount": 4, "unit": "db"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "paprika", "amount": 1, "unit": "db"},
-                {"name": "paradicsom", "amount": 1, "unit": "db"},
-                {"name": "pirospaprika", "amount": 1, "unit": "ek"},
-                {"name": "tejföl", "amount": 100, "unit": "ml"},
-                {"name": "nokedli", "amount": 300, "unit": "g"}
+                {
+                    "name": "csirkecomb",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paprika",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "nokedli",
+                    "amount": 300,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát, majd add hozzá a csirkecombokat.",
@@ -1855,14 +3167,46 @@
             "mealType": "reggeli",
             "description": "Klasszikus brunch fogás, lágy buggyantott tojással, sonkával és házi hollandi mártással angol muffinon.",
             "ingredients": [
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "angol muffin", "amount": 2, "unit": "db"},
-                {"name": "sonka", "amount": 4, "unit": "szelet"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "citromlé", "amount": 1, "unit": "ek"},
-                {"name": "tojássárgája", "amount": 3, "unit": "db"},
-                {"name": "fehérborecet", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "angol muffin",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "sonka",
+                    "amount": 4,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tojássárgája",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "fehérborecet",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Forralj vizet egy lábasban, adj hozzá ecetet, majd óvatosan engedd bele a tojásokat és főzd 3 percig.",
@@ -1879,11 +3223,31 @@
             "mealType": "vacsora",
             "description": "Egyszerű és gyors gombás rántotta.",
             "ingredients": [
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "gomba", "amount": 100, "unit": "g"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "gomba",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Szeleteld fel a gombát és pirítsd meg vajon.",
@@ -1900,13 +3264,41 @@
             "mealType": "ebéd",
             "description": "Hagyományos magyar töltött paprika fűszeres paradicsomszószban főzve.",
             "ingredients": [
-                {"name": "paprika", "amount": 4, "unit": "db"},
-                {"name": "darálthús", "amount": 500, "unit": "g"},
-                {"name": "rizs", "amount": 100, "unit": "g"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "paradicsompüré", "amount": 500, "unit": "ml"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "paprika",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "darálthús",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "rizs",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsompüré",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Főzd elő a rizst félig.",
@@ -1924,11 +3316,31 @@
             "mealType": "vacsora",
             "description": "Frissítő olasz Caprese saláta.",
             "ingredients": [
-                {"name": "paradicsom", "amount": 2, "unit": "db"},
-                {"name": "mozzarella", "amount": 125, "unit": "g"},
-                {"name": "bazsalikom", "amount": 1, "unit": "marék"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "balzsamecet", "amount": 1, "unit": "tk"}
+                {
+                    "name": "paradicsom",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "mozzarella",
+                    "amount": 125,
+                    "unit": "g"
+                },
+                {
+                    "name": "bazsalikom",
+                    "amount": 1,
+                    "unit": "marék"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "balzsamecet",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Szeleteld fel a paradicsomot és a mozzarellát.",
@@ -1945,13 +3357,41 @@
             "mealType": "ebéd",
             "description": "Laktató és egyszerű tepsis csirke zöldségekkel sütve.",
             "ingredients": [
-                {"name": "csirkecomb", "amount": 4, "unit": "db"},
-                {"name": "burgonya", "amount": 500, "unit": "g"},
-                {"name": "répa", "amount": 2, "unit": "db"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "rozmaring", "amount": 1, "unit": "tk"}
+                {
+                    "name": "csirkecomb",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "répa",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "rozmaring",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 200°C-ra.",
@@ -1969,11 +3409,31 @@
             "mealType": "reggeli",
             "description": "Tápláló zabkása friss eperrel és pirított mandulával.",
             "ingredients": [
-                {"name": "zabpehely", "amount": 50, "unit": "g"},
-                {"name": "tej", "amount": 200, "unit": "ml"},
-                {"name": "eper", "amount": 100, "unit": "g"},
-                {"name": "mandula", "amount": 20, "unit": "g"},
-                {"name": "méz", "amount": 1, "unit": "ek"}
+                {
+                    "name": "zabpehely",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "eper",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "mandula",
+                    "amount": 20,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Forrald fel a tejet, majd add hozzá a zabpelyhet.",
@@ -1990,13 +3450,41 @@
             "mealType": "vacsora",
             "description": "Szaftos csirkemell paradicsommal, mozzarellával és bazsalikommal sütve.",
             "ingredients": [
-                {"name": "csirkemell", "amount": 2, "unit": "db"},
-                {"name": "mozzarella", "amount": 100, "unit": "g"},
-                {"name": "paradicsom", "amount": 2, "unit": "db"},
-                {"name": "bazsalikom", "amount": 5, "unit": "levél"},
-                {"name": "olívaolaj", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "csirkemell",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "mozzarella",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "bazsalikom",
+                    "amount": 5,
+                    "unit": "levél"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Vágd be a csirkemelleket és töltsd meg mozzarellával, paradicsommal és bazsalikommal.",
@@ -2013,13 +3501,41 @@
             "mealType": "vacsora",
             "description": "Ropogósra sült csirkeszárnyak fokhagymás-paprikás pácban, sült burgonyával.",
             "ingredients": [
-                {"name": "csirkeszárny", "amount": 800, "unit": "g"},
-                {"name": "burgonya", "amount": 500, "unit": "g"},
-                {"name": "fokhagyma", "amount": 3, "unit": "gerezd"},
-                {"name": "pirospaprika", "amount": 1, "unit": "tk"},
-                {"name": "olívaolaj", "amount": 3, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "csirkeszárny",
+                    "amount": 800,
+                    "unit": "g"
+                },
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 3,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Keverd össze az olajat, zúzott fokhagymát, pirospaprikát, sót és borsot.",
@@ -2037,11 +3553,31 @@
             "mealType": "ebéd",
             "description": "Gazdag és laktató magyar bableves.",
             "ingredients": [
-                {"name": "szárazbab", "amount": 250, "unit": "g"},
-                {"name": "füstölt hús", "amount": 200, "unit": "g"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "sárgarépa", "amount": 200, "unit": "g"},
-                {"name": "petrezselyem", "amount": 1, "unit": "csokor"}
+                {
+                    "name": "szárazbab",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "füstölt hús",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sárgarépa",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "petrezselyem",
+                    "amount": 1,
+                    "unit": "csokor"
+                }
             ],
             "steps": [
                 "Áztasd be a babot egy éjszakára.",
@@ -2059,15 +3595,51 @@
             "mealType": "ebéd",
             "description": "Hagyományos osztrák marhahúsleves főtt hússal és zöldségekkel.",
             "ingredients": [
-                {"name": "marhafartő", "amount": 800, "unit": "g"},
-                {"name": "sárgarépa", "amount": 2, "unit": "db"},
-                {"name": "petrezselyemgyökér", "amount": 2, "unit": "db"},
-                {"name": "zeller", "amount": 1, "unit": "db"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"},
-                {"name": "babérlevél", "amount": 1, "unit": "db"},
-                {"name": "metélőhagyma", "amount": 1, "unit": "csokor"}
+                {
+                    "name": "marhafartő",
+                    "amount": 800,
+                    "unit": "g"
+                },
+                {
+                    "name": "sárgarépa",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "petrezselyemgyökér",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "zeller",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                },
+                {
+                    "name": "babérlevél",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "metélőhagyma",
+                    "amount": 1,
+                    "unit": "csokor"
+                }
             ],
             "steps": [
                 "Tedd a marhahúst egy nagy fazékba, és öntsd fel hideg vízzel.",
@@ -2086,11 +3658,31 @@
             "mealType": "desszert",
             "description": "Klasszikus magyar desszert, amit vaníliasodóval is lehet tálalni.",
             "ingredients": [
-                {"name": "kifli", "amount": 4, "unit": "db"},
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "cukor", "amount": 50, "unit": "g"},
-                {"name": "mák", "amount": 100, "unit": "g"},
-                {"name": "vaníliás cukor", "amount": 1, "unit": "tk"}
+                {
+                    "name": "kifli",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "mák",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaníliás cukor",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Karikázd fel a kiflit.",
@@ -2107,14 +3699,46 @@
             "mealType": "vacsora",
             "description": "Grillezett langusztin vajjal locsolva, krémes polentával és friss citromos mártással.",
             "ingredients": [
-                {"name": "langusztin", "amount": 6, "unit": "db"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "citrom", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "kukoricadara", "amount": 200, "unit": "g"},
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "parmezán", "amount": 50, "unit": "g"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "langusztin",
+                    "amount": 6,
+                    "unit": "db"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "citrom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "kukoricadara",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Főzd meg a polentát tejben, majd keverd bele a vajat és a parmezánt.",
@@ -2131,12 +3755,36 @@
             "mealType": "desszert",
             "description": "Frissítő és könnyű piskótatekercs citromos krémmel.",
             "ingredients": [
-                {"name": "tojás", "amount": 4, "unit": "db"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "liszt", "amount": 100, "unit": "g"},
-                {"name": "sütőpor", "amount": 1, "unit": "tk"},
-                {"name": "citromlé", "amount": 2, "unit": "ek"},
-                {"name": "citromhéj", "amount": 1, "unit": "db"}
+                {
+                    "name": "tojás",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "citromhéj",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Verd fel a tojásokat a cukorral habosra.",
@@ -2154,14 +3802,46 @@
             "mealType": "vacsora",
             "description": "Hagyományos magyar rakott káposzta füstölt kolbásszal és tejföllel gazdagítva.",
             "ingredients": [
-                {"name": "savanyú káposzta", "amount": 1, "unit": "kg"},
-                {"name": "darálthús", "amount": 500, "unit": "g"},
-                {"name": "rizs", "amount": 150, "unit": "g"},
-                {"name": "füstölt kolbász", "amount": 200, "unit": "g"},
-                {"name": "tejföl", "amount": 200, "unit": "ml"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "pirospaprika", "amount": 1, "unit": "ek"}
+                {
+                    "name": "savanyú káposzta",
+                    "amount": 1,
+                    "unit": "kg"
+                },
+                {
+                    "name": "darálthús",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "rizs",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "füstölt kolbász",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "pirospaprika",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Főzd meg a rizst félig és tedd félre.",
@@ -2178,11 +3858,31 @@
             "mealType": "reggeli",
             "description": "Fehérjében gazdag sonkás omlett reggelire.",
             "ingredients": [
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "tej", "amount": 50, "unit": "ml"},
-                {"name": "sonka", "amount": 50, "unit": "g"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "vaj", "amount": 1, "unit": "ek"}
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 50,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sonka",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Verd fel a tojásokat a tejjel és a sóval.",
@@ -2199,14 +3899,46 @@
             "mealType": "reggeli",
             "description": "Légiesen könnyű, vastag japán palacsinta vaníliával és juharsziruppal.",
             "ingredients": [
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "tej", "amount": 50, "unit": "ml"},
-                {"name": "liszt", "amount": 60, "unit": "g"},
-                {"name": "cukor", "amount": 30, "unit": "g"},
-                {"name": "sütőpor", "amount": 0.5, "unit": "tk"},
-                {"name": "vaj", "amount": 10, "unit": "g"},
-                {"name": "vanília kivonat", "amount": 1, "unit": "tk"},
-                {"name": "juharszirup", "amount": 2, "unit": "ek"}
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "tej",
+                    "amount": 50,
+                    "unit": "ml"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 60,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 30,
+                    "unit": "g"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 0.5,
+                    "unit": "tk"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 10,
+                    "unit": "g"
+                },
+                {
+                    "name": "vanília kivonat",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "juharszirup",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Válaszd szét a tojásokat, majd a sárgáját keverd össze a tejjel, vaníliával és liszttel.",
@@ -2224,13 +3956,41 @@
             "mealType": "ebéd",
             "description": "Krémes és laktató lencsefőzelék fűszeres ízekkel.",
             "ingredients": [
-                {"name": "lencse", "amount": 250, "unit": "g"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "tejföl", "amount": 100, "unit": "ml"},
-                {"name": "liszt", "amount": 1, "unit": "ek"},
-                {"name": "babérlevél", "amount": 1, "unit": "db"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "lencse",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "tejföl",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "babérlevél",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Áztasd be a lencsét legalább 1 órára.",
@@ -2247,11 +4007,31 @@
             "mealType": "reggeli",
             "description": "Friss és tápláló szendvics füstölt lazaccal és krémsajttal.",
             "ingredients": [
-                {"name": "rozskenyér", "amount": 2, "unit": "szelet"},
-                {"name": "füstölt lazac", "amount": 50, "unit": "g"},
-                {"name": "krémsajt", "amount": 30, "unit": "g"},
-                {"name": "citromlé", "amount": 1, "unit": "tk"},
-                {"name": "kapor", "amount": 1, "unit": "tk"}
+                {
+                    "name": "rozskenyér",
+                    "amount": 2,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "füstölt lazac",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "krémsajt",
+                    "amount": 30,
+                    "unit": "g"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "kapor",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Kend meg a kenyérszeleteket krémsajttal.",
@@ -2265,7 +4045,7 @@
             "name": "Főtt kukorica",
             "cookingTime": 15,
             "image": "kukorica.jpg",
-            "mealType": "köret",
+            "mealType": "vacsora",
             "description": "Zamatos, édes főtt kukorica, ami önmagában vagy köretként is megállja a helyét.",
             "ingredients": [
                 {
@@ -2300,10 +4080,26 @@
             "mealType": "reggeli",
             "description": "Krémes és trópusi smoothie mangóval és kókusztejjel.",
             "ingredients": [
-                {"name": "mangó", "amount": 1, "unit": "db"},
-                {"name": "kókusztej", "amount": 200, "unit": "ml"},
-                {"name": "banán", "amount": 1, "unit": "db"},
-                {"name": "méz", "amount": 1, "unit": "ek"}
+                {
+                    "name": "mangó",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "kókusztej",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "banán",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Hámozd meg a mangót és vágd kisebb darabokra.",
@@ -2320,16 +4116,56 @@
             "mealType": "ebéd",
             "description": "Tradicionális spanyol rizses egytálétel csirkével, tenger gyümölcseivel és sáfránnyal.",
             "ingredients": [
-                {"name": "csirkecomb", "amount": 2, "unit": "db"},
-                {"name": "rák", "amount": 200, "unit": "g"},
-                {"name": "kagyló", "amount": 200, "unit": "g"},
-                {"name": "rizottó rizs", "amount": 250, "unit": "g"},
-                {"name": "zöldborsó", "amount": 100, "unit": "g"},
-                {"name": "paradicsompüré", "amount": 2, "unit": "ek"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "csirke alaplé", "amount": 500, "unit": "ml"},
-                {"name": "sáfrány", "amount": 1, "unit": "csipet"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "csirkecomb",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "rák",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "kagyló",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "rizottó rizs",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "zöldborsó",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsompüré",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "csirke alaplé",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sáfrány",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Melegítsd fel az olívaolajat egy nagy paella serpenyőben.",
@@ -2348,13 +4184,41 @@
             "mealType": "ebéd",
             "description": "Klasszikus fasírt ropogós bundával, főtt burgonyával tálalva.",
             "ingredients": [
-                {"name": "darálthús", "amount": 500, "unit": "g"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "zsemlemorzsa", "amount": 100, "unit": "g"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"},
-                {"name": "burgonya", "amount": 500, "unit": "g"}
+                {
+                    "name": "darálthús",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "zsemlemorzsa",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                },
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a darált húst a tojásokkal, zsemlemorzsával, fokhagymával és fűszerekkel.",
@@ -2371,12 +4235,36 @@
             "mealType": "vacsora",
             "description": "Friss és könnyű tonhalsaláta főtt tojással és ropogós zöldségekkel.",
             "ingredients": [
-                {"name": "tonhalkonzerv", "amount": 1, "unit": "db"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "uborka", "amount": 1, "unit": "db"},
-                {"name": "paradicsom", "amount": 1, "unit": "db"},
-                {"name": "salátalevél", "amount": 100, "unit": "g"},
-                {"name": "citromlé", "amount": 1, "unit": "ek"}
+                {
+                    "name": "tonhalkonzerv",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "uborka",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "salátalevél",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Főzd meg a tojásokat és vágd félbe.",
@@ -2392,13 +4280,41 @@
             "mealType": "ebéd",
             "description": "Krémes, sajtos tészta brokkolival és csirkével, gyors és laktató ebéd.",
             "ingredients": [
-                {"name": "csirkemell", "amount": 2, "unit": "db"},
-                {"name": "brokkoli", "amount": 200, "unit": "g"},
-                {"name": "penne tészta", "amount": 250, "unit": "g"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "sajt", "amount": 100, "unit": "g"},
-                {"name": "olívaolaj", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "csirkemell",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "brokkoli",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "penne tészta",
+                    "amount": 250,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Főzd meg a tésztát sós vízben.",
@@ -2416,12 +4332,36 @@
             "mealType": "desszert",
             "description": "Könnyű és krémes tejberizs alapú sült desszert.",
             "ingredients": [
-                {"name": "rizs", "amount": 200, "unit": "g"},
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "vaníliás cukor", "amount": 1, "unit": "tk"}
+                {
+                    "name": "rizs",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaníliás cukor",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Főzd meg a rizst a tejben cukorral és vaníliás cukorral.",
@@ -2438,10 +4378,26 @@
             "mealType": "ebéd",
             "description": "Könnyű és tápláló zöldborsófőzelék.",
             "ingredients": [
-                {"name": "zöldborsó", "amount": 400, "unit": "g"},
-                {"name": "liszt", "amount": 2, "unit": "ek"},
-                {"name": "tej", "amount": 250, "unit": "ml"},
-                {"name": "vaj", "amount": 1, "unit": "ek"}
+                {
+                    "name": "zöldborsó",
+                    "amount": 400,
+                    "unit": "g"
+                },
+                {
+                    "name": "liszt",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tej",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Pirítsd meg a lisztet vajon.",
@@ -2458,14 +4414,46 @@
             "mealType": "desszert",
             "description": "Könnyű és szaftos muffin csokoládéval és banánnal.",
             "ingredients": [
-                {"name": "liszt", "amount": 200, "unit": "g"},
-                {"name": "cukor", "amount": 100, "unit": "g"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "banán", "amount": 2, "unit": "db"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "tej", "amount": 100, "unit": "ml"},
-                {"name": "sütőpor", "amount": 1, "unit": "tk"},
-                {"name": "csokoládé", "amount": 100, "unit": "g"}
+                {
+                    "name": "liszt",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "banán",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "csokoládé",
+                    "amount": 100,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Törd össze a banánokat és keverd össze a tojással, cukorral és olvasztott vajjal.",
@@ -2482,15 +4470,51 @@
             "mealType": "ebéd",
             "description": "Szaftos és omlós báránycsülök rozmaringos sült burgonyával.",
             "ingredients": [
-                {"name": "báránycsülök", "amount": 2, "unit": "db"},
-                {"name": "fokhagyma", "amount": 4, "unit": "gerezd"},
-                {"name": "rozmaring", "amount": 1, "unit": "ág"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "vörösbor", "amount": 250, "unit": "ml"},
-                {"name": "marhaalaplé", "amount": 500, "unit": "ml"},
-                {"name": "burgonya", "amount": 500, "unit": "g"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "báránycsülök",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 4,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "rozmaring",
+                    "amount": 1,
+                    "unit": "ág"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "vörösbor",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "marhaalaplé",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "burgonya",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 160°C-ra.",
@@ -2510,12 +4534,36 @@
             "mealType": "reggeli",
             "description": "Puha és ízletes amerikai palacsinta juharsziruppal.",
             "ingredients": [
-                {"name": "liszt", "amount": 200, "unit": "g"},
-                {"name": "tej", "amount": 250, "unit": "ml"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "sütőpor", "amount": 1, "unit": "tk"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "cukor", "amount": 2, "unit": "ek"}
+                {
+                    "name": "liszt",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Keverd össze a száraz hozzávalókat.",
@@ -2532,11 +4580,31 @@
             "mealType": "vacsora",
             "description": "Lágy sült camembert dióval és mézzel, friss salátával és pirított bagettel.",
             "ingredients": [
-                {"name": "camembert sajt", "amount": 1, "unit": "db"},
-                {"name": "dió", "amount": 50, "unit": "g"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "salátakeverék", "amount": 100, "unit": "g"},
-                {"name": "bagett", "amount": 1, "unit": "db"}
+                {
+                    "name": "camembert sajt",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "dió",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "salátakeverék",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "bagett",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 180°C-ra.",
@@ -2553,12 +4621,36 @@
             "mealType": "ebéd",
             "description": "Szaftos és fűszeres sertéskaraj tejszínes-fokhagymás mártásban.",
             "ingredients": [
-                {"name": "sertéskaraj", "amount": 4, "unit": "szelet"},
-                {"name": "fokhagyma", "amount": 3, "unit": "gerezd"},
-                {"name": "tejszín", "amount": 200, "unit": "ml"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "mustár", "amount": 1, "unit": "tk"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "sertéskaraj",
+                    "amount": 4,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 3,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "tejszín",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "mustár",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Süsd meg a sertéskarajt vajon mindkét oldalán.",
@@ -2575,11 +4667,31 @@
             "mealType": "vacsora",
             "description": "Egyszerű és egészséges grillezett padlizsán mozzarellával.",
             "ingredients": [
-                {"name": "padlizsán", "amount": 1, "unit": "db"},
-                {"name": "mozzarella", "amount": 100, "unit": "g"},
-                {"name": "paradicsom", "amount": 1, "unit": "db"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "padlizsán",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "mozzarella",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Vágd fel a padlizsánt és locsold meg olívaolajjal.",
@@ -2596,10 +4708,26 @@
             "mealType": "reggeli",
             "description": "Gyors és tápláló reggeli mogyoróvajjal és banánnal.",
             "ingredients": [
-                {"name": "teljes kiőrlésű kenyér", "amount": 2, "unit": "szelet"},
-                {"name": "mogyoróvaj", "amount": 2, "unit": "ek"},
-                {"name": "banán", "amount": 1, "unit": "db"},
-                {"name": "méz", "amount": 1, "unit": "ek"}
+                {
+                    "name": "teljes kiőrlésű kenyér",
+                    "amount": 2,
+                    "unit": "szelet"
+                },
+                {
+                    "name": "mogyoróvaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "banán",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Pirítsd meg a kenyérszeleteket.",
@@ -2616,13 +4744,41 @@
             "mealType": "vacsora",
             "description": "Krémes és egészséges padlizsános bulgur egytálétel.",
             "ingredients": [
-                {"name": "bulgur", "amount": 150, "unit": "g"},
-                {"name": "padlizsán", "amount": 1, "unit": "db"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "parmezán", "amount": 30, "unit": "g"},
-                {"name": "só", "amount": 1, "unit": "csipet"},
-                {"name": "bors", "amount": 1, "unit": "csipet"}
+                {
+                    "name": "bulgur",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "padlizsán",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "parmezán",
+                    "amount": 30,
+                    "unit": "g"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "csipet"
+                },
+                {
+                    "name": "bors",
+                    "amount": 1,
+                    "unit": "csipet"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát és a padlizsánt olajon.",
@@ -2639,13 +4795,41 @@
             "mealType": "ebéd",
             "description": "Szaftos kacsamell édes-savanyú gyümölcsös mártással tálalva.",
             "ingredients": [
-                {"name": "kacsamell", "amount": 2, "unit": "db"},
-                {"name": "alma", "amount": 1, "unit": "db"},
-                {"name": "narancslé", "amount": 100, "unit": "ml"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "vaj", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "kacsamell",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "alma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "narancslé",
+                    "amount": 100,
+                    "unit": "ml"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Vágd be a kacsamell bőrét és fűszerezd sóval, borssal.",
@@ -2662,12 +4846,36 @@
             "mealType": "desszert",
             "description": "Klasszikus francia sütemény narancsos ízesítéssel.",
             "ingredients": [
-                {"name": "liszt", "amount": 200, "unit": "g"},
-                {"name": "vaj", "amount": 150, "unit": "g"},
-                {"name": "tojás", "amount": 3, "unit": "db"},
-                {"name": "cukor", "amount": 120, "unit": "g"},
-                {"name": "narancshéj", "amount": 1, "unit": "db"},
-                {"name": "sütőpor", "amount": 1, "unit": "tk"}
+                {
+                    "name": "liszt",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 3,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 120,
+                    "unit": "g"
+                },
+                {
+                    "name": "narancshéj",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sütőpor",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Verd fel a tojásokat a cukorral habosra.",
@@ -2685,15 +4893,51 @@
             "mealType": "ebéd",
             "description": "Elegáns és különleges lazac leveles tésztába csomagolva, spenótos töltelékkel.",
             "ingredients": [
-                {"name": "lazacfilé", "amount": 500, "unit": "g"},
-                {"name": "leveles tészta", "amount": 1, "unit": "csomag"},
-                {"name": "friss spenót", "amount": 150, "unit": "g"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "mustár", "amount": 1, "unit": "ek"},
-                {"name": "tojás", "amount": 1, "unit": "db"},
-                {"name": "citromlé", "amount": 1, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "lazacfilé",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "leveles tészta",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "friss spenót",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "mustár",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "citromlé",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Pirítsd meg a spenótot vajon és hagyd kihűlni.",
@@ -2712,10 +4956,26 @@
             "mealType": "reggeli",
             "description": "Egészséges és tápláló zabkása mézzel és almával.",
             "ingredients": [
-                {"name": "zabpehely", "amount": 50, "unit": "g"},
-                {"name": "tej", "amount": 200, "unit": "ml"},
-                {"name": "méz", "amount": 1, "unit": "ek"},
-                {"name": "alma", "amount": 1, "unit": "db"}
+                {
+                    "name": "zabpehely",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "méz",
+                    "amount": 1,
+                    "unit": "ek"
+                },
+                {
+                    "name": "alma",
+                    "amount": 1,
+                    "unit": "db"
+                }
             ],
             "steps": [
                 "Forrald fel a tejet, majd add hozzá a zabpelyhet.",
@@ -2732,13 +4992,41 @@
             "mealType": "desszert",
             "description": "Lágy, kókuszos tejbegríz szelet kekszalapon, csokoládéval a tetején.",
             "ingredients": [
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "búzadara", "amount": 100, "unit": "g"},
-                {"name": "cukor", "amount": 80, "unit": "g"},
-                {"name": "vaj", "amount": 50, "unit": "g"},
-                {"name": "kókuszreszelék", "amount": 100, "unit": "g"},
-                {"name": "csokoládé", "amount": 150, "unit": "g"},
-                {"name": "darált keksz", "amount": 200, "unit": "g"}
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "búzadara",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 80,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "kókuszreszelék",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "csokoládé",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "darált keksz",
+                    "amount": 200,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Keverd össze a tejet, búzadarát, cukrot és főzd sűrűre.",
@@ -2756,12 +5044,36 @@
             "mealType": "vacsora",
             "description": "Egyszerű, de ízletes pulykahúsos wrap zöldségekkel.",
             "ingredients": [
-                {"name": "tortilla", "amount": 2, "unit": "db"},
-                {"name": "pulykamell", "amount": 150, "unit": "g"},
-                {"name": "saláta", "amount": 50, "unit": "g"},
-                {"name": "paradicsom", "amount": 1, "unit": "db"},
-                {"name": "joghurt", "amount": 2, "unit": "ek"},
-                {"name": "mustár", "amount": 1, "unit": "tk"}
+                {
+                    "name": "tortilla",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "pulykamell",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "saláta",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "paradicsom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "joghurt",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "mustár",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Süsd meg a pulykamell szeleteket fűszerezve.",
@@ -2778,12 +5090,36 @@
             "mealType": "vacsora",
             "description": "Egyszerű és egészséges sült lazac friss citromos spárgával.",
             "ingredients": [
-                {"name": "lazacfilé", "amount": 2, "unit": "db"},
-                {"name": "spárga", "amount": 200, "unit": "g"},
-                {"name": "citrom", "amount": 1, "unit": "db"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"},
-                {"name": "bors", "amount": 0.5, "unit": "tk"}
+                {
+                    "name": "lazacfilé",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "spárga",
+                    "amount": 200,
+                    "unit": "g"
+                },
+                {
+                    "name": "citrom",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "bors",
+                    "amount": 0.5,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Melegítsd elő a sütőt 200°C-ra.",
@@ -2801,14 +5137,46 @@
             "mealType": "vacsora",
             "description": "Szaftos rakott padlizsán darált hússal és paradicsomos mártással.",
             "ingredients": [
-                {"name": "padlizsán", "amount": 2, "unit": "db"},
-                {"name": "darálthús", "amount": 400, "unit": "g"},
-                {"name": "vöröshagyma", "amount": 1, "unit": "db"},
-                {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
-                {"name": "paradicsomszósz", "amount": 300, "unit": "ml"},
-                {"name": "sajt", "amount": 150, "unit": "g"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"},
-                {"name": "só", "amount": 1, "unit": "tk"}
+                {
+                    "name": "padlizsán",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "darálthús",
+                    "amount": 400,
+                    "unit": "g"
+                },
+                {
+                    "name": "vöröshagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "fokhagyma",
+                    "amount": 2,
+                    "unit": "gerezd"
+                },
+                {
+                    "name": "paradicsomszósz",
+                    "amount": 300,
+                    "unit": "ml"
+                },
+                {
+                    "name": "sajt",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "só",
+                    "amount": 1,
+                    "unit": "tk"
+                }
             ],
             "steps": [
                 "Szeleteld fel a padlizsánt és süsd meg olívaolajon.",
@@ -2826,13 +5194,41 @@
             "mealType": "desszert",
             "description": "Kelt tésztából készült édes sütemény, amit vaníliasodóval tálalnak.",
             "ingredients": [
-                {"name": "liszt", "amount": 500, "unit": "g"},
-                {"name": "tej", "amount": 250, "unit": "ml"},
-                {"name": "élesztő", "amount": 25, "unit": "g"},
-                {"name": "cukor", "amount": 50, "unit": "g"},
-                {"name": "tojás", "amount": 2, "unit": "db"},
-                {"name": "vaj", "amount": 100, "unit": "g"},
-                {"name": "darált dió", "amount": 150, "unit": "g"}
+                {
+                    "name": "liszt",
+                    "amount": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "tej",
+                    "amount": 250,
+                    "unit": "ml"
+                },
+                {
+                    "name": "élesztő",
+                    "amount": 25,
+                    "unit": "g"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "tojás",
+                    "amount": 2,
+                    "unit": "db"
+                },
+                {
+                    "name": "vaj",
+                    "amount": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "darált dió",
+                    "amount": 150,
+                    "unit": "g"
+                }
             ],
             "steps": [
                 "Futtasd fel az élesztőt langyos tejben cukorral.",
@@ -2849,13 +5245,41 @@
             "mealType": "vacsora",
             "description": "Fűszeres és laktató vegetáriánus curry csicseriborsóval és zöldségekkel.",
             "ingredients": [
-                {"name": "csicseriborsó konzerv", "amount": 1, "unit": "db"},
-                {"name": "kokszos tej", "amount": 200, "unit": "ml"},
-                {"name": "hagyma", "amount": 1, "unit": "db"},
-                {"name": "sárgarépa", "amount": 1, "unit": "db"},
-                {"name": "paradicsompüré", "amount": 2, "unit": "ek"},
-                {"name": "curry por", "amount": 1, "unit": "tk"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "csicseriborsó konzerv",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "kokszos tej",
+                    "amount": 200,
+                    "unit": "ml"
+                },
+                {
+                    "name": "hagyma",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "sárgarépa",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paradicsompüré",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "curry por",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Pirítsd meg a hagymát és a répát olívaolajon.",
@@ -2873,13 +5297,41 @@
             "mealType": "vacsora",
             "description": "Gyors és ízletes wokban sült csirkés-zöldséges egytálétel.",
             "ingredients": [
-                {"name": "csirkemell", "amount": 300, "unit": "g"},
-                {"name": "sárgarépa", "amount": 1, "unit": "db"},
-                {"name": "cukkini", "amount": 1, "unit": "db"},
-                {"name": "paprika", "amount": 1, "unit": "db"},
-                {"name": "szójaszósz", "amount": 2, "unit": "ek"},
-                {"name": "gyömbér", "amount": 1, "unit": "tk"},
-                {"name": "olívaolaj", "amount": 2, "unit": "ek"}
+                {
+                    "name": "csirkemell",
+                    "amount": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "sárgarépa",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukkini",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "paprika",
+                    "amount": 1,
+                    "unit": "db"
+                },
+                {
+                    "name": "szójaszósz",
+                    "amount": 2,
+                    "unit": "ek"
+                },
+                {
+                    "name": "gyömbér",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "olívaolaj",
+                    "amount": 2,
+                    "unit": "ek"
+                }
             ],
             "steps": [
                 "Szeleteld fel a csirkét és a zöldségeket vékony csíkokra.",
@@ -2896,13 +5348,41 @@
             "mealType": "desszert",
             "description": "Házilag készített krémes ropogós tésztával és könnyű vaníliás krémmel.",
             "ingredients": [
-                {"name": "leveles tészta", "amount": 1, "unit": "csomag"},
-                {"name": "tej", "amount": 500, "unit": "ml"},
-                {"name": "tojássárgája", "amount": 4, "unit": "db"},
-                {"name": "cukor", "amount": 150, "unit": "g"},
-                {"name": "vaníliakivonat", "amount": 1, "unit": "tk"},
-                {"name": "keményítő", "amount": 50, "unit": "g"},
-                {"name": "tejszínhab", "amount": 200, "unit": "ml"}
+                {
+                    "name": "leveles tészta",
+                    "amount": 1,
+                    "unit": "csomag"
+                },
+                {
+                    "name": "tej",
+                    "amount": 500,
+                    "unit": "ml"
+                },
+                {
+                    "name": "tojássárgája",
+                    "amount": 4,
+                    "unit": "db"
+                },
+                {
+                    "name": "cukor",
+                    "amount": 150,
+                    "unit": "g"
+                },
+                {
+                    "name": "vaníliakivonat",
+                    "amount": 1,
+                    "unit": "tk"
+                },
+                {
+                    "name": "keményítő",
+                    "amount": 50,
+                    "unit": "g"
+                },
+                {
+                    "name": "tejszínhab",
+                    "amount": 200,
+                    "unit": "ml"
+                }
             ],
             "steps": [
                 "Süsd meg a leveles tésztát két lapként 200°C-on 15 percig.",
