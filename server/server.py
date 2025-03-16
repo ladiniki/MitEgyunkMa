@@ -134,10 +134,13 @@ def login():
 
     user = db.users.find_one({'username': username})
     if not user or not check_password_hash(user['password'], password):
-        return jsonify({'msg': 'Incorrect login credentials'}), 401
+        return jsonify({'message': 'Invalid username or password'}), 401
 
     access_token = create_access_token(identity=username)
-    return jsonify(access_token=access_token), 200
+    return jsonify({
+        'access_token': access_token,
+        'username': username
+    }), 200
 
 
 #Kikérjük a felhasználó nevét (Admin)

@@ -1,18 +1,63 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FoodBackground from "../FoodBackground";
+import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     confirmPassword: "",
   });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //TODO: Implement registration logic
-    console.log("Registration data:", formData);
+    setError("");
+    setSuccess(false);
+
+    // Validációk
+    if (!formData.username || !formData.password || !formData.confirmPassword) {
+      setError("Kérlek tölts ki minden mezőt!");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("A jelszavak nem egyeznek!");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("A jelszónak legalább 6 karakter hosszúnak kell lennie!");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post("http://localhost:5000/register", {
+        username: formData.username,
+        password: formData.password,
+      });
+
+      if (response.status === 201) {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+    } catch (error) {
+      if (error.response?.data?.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Hiba történt a regisztráció során. Kérlek próbáld újra később.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -48,6 +93,7 @@ const Register = () => {
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200
                        transition duration-200"
               placeholder="Felhasználónév"
+              disabled={isLoading}
             />
           </div>
 
@@ -71,6 +117,7 @@ const Register = () => {
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200
                        transition duration-200"
               placeholder="Jelszó"
+              disabled={isLoading}
             />
           </div>
 
@@ -94,19 +141,31 @@ const Register = () => {
                        bg-white/80 dark:bg-dark-secondary/80 font-primary dark:text-gray-200
                        transition duration-200"
               placeholder="Jelszó megerősítése"
+              disabled={isLoading}
             />
           </div>
 
+          {error && (
+            <div className="text-red-500 text-sm text-center">{error}</div>
+          )}
+
+          {success && (
+            <div className="text-green-500 text-sm text-center font-medium">
+              Sikeres regisztráció! Átirányítás a bejelentkezéshez...
+            </div>
+          )}
+
           <button
             type="submit"
+            disabled={isLoading || success}
             className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 to-orange-600 dark:from-dark-tertiary dark:to-orange-600
                      hover:from-orange-600 hover:to-orange-700 dark:hover:from-orange-600 dark:hover:to-orange-700
                      text-white font-primary rounded-xl
                      shadow-[0_4px_20px_rgb(249,115,22,0.3)] dark:shadow-[0_4px_20px_rgba(255,139,62,0.2)]
                      transform transition duration-200 hover:scale-[1.02]
-                     active:scale-[0.98]"
+                     active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Regisztráció
+            {isLoading ? "Regisztráció..." : "Regisztráció"}
           </button>
 
           <div className="text-center">
