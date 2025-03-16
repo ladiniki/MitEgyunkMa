@@ -6,13 +6,18 @@ import {
   ShoppingCart,
   ChevronLeft,
   ChevronRight,
-  PenSquare,
+  Coffee,
+  Clock,
+  Sparkles,
+  Flame,
 } from "lucide-react";
 import PropTypes from "prop-types";
 
 const Sidebar = ({ onCompactChange }) => {
   const [username, setUsername] = useState(null);
   const [isCompact, setIsCompact] = useState(false);
+  const [favoritesCount, setFavoritesCount] = useState(0);
+  const [lastRecipe, setLastRecipe] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,16 +37,12 @@ const Sidebar = ({ onCompactChange }) => {
       label: "Kedvencek",
       route: "/favorites",
       icon: <Heart size={20} />,
+      badge: favoritesCount > 0 ? favoritesCount : null,
     },
     {
       label: "Hozzávalóim",
       route: "/ingredients",
       icon: <ShoppingCart size={20} />,
-    },
-    {
-      label: "Receptkönyv",
-      route: "/new-recipe",
-      icon: <PenSquare size={20} />,
     },
   ];
 
@@ -54,19 +55,36 @@ const Sidebar = ({ onCompactChange }) => {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/user", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
+        const [userResponse, favoritesResponse] = await Promise.all([
+          fetch("http://localhost:5000/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }),
+          fetch("http://localhost:5000/favorites", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+        ]);
 
-        if (response.ok) {
-          const data = await response.json();
-          setUsername(data.username);
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          setUsername(userData.username);
         } else {
           console.error("Hiba történt a felhasználó adatainak lekérésekor.");
+        }
+
+        if (favoritesResponse.ok) {
+          const favoritesData = await favoritesResponse.json();
+          setFavoritesCount(favoritesData.favorites?.length || 0);
+          // Beállítjuk az utolsó kedvenc receptet, ha van
+          if (favoritesData.favorites?.length > 0) {
+            setLastRecipe(favoritesData.favorites[0]);
+          }
+        } else {
+          console.error("Hiba történt a kedvencek lekérésekor.");
         }
       } catch (error) {
         console.error("Hiba történt a kérés során:", error);
@@ -99,13 +117,18 @@ const Sidebar = ({ onCompactChange }) => {
             </span>
           </div>
           <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-400 
-            border-2 border-white dark:border-dark-primary shadow-sm" />
+            border-2 border-white dark:border-dark-primary shadow-sm animate-pulse" />
         </div>
         
         {!isCompact && (
           <div className="mt-3 text-center">
-            <div className="font-medium text-gray-700 dark:text-gray-200">
-              {username || "Betöltés..."}
+            <div className="font-medium text-gray-700 dark:text-gray-200 group">
+              <span className="relative">
+                {username || "Betöltés..."}
+                <div className="absolute -top-1 -right-4">
+                  <Coffee size={14} className="text-orange-500 dark:text-dark-tertiary animate-bounce" />
+                </div>
+              </span>
             </div>
             <div className="mt-1 text-xs text-orange-500 dark:text-orange-400 font-medium">
               Konyhatündér
@@ -124,7 +147,7 @@ const Sidebar = ({ onCompactChange }) => {
           <button
             key={index}
             className={`w-full text-left px-4 py-2 rounded-xl transition-all duration-300
-                      flex items-center gap-3 group hover:scale-105
+                      flex items-center gap-3 group hover:scale-105 relative
                       ${
                         location.pathname === button.route
                           ? "bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20"
@@ -144,16 +167,54 @@ const Sidebar = ({ onCompactChange }) => {
             </span>
             {!isCompact && (
               <span
-                className={`transition-transform duration-300 ${
+                className={`transition-transform duration-300 flex-grow ${
                   location.pathname === button.route ? "font-medium" : ""
                 }`}
               >
                 {button.label}
               </span>
             )}
+            {button.badge && (
+              <div className={`
+                ${isCompact ? 'absolute -top-1 -right-1' : 'relative ml-auto'}
+                min-w-[20px] h-5 px-1 flex items-center justify-center
+                rounded-full text-xs font-medium
+                ${location.pathname === button.route 
+                  ? 'bg-white text-orange-500' 
+                  : 'bg-orange-100 dark:bg-dark-tertiary/20 text-orange-600 dark:text-orange-400'}
+              `}>
+                {button.badge}
+              </div>
+            )}
           </button>
         ))}
       </div>
+
+      {/* Utolsó kedvenc recept */}
+      {!isCompact && lastRecipe && (
+        <div className="w-full px-4 mt-6">
+          <div className="p-3 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-dark-secondary/50 dark:to-dark-tertiary/10 border border-orange-100/50 dark:border-dark-tertiary/20">
+            <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mb-2">
+              <Clock size={12} />
+              <span>Utoljára kedvelt recept</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-orange-500 dark:from-dark-tertiary dark:to-orange-500 flex items-center justify-center">
+                <Flame className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-grow min-w-0">
+                <div className="font-medium text-gray-700 dark:text-gray-200 truncate">
+                  {lastRecipe.name}
+                </div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                  <Sparkles size={12} className="text-yellow-500" />
+                  <span>{lastRecipe.difficulty || "Közepes"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col items-start w-full mt-auto">
         {/* Logo az alján */}
@@ -164,7 +225,7 @@ const Sidebar = ({ onCompactChange }) => {
             <img
               src="/mit-egyunk-ma2.png"
               alt="Mit együnk ma?"
-              className="w-40"
+              className="w-40 transition-transform duration-300 hover:scale-105"
             />
           </div>
         )}

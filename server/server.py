@@ -497,5 +497,105 @@ def get_recipe_match(recipe_name):
         logger.exception("Detailed error:")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/my-recipes', methods=['GET'])
+@jwt_required()
+def get_my_recipes():
+    try:
+        current_user = get_jwt_identity()
+        user = db.users.find_one({'username': current_user})
+        
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+            
+        #Lekérjük a felhasználó receptjeit
+        user_recipes = list(collection.find({'author': current_user}))
+        
+        #Formázzuk az adatokat
+        result = []
+        for recipe in user_recipes:
+            image_data = recipe.get("image", None)
+            if image_data:
+                image_data = image_data.decode('utf-8') if isinstance(image_data, bytes) else image_data
+            
+            result.append({
+                "name": recipe.get("name"),
+                "cookingTime": recipe.get("cookingTime"),
+                "image": image_data,
+                "mealType": recipe.get("mealType"),
+                "difficulty": recipe.get("difficulty")
+            })
+        
+        return jsonify(result), 200
+    except Exception as e:
+        logger.error(f"Error getting user recipes: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/recipes/new', methods=['POST'])
+@jwt_required()
+def create_recipe():
+    try:
+        current_user = get_jwt_identity()
+        data = request.get_json()
+        
+        if not data:
+            return jsonify({'message': 'No data provided'}), 400
+            
+        #Validáljuk a kötelező mezőket
+        required_fields = ['title', 'ingredients', 'instructions', 'prepTime', 'difficulty']
+        for field in required_fields:
+            if field not in data:
+                return jsonify({'message': f'Missing required field: {field}'}), 400
+        
+        #Létrehozzuk az új receptet
+        new_recipe = {
+            'name': data['title'],
+            'author': current_user,
+            'ingredients': data['ingredients'],
+            'steps': data['instructions'],
+            'cookingTime': data['prepTime'],
+            'difficulty': data['difficulty'],
+            'image': data.get('imageUrl', None),
+            'mealType': data.get('mealType', 'főétel'),
+            'created_at': datetime.now()
+        }
+        
+        #Mentjük az adatbázisba
+        result = collection.insert_one(new_recipe)
+        
+        if not result.inserted_id:
+            return jsonify({'message': 'Failed to save recipe'}), 500
+            
+        return jsonify({'message': 'Recipe created successfully', 'id': str(result.inserted_id)}), 201
+        
+    except Exception as e:
+        logger.error(f"Error creating recipe: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/recipes/<recipe_id>', methods=['DELETE'])
+@jwt_required()
+def delete_recipe(recipe_id):
+    try:
+        current_user = get_jwt_identity()
+        
+        # Ellenőrizzük, hogy létezik-e a recept
+        recipe = collection.find_one({'_id': ObjectId(recipe_id)})
+        if not recipe:
+            return jsonify({'message': 'A recept nem található'}), 404
+            
+        # Ellenőrizzük, hogy a felhasználó a recept szerzője-e
+        if recipe.get('author') != current_user:
+            return jsonify({'message': 'Nincs jogosultságod törölni ezt a receptet'}), 403
+            
+        # Töröljük a receptet
+        result = collection.delete_one({'_id': ObjectId(recipe_id)})
+        
+        if result.deleted_count > 0:
+            return jsonify({'message': 'Recept sikeresen törölve'}), 200
+        return jsonify({'message': 'Nem sikerült törölni a receptet'}), 500
+        
+    except Exception as e:
+        logger.error(f"Hiba a recept törlésekor: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
