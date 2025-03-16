@@ -10,6 +10,7 @@ const Ingredients = () => {
   const [pageTransition, setPageTransition] = useState("fade");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchText, setSearchText] = useState("");
 
   //Reszponzív itemsPerPage - 2x4-es elrendezés
   const getItemsPerPage = () => {
@@ -180,11 +181,16 @@ const Ingredients = () => {
     }
   };
 
+  // Szűrjük a hozzávalókat a keresési szöveg alapján
+  const filteredIngredients = ingredients.filter((ingredient) =>
+    ingredient.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   //Lapozás kezelése
-  const totalPages = Math.ceil(ingredients.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredIngredients.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = ingredients.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredIngredients.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -226,7 +232,36 @@ const Ingredients = () => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-4rem)] relative p-4 flex flex-col">
+      <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
+        {/* Kereső és hozzáadás gomb egy sorban */}
+        <div className="mb-6 flex items-center justify-center gap-4">
+          <div className="relative flex-1 max-w-md">
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+                setCurrentPage(1);
+              }}
+              placeholder="Keress a hozzávalóid között..."
+              className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 
+                       bg-white dark:bg-dark-secondary shadow-sm focus:ring-2 focus:ring-orange-500 
+                       focus:border-transparent outline-none transition-all duration-200
+                       dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
+          </div>
+          <button
+            className="w-10 h-10 bg-orange-500 text-white rounded-full 
+                     hover:bg-orange-600 hover:scale-105 shadow-lg
+                     transition-all duration-200 flex items-center justify-center flex-shrink-0"
+            onClick={() => setIsModalOpen(true)}
+            aria-label="Hozzávalók hozzáadása"
+          >
+            <Plus size={20} />
+          </button>
+        </div>
+
         {ingredients.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center">
             <div className="text-center p-8 rounded-2xl bg-white/50 backdrop-blur-sm shadow-sm">
@@ -240,9 +275,9 @@ const Ingredients = () => {
             </div>
           </div>
         ) : (
-          <>
+          <div className="flex-1 flex flex-col">
             <div
-              className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4 ${
+              className={`gap-4 sm:gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${
                 pageTransition === "fade-in"
                   ? "animate-fade-in"
                   : pageTransition === "fade-out"
@@ -276,9 +311,7 @@ const Ingredients = () => {
                 <div className="inline-flex items-center bg-white dark:bg-dark-secondary shadow-md dark:shadow-dark-tertiary/10 rounded-full px-1 py-1">
                   <button
                     onClick={handlePrevPage}
-                    disabled={
-                      currentPage === 1 || pageTransition === "fade-out"
-                    }
+                    disabled={currentPage === 1 || pageTransition === "fade-out"}
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === 1
@@ -316,10 +349,7 @@ const Ingredients = () => {
 
                   <button
                     onClick={handleNextPage}
-                    disabled={
-                      currentPage === totalPages ||
-                      pageTransition === "fade-out"
-                    }
+                    disabled={currentPage === totalPages || pageTransition === "fade-out"}
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                       ${
                         currentPage === totalPages
@@ -344,20 +374,8 @@ const Ingredients = () => {
                 </div>
               </div>
             )}
-          </>
+          </div>
         )}
-
-        <div className="fixed bottom-8 right-8">
-          <button
-            className="w-14 h-14 bg-orange-500 text-white rounded-full 
-                       hover:bg-orange-600 hover:scale-105 shadow-lg
-                       transition-all duration-200 flex items-center justify-center"
-            onClick={() => setIsModalOpen(true)}
-            aria-label="Hozzávalók hozzáadása"
-          >
-            <Plus size={24} />
-          </button>
-        </div>
       </div>
 
       <IngredientsModal

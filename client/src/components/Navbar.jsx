@@ -73,16 +73,16 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
             
             {/* Keresés és beállítások - mobilon látható */}
             <div className="flex md:hidden items-center gap-2">
-              <div className="relative">
+              <div className="relative group hover:scale-105 transition-transform duration-300">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search className="w-4 h-4 text-gray-400" />
+                  <Search className={`w-4 h-4 transition-colors duration-300 ${searchText || 'group-hover:' ? 'text-orange-500 dark:text-dark-tertiary' : 'text-gray-400'}`} />
                 </div>
                 <input
                   type="text"
                   placeholder="Keresés..."
                   value={searchText}
                   onChange={handleSearchChange}
-                  className="w-32 pl-9 pr-2 py-2 rounded-lg text-sm border border-orange-200/50 dark:border-dark-tertiary/20"
+                  className="w-48 pl-9 pr-2 py-2 rounded-lg text-sm text-left border-2 border-orange-200/50 dark:border-dark-tertiary/20 focus:border-orange-500/50 dark:focus:border-dark-tertiary/50 focus:ring-2 focus:ring-orange-500/20 dark:focus:ring-dark-tertiary/20 hover:bg-orange-100/50 hover:text-orange-600 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary"
                 />
               </div>
               <SettingsMenu />
@@ -113,23 +113,22 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
             
             {/* Keresés és beállítások - asztali nézeten látható */}
             <div className="hidden md:flex items-center gap-4 ml-4">
-              <div className="relative group">
+              <div className="relative group hover:scale-105 transition-transform duration-300">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className={`w-5 h-5 transition-colors duration-300 ${searchText ? 'text-white' : 'text-gray-400 group-hover:text-orange-500'}`} />
+                  <Search className={`w-5 h-5 transition-colors duration-300 ${searchText || 'group-hover:' ? 'text-orange-500 dark:text-dark-tertiary' : 'text-gray-400'}`} />
                 </div>
                 <input
                   type="text"
                   placeholder="Keresés..."
                   value={searchText}
                   onChange={handleSearchChange}
-                  className={`w-56 pl-11 pr-4 py-2.5 rounded-xl font-medium transition-all duration-300
+                  className={`w-72 pl-11 pr-4 py-2.5 rounded-xl font-medium transition-all duration-300 text-left
                             ${searchText 
-                              ? 'bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white placeholder-white/70 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20' 
+                              ? 'bg-orange-100 dark:bg-dark-secondary text-orange-600 dark:text-dark-tertiary placeholder-orange-300 dark:placeholder-dark-tertiary/50' 
                               : 'bg-transparent text-gray-700 dark:text-gray-300 hover:bg-orange-100/50 hover:text-orange-600 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary'} 
-                            border border-orange-200/50 dark:border-dark-tertiary/20
+                            border-2 border-orange-200/50 dark:border-dark-tertiary/20
                             focus:border-orange-500/50 dark:focus:border-dark-tertiary/50
-                            focus:ring-2 focus:ring-orange-500/20 dark:focus:ring-dark-tertiary/20
-                            hover:scale-105`}
+                            focus:ring-2 focus:ring-orange-500/20 dark:focus:ring-dark-tertiary/20`}
                 />
               </div>
               <SettingsMenu />
