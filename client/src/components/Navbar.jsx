@@ -1,11 +1,14 @@
 import {
   Search,
-  Receipt,
+  MenuSquare,
   Coffee,
   UtensilsCrossed,
   Cake,
   ChefHat,
-  Utensils
+  Utensils,
+  Croissant,
+  Soup,
+  IceCream
 } from "lucide-react";
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -28,27 +31,27 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
     {
       label: "Összes",
       value: null,
-      icon: <Receipt className="w-5 h-5" />,
+      icon: <MenuSquare className="w-5 h-5" />,
     },
     {
       label: "Reggeli",
       value: "reggeli",
-      icon: <Coffee className="w-5 h-5" />,
+      icon: <Croissant className="w-5 h-5" />,
     },
     {
       label: "Ebéd",
       value: "ebéd",
-      icon: <UtensilsCrossed className="w-5 h-5" />,
+      icon: <Soup className="w-5 h-5" />,
     },
     {
       label: "Desszert",
       value: "desszert",
-      icon: <Cake className="w-5 h-5" />,
+      icon: <IceCream className="w-5 h-5" />,
     },
     {
       label: "Vacsora",
       value: "vacsora",
-      icon: <ChefHat className="w-5 h-5" />,
+      icon: <UtensilsCrossed className="w-5 h-5" />,
     },
   ];
 

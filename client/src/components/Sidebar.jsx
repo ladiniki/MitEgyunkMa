@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
-  Home,
+  ScrollText,
   Heart,
-  ShoppingBag,
+  ShoppingCart,
   ChevronLeft,
   ChevronRight,
-  PlusCircle,
+  PenSquare,
 } from "lucide-react";
 import PropTypes from "prop-types";
 
@@ -26,7 +26,7 @@ const Sidebar = ({ onCompactChange }) => {
     {
       label: "Receptek",
       route: "/recipies",
-      icon: <Home size={20} />,
+      icon: <ScrollText size={20} />,
     },
     {
       label: "Kedvencek",
@@ -36,12 +36,12 @@ const Sidebar = ({ onCompactChange }) => {
     {
       label: "Hozzávalóim",
       route: "/ingredients",
-      icon: <ShoppingBag size={20} />,
+      icon: <ShoppingCart size={20} />,
     },
     {
       label: "Receptkönyv",
       route: "/new-recipe",
-      icon: <PlusCircle size={20} />,
+      icon: <PenSquare size={20} />,
     },
   ];
 
@@ -84,26 +84,32 @@ const Sidebar = ({ onCompactChange }) => {
     >
       {/* Admin profil rész */}
       <div
-        className={`flex flex-col items-center w-full pt-8 pb-8 border-b border-orange-100/50 dark:border-dark-secondary/50 ${
+        className={`flex flex-col items-center w-full pt-6 pb-6 border-b border-orange-100/50 dark:border-dark-secondary/50 ${
           isCompact ? "px-2" : "px-4"
         }`}
       >
-        <div
-          className="flex justify-center items-center bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 
-                     rounded-full w-16 h-16 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20 
-                     transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-md
-                     group"
-        >
-          <span className="flex justify-center items-center w-full h-full text-2xl font-bold text-white transition-all duration-300">
-            {username ? username.charAt(0).toUpperCase() : "?"}
-          </span>
-        </div>
-        {!isCompact && (
-          <div className="mt-4 text-center">
-            <span className="text-gray-700 dark:text-gray-200 text-lg font-medium">
-              {username || "Betöltés..."}
+        <div className="relative">
+          <div
+            className="flex justify-center items-center bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 
+                     rounded-full w-14 h-14 shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20 
+                     transition-all duration-300 cursor-pointer hover:scale-105"
+          >
+            <span className="text-2xl font-bold text-white">
+              {username ? username.charAt(0).toUpperCase() : "?"}
             </span>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Séf</p>
+          </div>
+          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-400 
+            border-2 border-white dark:border-dark-primary shadow-sm" />
+        </div>
+        
+        {!isCompact && (
+          <div className="mt-3 text-center">
+            <div className="font-medium text-gray-700 dark:text-gray-200">
+              {username || "Betöltés..."}
+            </div>
+            <div className="mt-1 text-xs text-orange-500 dark:text-orange-400 font-medium">
+              Konyhatündér
+            </div>
           </div>
         )}
       </div>
