@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import RecipieCard from "./RecipieCard";
-import { Search } from "lucide-react";
+import { Search, ChefHat, Utensils, Trophy } from "lucide-react";
 
 /*Betölti a recepteket egy API-ból*/
 const RecipieContainer = () => {
@@ -10,6 +10,8 @@ const RecipieContainer = () => {
   const { selectedMealType, searchText } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageTransition, setPageTransition] = useState("fade-in");
+  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  
   //Reszponzív recipesPerPage - 2x4-es elrendezés
   const getRecipesPerPage = () => {
     if (typeof window !== "undefined") {
@@ -57,6 +59,45 @@ const RecipieContainer = () => {
     setCurrentPage(1);
   }, [selectedMealType]);
 
+  // Nehézségi szint szűrő komponens
+  const DifficultyFilter = () => (
+    <div className="flex items-center justify-center gap-2 mb-4">
+      <button
+        onClick={() => setSelectedDifficulty(selectedDifficulty === "könnyű" ? null : "könnyű")}
+        className={`flex items-center px-3 py-1.5 rounded-full text-sm transition-all duration-200 ${
+          selectedDifficulty === "könnyű"
+            ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
+            : "bg-white dark:bg-dark-secondary text-gray-600 dark:text-gray-400 hover:bg-green-50 dark:hover:bg-green-900/20"
+        }`}
+      >
+        <ChefHat size={16} className="mr-1" />
+        Könnyű
+      </button>
+      <button
+        onClick={() => setSelectedDifficulty(selectedDifficulty === "közepes" ? null : "közepes")}
+        className={`flex items-center px-3 py-1.5 rounded-full text-sm transition-all duration-200 ${
+          selectedDifficulty === "közepes"
+            ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400"
+            : "bg-white dark:bg-dark-secondary text-gray-600 dark:text-gray-400 hover:bg-yellow-50 dark:hover:bg-yellow-900/20"
+        }`}
+      >
+        <Utensils size={16} className="mr-1" />
+        Közepes
+      </button>
+      <button
+        onClick={() => setSelectedDifficulty(selectedDifficulty === "haladó" ? null : "haladó")}
+        className={`flex items-center px-3 py-1.5 rounded-full text-sm transition-all duration-200 ${
+          selectedDifficulty === "haladó"
+            ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
+            : "bg-white dark:bg-dark-secondary text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20"
+        }`}
+      >
+        <Trophy size={16} className="mr-1" />
+        Haladó
+      </button>
+    </div>
+  );
+
   //Loading állapot, hogy a felhasználó bejelentkezésig ne lásson semmit
   if (loading) {
     return (
@@ -68,12 +109,16 @@ const RecipieContainer = () => {
     );
   }
 
-  //Szűrjük a recepteket a keresési szöveg alapján
-  const filteredRecipies = searchText
-    ? recipies.filter((recipe) =>
-        recipe.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    : recipies;
+  //Szűrjük a recepteket a keresési szöveg és nehézség alapján
+  const filteredRecipies = recipies.filter(recipe => {
+    const matchesSearch = searchText
+      ? recipe.name.toLowerCase().includes(searchText.toLowerCase())
+      : true;
+    const matchesDifficulty = selectedDifficulty
+      ? recipe.difficulty === selectedDifficulty
+      : true;
+    return matchesSearch && matchesDifficulty;
+  });
 
   //Kiszámoljuk az oldalak számát
   const totalPages = Math.ceil(filteredRecipies.length / recipesPerPage);
@@ -85,21 +130,6 @@ const RecipieContainer = () => {
     Math.max(0, indexOfFirstRecipe),
     Math.min(filteredRecipies.length, indexOfLastRecipe)
   );
-
-  /* Lapozás kezelése egyszerű fade effekttel
-  const handlePageClick = (pageNumber) => {
-    if (
-      pageNumber !== currentPage &&
-      pageNumber > 0 &&
-      pageNumber <= totalPages
-    ) {
-      setPageTransition("fade-out");
-      setTimeout(() => {
-        setCurrentPage(pageNumber);
-        setPageTransition("fade-in");
-      }, 200);
-    }
-  };*/
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -125,6 +155,7 @@ const RecipieContainer = () => {
   Grid --> kártya elrendezése, görgető*/
   return (
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
+      <DifficultyFilter />
       {filteredRecipies.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="text-center p-8 rounded-2xl bg-white/50 dark:bg-dark-secondary/50 backdrop-blur-sm shadow-sm">

@@ -29,11 +29,6 @@ const Sidebar = ({ onCompactChange }) => {
       icon: <Home size={20} />,
     },
     {
-      label: "Új receptek",
-      route: "/new-recipe",
-      icon: <PlusCircle size={20} />,
-    },
-    {
       label: "Kedvencek",
       route: "/favorites",
       icon: <Heart size={20} />,
@@ -42,6 +37,11 @@ const Sidebar = ({ onCompactChange }) => {
       label: "Hozzávalóim",
       route: "/ingredients",
       icon: <ShoppingBag size={20} />,
+    },
+    {
+      label: "Receptkönyv",
+      route: "/new-recipe",
+      icon: <PlusCircle size={20} />,
     },
   ];
 

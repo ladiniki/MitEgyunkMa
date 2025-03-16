@@ -1,6 +1,7 @@
 import { Settings, Moon, Sun, LogOut } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const SettingsMenu = () => {
   const [isDark, setIsDark] = useState(false);
@@ -95,4 +96,4 @@ const SettingsMenu = () => {
   );
 };
 
-export default SettingsMenu;
+export default SettingsMenu; 
