@@ -8,6 +8,7 @@ const Favorites = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageTransition, setPageTransition] = useState("fade");
+  const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
   //Token ellenőrzése és kedvencek betöltése
@@ -65,6 +66,42 @@ const Favorites = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  //Szűrjük a kedvenceket a keresési szöveg alapján
+  const filteredFavorites = favorites.filter(recipe => 
+    searchText ? recipe.name.toLowerCase().includes(searchText.toLowerCase()) : true
+  );
+
+  //Kiszámoljuk az oldalak számát
+  const totalPages = Math.ceil(filteredFavorites.length / recipesPerPage);
+
+  //Kiszámoljuk az aktuális oldalon megjelenítendő recepteket
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = filteredFavorites.slice(
+    Math.max(0, indexOfFirstRecipe),
+    Math.min(filteredFavorites.length, indexOfLastRecipe)
+  );
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setPageTransition("fade-out");
+      setTimeout(() => {
+        setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+        setPageTransition("fade-in");
+      }, 200);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setPageTransition("fade-out");
+      setTimeout(() => {
+        setCurrentPage((prev) => Math.max(1, prev - 1));
+        setPageTransition("fade-in");
+      }, 200);
+    }
+  };
+
   //Spinner
   if (loading) {
     return (
@@ -76,34 +113,28 @@ const Favorites = () => {
     );
   }
 
-  const totalPages = Math.ceil(favorites.length / recipesPerPage);
-
-  const indexOfLastRecipe = currentPage * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = favorites.slice(indexOfFirstRecipe, indexOfLastRecipe);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setPageTransition("fade-out");
-      setTimeout(() => {
-        setCurrentPage((prev) => prev + 1);
-        setPageTransition("fade-in");
-      }, 200);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setPageTransition("fade-out");
-      setTimeout(() => {
-        setCurrentPage((prev) => prev - 1);
-        setPageTransition("fade-in");
-      }, 200);
-    }
-  };
-
   return (
     <div className="px-6 sm:px-10 py-6 min-h-[31.25rem] flex flex-col">
+      {/* Kereső */}
+      <div className="mb-6 flex items-center justify-center">
+        <div className="relative flex-1 max-w-md">
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+              setCurrentPage(1);
+            }}
+            placeholder="Keress a kedvenceid között..."
+            className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 
+                     bg-white dark:bg-dark-secondary shadow-sm focus:ring-2 focus:ring-orange-500 
+                     focus:border-transparent outline-none transition-all duration-200
+                     dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+          />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
+        </div>
+      </div>
+
       {favorites.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="text-center p-8 rounded-2xl bg-white/50 dark:bg-dark-secondary/50 backdrop-blur-sm shadow-sm">
@@ -182,9 +213,7 @@ const Favorites = () => {
 
                 <button
                   onClick={handleNextPage}
-                  disabled={
-                    currentPage === totalPages || pageTransition === "fade-out"
-                  }
+                  disabled={currentPage === totalPages || pageTransition === "fade-out"}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
                     ${
                       currentPage === totalPages
