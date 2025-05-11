@@ -1,21 +1,18 @@
 import {
   Search,
   MenuSquare,
-  Coffee,
   UtensilsCrossed,
-  Cake,
-  ChefHat,
   Utensils,
   Croissant,
   Soup,
-  IceCream
+  IceCream,
 } from "lucide-react";
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import SettingsMenu from './SettingsMenu';
+import PropTypes from "prop-types";
+import { useState } from "react";
+import SettingsMenu from "./SettingsMenu";
 
 const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const handleMealTypeClick = (mealType) => {
     onMealTypeChange(mealType === selectedMealType ? null : mealType);
@@ -70,12 +67,18 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
                 </span>
               </h1>
             </div>
-            
+
             {/* Keresés és beállítások - mobilon látható */}
             <div className="flex md:hidden items-center gap-2">
               <div className="relative group hover:scale-105 transition-transform duration-300">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search className={`w-4 h-4 transition-colors duration-300 ${searchText || 'group-hover:' ? 'text-orange-500 dark:text-dark-tertiary' : 'text-gray-400'}`} />
+                  <Search
+                    className={`w-4 h-4 transition-colors duration-300 ${
+                      searchText.trim() !== ""
+                        ? "text-orange-500 dark:text-dark-tertiary"
+                        : "text-gray-400"
+                    }`}
+                  />
                 </div>
                 <input
                   type="text"
@@ -88,34 +91,46 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
               <SettingsMenu />
             </div>
           </div>
-          
+
           {/* Alsó sor: Szűrők és keresés (asztali nézeten) */}
           <div className="flex items-center justify-between">
             {/* Szűrő gombok */}
             <div className="flex items-center space-x-1 overflow-x-auto">
               {navButtons.map((button) => (
                 <button
-                  key={button.value ?? 'all'}
+                  key={button.value ?? "all"}
                   className={`px-3 py-2 rounded-xl font-medium transition-all duration-300 
                            flex items-center gap-1.5 text-sm md:text-base
-                           ${selectedMealType === button.value 
-                             ? 'bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20' 
-                             : 'text-gray-700 hover:bg-orange-100/50 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary'}`}
+                           ${
+                             selectedMealType === button.value
+                               ? "bg-gradient-to-br from-orange-500 to-orange-400 dark:from-dark-tertiary dark:to-orange-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-dark-tertiary/20"
+                               : "text-gray-700 hover:bg-orange-100/50 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary"
+                           }`}
                   onClick={() => handleMealTypeClick(button.value)}
                 >
-                  <span className={`transition-transform duration-300 ${selectedMealType === button.value ? 'text-white' : ''}`}>
+                  <span
+                    className={`transition-transform duration-300 ${
+                      selectedMealType === button.value ? "text-white" : ""
+                    }`}
+                  >
                     {button.icon}
                   </span>
                   <span className="font-medium">{button.label}</span>
                 </button>
               ))}
             </div>
-            
+
             {/* Keresés és beállítások - asztali nézeten látható */}
             <div className="hidden md:flex items-center gap-4 ml-4">
               <div className="relative group hover:scale-105 transition-transform duration-300">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className={`w-5 h-5 transition-colors duration-300 ${searchText || 'group-hover:' ? 'text-orange-500 dark:text-dark-tertiary' : 'text-gray-400'}`} />
+                  <Search
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      searchText.trim() !== ""
+                        ? "text-orange-500 dark:text-dark-tertiary"
+                        : "text-gray-400"
+                    }`}
+                  />
                 </div>
                 <input
                   type="text"
@@ -123,9 +138,11 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
                   value={searchText}
                   onChange={handleSearchChange}
                   className={`w-72 pl-11 pr-4 py-2.5 rounded-xl font-medium transition-all duration-300 text-left
-                            ${searchText 
-                              ? 'bg-orange-100 dark:bg-dark-secondary text-orange-600 dark:text-dark-tertiary placeholder-orange-300 dark:placeholder-dark-tertiary/50' 
-                              : 'bg-transparent text-gray-700 dark:text-gray-300 hover:bg-orange-100/50 hover:text-orange-600 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary'} 
+                            ${
+                              searchText
+                                ? "bg-orange-100 dark:bg-dark-secondary text-orange-600 dark:text-dark-tertiary placeholder-orange-300 dark:placeholder-dark-tertiary/50"
+                                : "bg-transparent text-gray-700 dark:text-gray-300 hover:bg-orange-100/50 hover:text-orange-600 dark:hover:bg-dark-secondary/50 dark:hover:text-dark-tertiary"
+                            } 
                             border-2 border-orange-200/50 dark:border-dark-tertiary/20
                             focus:border-orange-500/50 dark:focus:border-dark-tertiary/50
                             focus:ring-2 focus:ring-orange-500/20 dark:focus:ring-dark-tertiary/20`}
@@ -143,7 +160,7 @@ const Navbar = ({ selectedMealType, onMealTypeChange, onSearchChange }) => {
 Navbar.propTypes = {
   selectedMealType: PropTypes.string,
   onMealTypeChange: PropTypes.func.isRequired,
-  onSearchChange: PropTypes.func.isRequired
+  onSearchChange: PropTypes.func.isRequired,
 };
 
 export default Navbar;
